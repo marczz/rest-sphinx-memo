@@ -442,8 +442,10 @@ Footnotes
       More autosymbol [*]_.
 
       .. rubric:: Footnotes
-      .. [*] footnote.
-      .. [*] footnotes.
+
+      .. [*] Footnotes can be put in a *Footnotes*
+         ``rubric`` at end of document.
+      .. [*] other labeled footnote.
 
 ``.. [2]`` precedes the definition of the footnote 2.  It is referenced by
 ``[2]_``. E.g.
@@ -468,10 +470,13 @@ An autosymbol [*]_.
 More autosymbol [*]_.
 
 .. rubric:: Footnotes
-.. [*] footnote.
-.. [*] footnotes.
 
-There is no labeled version of these autosymbol footnotes.
+.. [*] Footnotes can be put in a *Footnotes*
+   ``rubric`` at end of document.
+.. [*] other labeled footnote.
+
+
+*There is no labeled version of these autosymbol footnotes.*
 
 Citations
 ---------
@@ -579,11 +584,19 @@ Section titles, footnotes, and citations automatically are link targets.
 To reference  a Python Enhancement Proposal use ``:pep``, for a
 Request for Comments ``:rfc:``
 
+.. note::  The reference for *Rest way of hyperlinking*  is
+   `in ReST Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#hyperlink-targets>`_
+   and
+   `in Quick ReST <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
+
+   For the *Sphinx way of hyperlinking*  see
+   `Sphinx: Cross-referencing syntax <http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_
 
 Directives
 ==========
 
-Directives are a general-purpose extension mechanism.  The general syntax is
+`Directives <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_
+are a general-purpose extension mechanism.  The general syntax is
 similar to `Explicit Markup`_::
 
    .. ‹name›:: ‹argument 1›
@@ -603,7 +616,9 @@ table of contents
 
 .. _reST-tableOfContents:
 
-Create a **table of contents** containing (sub)titles ranging from level 1 to
+Create a `table of contents
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html#table-of-contents>`_
+containing (sub)titles ranging from level 1 to
 level ‹number› if you use the ``:local:`` option the TOC is local to
 the section where it appears, otherwise it is for the whole file, the title may be empty::
 
@@ -767,9 +782,9 @@ note, warning, seealso
        .. warning:: ‹text›
 
    ::
-   
+
       .. seealso::
-   
+
          ‹reST definition list›
 
 
@@ -805,11 +820,12 @@ A centered, boldface text block::
 Sphinx code highlighting
 -----------------------------
 
- **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
+**Highlighting language** used by  `Pygment <http://pygments.org>`_ in
 `Literal Blocks`_  is set for following text by::
 
    .. highlight:: ‹language›
       :linenothreshold: ‹number›
+
 
 The additional ``linenothreshold`` option switches on line numbering for blocks
 of size beyond ‹number› lines.
@@ -840,13 +856,14 @@ You can select lines by the ``:lines:`` option or by
 
 
 If it is a Python module, you can select a class, function or method to
-    include using the pyobject option:
+include using the pyobject option::
 
     .. literalinclude:: example.py
        :pyobject: MyClass.some_method
 
 Sphinx source code directives
 -----------------------------
+
 There are very powerful directives in Sphinx
 for `documenting source code
 <http://sphinx.pocoo.org/markup/desc.html#module-specific-markup>`_
@@ -865,7 +882,7 @@ most are since *version 1.0* in `specific domains
 +--------------------------------------+-----------------------------------------------------+
 | ``.. exception:: name[(signature)]`` |  Describes an exception class.                      |
 +--------------------------------------+-----------------------------------------------------+
-| ``.. class:: name[(signature)]``     |  Describes a class.  [1]_                           |
+| ``.. class:: name[(signature)]``     |  Describes a class.  [#class]_                      |
 +--------------------------------------+-----------------------------------------------------+
 |  ``.. attribute:: name``             |  Describes an object data attribute.                |
 +--------------------------------------+-----------------------------------------------------+
@@ -876,8 +893,8 @@ most are since *version 1.0* in `specific domains
 | ``.. classmethod:: name(signature)`` |  Describes a class method.                          |
 +--------------------------------------+-----------------------------------------------------+
 
-.. [1] Methods and attributes belonging to the class should be placed in this directive’s body.
-.. [2] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
+.. [#class] Methods and attributes belonging to the class should be placed in this directive’s body.
+.. [#signature] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
 
    .. function:: compile(source[, filename, symbol])
 
@@ -971,18 +988,18 @@ python
 +----------------+------------------------------------------+
 | ``:py:const:`` | constant                                 |
 +----------------+------------------------------------------+
-| ``:py:class:`` | class [1]_                               |
+| ``:py:class:`` | class [#dotted]_                         |
 +----------------+------------------------------------------+
-| ``:py:meth:``  | method [1]_ [2]_                         |
+| ``:py:meth:``  | method [#dotted]_ [#role]_               |
 +----------------+------------------------------------------+
-| ``:py:attr:``  | data attribute                           |
+| ``:py:attr:``  | data attribute of an object              |
 +----------------+------------------------------------------+
-| ``:py:exc:``   | exception [1]_                           |
+| ``:py:exc:``   | exception [#dotted]_                     |
 +----------------+------------------------------------------+
 
 
-.. [1] Class, methods, exceptions may be dotted names.
-.. [2] The role text should include the type name and the method name
+.. [#dotted] Class, methods, exceptions may be dotted names.
+.. [#role] The role text should include the type name and the method name
 
 
 You may supply an explicit title and reference target: ``:role:`title <target>```
@@ -1210,8 +1227,9 @@ References
 - The `ReStructuredText Documentation <http://docutils.sourceforge.net/docs/>`_
 
   - `A ReStructuredText Primer
-    <http://docutils.sourceforge.net/docs/ref/rst/quickstart.html>`_
-    you may prefer the python documentation
+    <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_
+    you may prefer the python the *Sphinx* nicely formated
+    documentation cited above, also available _with a distinct layout_ as
     `reStructuredText Primer <http://docs.python.org/dev/documenting/rest.html>`_
   - `Quick reStructuredText
     <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
