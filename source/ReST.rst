@@ -553,7 +553,7 @@ The *preferred* Sphinx way, allows linking across files, it  use::
 
    :ref:`‹displayed text› <‹label›>`
 
-To reference ``‹label›`` defined in *any* document of the project
+To reference ``‹label›`` defined in *any* document of the project::
 
    :ref:`‹displayed text› <‹label›>`
 
@@ -644,7 +644,7 @@ images and figures
 
        The logo for Sphinx
 
-**Include an image** (see also in the `Sphinx documentation
+**Include an image** (see also  `images in the Sphinx documentation
 <http://sphinx.pocoo.org/rest.html#images>`_ and
 `ReST reference
 <http://docutils.sourceforge.net/docs/ref/rst/directives.html##images>`_)
@@ -661,8 +661,8 @@ images and figures
 
    The logo for Sphinx
 
-replacement,  include
-^^^^^^^^^^^^^^^^^^^^^
+replacement
+^^^^^^^^^^^
 
 General replacements::
 
@@ -672,8 +672,9 @@ General replacements::
 
 Possible ``‹directive›``\ s are ``replace`` or ``image``.
 
-----
 
+file include
+^^^^^^^^^^^^
 +----------------------------+------------------------------------------------------+
 |**Including** a reST file   | .. note::  Don't use the same file name              |
 |::                          |            extension as your source files.           |
@@ -711,9 +712,11 @@ following `Field list`_ type element in the very first line of the file::
    :tocdepth: ‹depth›
 
 
-.. Note::  Don't try to reference the file which contains the ``toctree``
-   directive, otherwise a recursive loop occurs. Use the normal
-   :ref:`reST table of contents <reST-tableOfContents>` directive instead.
+.. Note::
+      Don't try to reference the file which contains the ``toctree``
+      directive, otherwise a recursive loop occurs.
+      Use the normal :ref:`reST table of contents <reST-tableOfContents>`
+      directive instead.
 
 Index and glossaries
 ^^^^^^^^^^^^^^^^^^^^
@@ -817,86 +820,6 @@ A centered, boldface text block::
 
 
 
-Sphinx code highlighting
------------------------------
-
-**Highlighting language** used by  `Pygment <http://pygments.org>`_ in
-`Literal Blocks`_  is set for following text by::
-
-   .. highlight:: ‹language›
-      :linenothreshold: ‹number›
-
-
-The additional ``linenothreshold`` option switches on line numbering for blocks
-of size beyond ‹number› lines.
-
-Specify the highlighting for a single literal block::
-
-   .. code-block:: ‹language›
-      :linenos:
-
-      ‹body›
-
-The ``linenos`` option switches on line numbering.
-
-----
-
-**Including a file** as a literal block::
-
-   .. literalinclude:: ‹filename›
-      :language: ‹language›
-      :linenos:
-      :lines: 1,3,5-10,20-
-
-The options ``language`` and ``linenos`` set the highlighting to ``‹language›``
-and enables line numbers respectively.
-
-You can select lines by the ``:lines:`` option or by
-``start-after:<string>`` and/or ``end-before:<string>``
-
-
-If it is a Python module, you can select a class, function or method to
-include using the pyobject option::
-
-    .. literalinclude:: example.py
-       :pyobject: MyClass.some_method
-
-Sphinx source code directives
------------------------------
-
-There are very powerful directives in Sphinx
-for `documenting source code
-<http://sphinx.pocoo.org/markup/desc.html#module-specific-markup>`_
-most are since *version 1.0* in `specific domains
-<http://sphinx.pocoo.org/domains.html>`_ the following are related to
-`documenting python source code
-<http://sphinx.pocoo.org/domains.html#the-python-domain>
-
-+--------------------------------------+-----------------------------------------------------+
-|``.. module:: name``                  |Marks the beginning of the description of a module   |
-|                                      |                                                     |
-+--------------------------------------+-----------------------------------------------------+
-|``.. currentmodule:: name``           |Tells Sphinx that the classes, functions             |
-|                                      |etc. documented from here are in the given module    |
-|                                      |                                                     |
-+--------------------------------------+-----------------------------------------------------+
-| ``.. exception:: name[(signature)]`` |  Describes an exception class.                      |
-+--------------------------------------+-----------------------------------------------------+
-| ``.. class:: name[(signature)]``     |  Describes a class.  [#class]_                      |
-+--------------------------------------+-----------------------------------------------------+
-|  ``.. attribute:: name``             |  Describes an object data attribute.                |
-+--------------------------------------+-----------------------------------------------------+
-| ``.. method:: name(signature)``      |  Describes an object method.                        |
-+--------------------------------------+-----------------------------------------------------+
-| ``.. staticmethod:: name(signature)``|  Describes a static method.                         |
-+--------------------------------------+-----------------------------------------------------+
-| ``.. classmethod:: name(signature)`` |  Describes a class method.                          |
-+--------------------------------------+-----------------------------------------------------+
-
-.. [#class] Methods and attributes belonging to the class should be placed in this directive’s body.
-.. [#signature] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
-
-   .. function:: compile(source[, filename, symbol])
 
 Info field lists
 ^^^^^^^^^^^^^^^^
@@ -1024,6 +947,99 @@ followed by normal text is a comment.  Mark the indentation in the example:
 
 Not comment anymore
 
+Sphinx Source Code
+==================
+Sphinx code highlighting
+-----------------------------
+
+**Highlighting language** used by  `Pygment <http://pygments.org>`_ in
+`Literal Blocks`_  is set for following text by::
+
+   .. highlight:: ‹language›
+      :linenothreshold: ‹number›
+
+The option language may be any of
+`Pygment supported languages <http://pygments.org/languages/>`_
+
+The additional ``linenothreshold`` option switches on line numbering for blocks
+of size beyond ‹number› lines.
+
+Specify the highlighting for a single literal block::
+
+   .. code-block:: ‹language›
+      :linenos:
+
+      ‹body›
+
+The ``linenos`` option switches on line numbering.
+
+Source code include
+^^^^^^^^^^^^^^^^^^^
+To include the source file example.py as a literal block use::
+
+   .. literalinclude:: example.py
+      :linenos:
+
+.. literalinclude:: example.py
+   :linenos:
+
+
+More Options::
+
+   .. literalinclude:: ‹filename›
+      :language: ‹language›
+      :linenos:
+      :lines: 1,3,5-10,20-
+
+The options ``language`` and ``linenos`` set the highlighting to ``‹language›``
+and enables line numbers respectively.
+
+You can select lines by the ``:lines:`` option or by
+``start-after:<string>`` and/or ``end-before:<string>``
+
+
+If it is a Python module, you can select a class, function or method to
+include using the pyobject option::
+
+    .. literalinclude:: example.py
+       :pyobject: MyClass.some_method
+
+Sphinx source code directives
+-----------------------------
+
+There are very powerful directives in Sphinx
+for `documenting source code
+<http://sphinx.pocoo.org/markup/desc.html#module-specific-markup>`_
+most are since *version 1.0* in `specific domains
+<http://sphinx.pocoo.org/domains.html>`_ the following are related to
+`documenting python source code
+<http://sphinx.pocoo.org/domains.html#the-python-domain>`_
+
++--------------------------------------+-----------------------------------------------------+
+|``.. module:: name``                  |Marks the beginning of the description of a module   |
+|                                      |                                                     |
++--------------------------------------+-----------------------------------------------------+
+|``.. currentmodule:: name``           |Tells Sphinx that the classes, functions             |
+|                                      |etc. documented from here are in the given module    |
+|                                      |                                                     |
++--------------------------------------+-----------------------------------------------------+
+| ``.. exception:: name[(signature)]`` |  Describes an exception class.                      |
++--------------------------------------+-----------------------------------------------------+
+| ``.. class:: name[(signature)]``     |  Describes a class.  [#class]_                      |
++--------------------------------------+-----------------------------------------------------+
+|  ``.. attribute:: name``             |  Describes an object data attribute.                |
++--------------------------------------+-----------------------------------------------------+
+| ``.. method:: name(signature)``      |  Describes an object method.                        |
++--------------------------------------+-----------------------------------------------------+
+| ``.. staticmethod:: name(signature)``|  Describes a static method.                         |
++--------------------------------------+-----------------------------------------------------+
+| ``.. classmethod:: name(signature)`` |  Describes a class method.                          |
++--------------------------------------+-----------------------------------------------------+
+
+.. [#class] Methods and attributes belonging to the class should be placed in this directive’s body.
+.. [#signature] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
+
+   .. function:: compile(source[, filename, symbol])
 
 `Sphinx <http://sphinx.pocoo.org/>`_
 ====================================
@@ -1226,11 +1242,11 @@ References
 
 - The `ReStructuredText Documentation <http://docutils.sourceforge.net/docs/>`_
 
-  - `A ReStructuredText Primer
+  - `Docutil reStructuredText Primer
     <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_
     you may prefer the python the *Sphinx* nicely formated
-    documentation cited above, also available _with a distinct layout_ as
-    `reStructuredText Primer <http://docs.python.org/dev/documenting/rest.html>`_
+    documentation cited above, also available *with a distinct layout* as
+    `docs.python: reStructuredText Primer <http://docs.python.org/dev/documenting/rest.html>`_
   - `Quick reStructuredText
     <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
   - `reStructuredText Markup Specification
@@ -1243,7 +1259,17 @@ References
 
 - `Documenting Python <http://docs.python.org/dev/documenting/index.html>`_
 
-- `Pylons Book:  Documentation <http://pylonsbook.com/en/1.1/documentation.html>`_ is itself a good example of sphinx documentation.
+- `Pylons Book:  Documentation
+  <http://pylonsbook.com/en/1.1/documentation.html>`_
+  is itself a good example of sphinx documentation.
+
+- `sampledoc tutorial <http://matplotlib.sourceforge.net/sampledoc/>`_
+  from `matplotlib <http://matplotlib.sourceforge.neti/>`_
+  *a python 2D plotting library*.
+
+- `rst2pdf <http://code.google.com/p/rst2pdf/>`_ is a
+  tool for transforming reStructuredText to PDF using ReportLab.
+  It supports Sphinx.
 
 - Projects using Sphinx
 
@@ -1258,5 +1284,5 @@ References
   - `Sphinx Tutorial: Writing a simple extension <http://sphinx.pocoo.org/ext/tutorial.html>`_
   - `Defining Custom Roles in Sphinx <http://www.doughellmann.com/articles/how-tos/sphinx-custom-roles/index.html>`_ a
     `Sphinx post by Doug Hellmann <http://blog.doughellmann.com/search/label/sphinx>`_
-  - `Creating Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/rst-roles.html>`_ from docutils .project
+  - `Creating Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/rst-roles.html>`_ from docutils project.
   - `Creating reStructuredText Directives <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_ from docutils project.
