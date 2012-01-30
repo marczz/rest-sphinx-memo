@@ -181,7 +181,7 @@ Field list
 
    ::
 
-      :Name: Christoph Reller
+      :Name: Isaac Newton
       :Long: Here we insert more
          text to show the effect of
          many lines (in Pygments).
@@ -195,7 +195,7 @@ Field list
       --delta      A long option
       --delta=len  Same with value
 
-:Name: Christoph Reller
+:Name: Isaac Newton
 :Long: Here we insert more
    text to show the effect of
    many lines (in Pygments).
@@ -511,29 +511,29 @@ inline style.
 
    ::
 
-      A link_ in citation style.
+      A link to `Sphinx Home`_ in citation style.
 
-      .. _link: http://www.google.ch
+      .. _Sphinx Home: http://sphinx.pocoo.org
 
       In-line versions are
-      `link <http://www.google.ch>`_
-      or `<http://www.google.ch>`_
-      or (in Sphinx) http://www.google.ch.
+      `Sphinx Home <http://sphinx.pocoo.org>`_
+       or `<http://sphinx.pocoo.org>`_
+      or (in Sphinx) http://sphinx.pocoo.org
 
 
 **Citation style**:
 
-A link_ in citation style.
+A link to `Sphinx Home`_ in citation style.
 
-.. _link: http://www.google.ch
+.. _Sphinx Home: http://sphinx.pocoo.org
 
 In printed documents the link will be listed similar as a citation, as opposed
 to HTML documents.
 
 **In-line style**:
 
-In-line versions are `link <http://www.google.ch>`_ or
-`<http://www.google.ch>`_ or (in Sphinx) http://www.google.ch.
+In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
+`<http://sphinx.pocoo.org>`_ or (in Sphinx) http://sphinx.pocoo.org
 
 .. _internal:
 
@@ -587,7 +587,7 @@ Request for Comments ``:rfc:``
 .. note::  The reference for *Rest way of hyperlinking*  is
    `in ReST Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#hyperlink-targets>`_
    and
-   `in Quick ReST <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
+   `in Quick ReST <http://docutils.sourceforge.net/docs/user/rst/quickref.html#hyperlink-targets>`_
 
    For the *Sphinx way of hyperlinking*  see
    `Sphinx: Cross-referencing syntax <http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_
@@ -610,6 +610,10 @@ reST directives
 
 .. contents::
    :local:
+
+They are detailled in the document
+:ref:`reStructuredText Directives
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_
 
 table of contents
 ^^^^^^^^^^^^^^^^^
@@ -647,7 +651,7 @@ images and figures
 **Include an image** (see also  `images in the Sphinx documentation
 <http://sphinx.pocoo.org/rest.html#images>`_ and
 `ReST reference
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html##images>`_)
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html#images>`_)
 
 .. image:: _static/sphinx.png
    :width: 250
@@ -877,7 +881,7 @@ Sphinx Roles
 
 they are described in `Sphinx: Inline markup
 <http://localhost/doc/python-sphinx/html/markup/inline.html>`_
-or in new *(> 1.0)* documentation
+and in the specific domains e.g.
 `Sphynx domains - python roles
 <http://sphinx.pocoo.org/latest/domains.html#python-roles>`_
 
@@ -953,7 +957,7 @@ Sphinx code highlighting
 -----------------------------
 
 **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
-`Literal Blocks`_  is set for following text by::
+`Literal Blocks`_  is set for following code examples by::
 
    .. highlight:: ‹language›
       :linenothreshold: ‹number›
@@ -972,6 +976,9 @@ Specify the highlighting for a single literal block::
       ‹body›
 
 The ``linenos`` option switches on line numbering.
+
+Details of options are in
+`Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
 
 Source code include
 ^^^^^^^^^^^^^^^^^^^
@@ -1228,9 +1235,9 @@ Examples
 References
 ==========
 
-- This doc is slurped from `Cristoph Reller Memo
+- This doc is a fork of `Cristoph Reller Memo
   <http://people.ee.ethz.ch/~creller/web/tricks/reST.html>`_
-  and slightly changed according to my needs.
+  adapted according to my needs.
 
 - `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
   - `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
