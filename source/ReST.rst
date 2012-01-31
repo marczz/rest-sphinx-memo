@@ -21,11 +21,11 @@ Sectioning
 .. sidebar:: Emacs
 
    ====================== =========================================
-   ``C-c C-a`` or ``C-=`` Adjust/rotate  or promote/demote the decorations
-   ``C-- C-c C-a``        Move the title one level up.
-   ``C-c C-h``            Display the title decoration hierarchy.
-   ``C-c C-l``            shift region left
-   ``C-c C-r``            shift region right
+   ``C-c C-=``            Adjust/rotate  or promote/demote the decorations
+   ``C-- C-c C-=``        reverse Adjust
+   ``C-c C-a C-d``        Display the title decoration hierarchy.
+   ``C-- C-c C-r <tab>``  shift region left
+   ``C-c C-r <tab>``      shift region right
    ====================== =========================================
 
 Titles are under- (and over-)lined (decorated) by ``=*-^"~`` as below.  The
@@ -612,7 +612,7 @@ reST directives
    :local:
 
 They are detailled in the document
-:ref:`reStructuredText Directives
+`reStructuredText Directives
 <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_
 
 table of contents
@@ -823,7 +823,7 @@ A centered, boldface text block::
       *centered, boldface*
 
 
-
+.. _info-fields:
 
 Info field lists
 ^^^^^^^^^^^^^^^^
@@ -858,6 +858,18 @@ Inside Python object description directives the following fields are recognized:
     :rtype: integer
     :raises: :exc:`ZeroDivisionError`
 
+Source code docstring
+^^^^^^^^^^^^^^^^^^^^^
+.. sidebar:: alternate syntax
+
+   .. literalinclude:: docstring.py
+      :language: python
+
+You can use the ref:`previous fields <info-fields>` or the alternate syntax
+
+.. automodule:: docstring
+   :members:
+
 autodoc
 ^^^^^^^
 
@@ -866,7 +878,7 @@ version of the source code directives which include documentation from docstring
 
 - ``automodule``, ``autoclass``, ``autoexception``.
    They  accept an option ``:member:`` to include
-   a specific list of members, or all members when the ``:member:`` option is empty.
+   a specific list of members, or all members when the ``:members:`` option is empty.
 
    ::
 
@@ -1235,61 +1247,67 @@ Examples
 References
 ==========
 
-- This doc is a fork of `Cristoph Reller Memo
-  <http://people.ee.ethz.ch/~creller/web/tricks/reST.html>`_
-  adapted according to my needs.
+-  This doc is a fork of `Cristoph Reller Memo
+   <http://people.ee.ethz.ch/~creller/web/tricks/reST.html>`_
+   adapted according to my needs.
+-  `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
+-  `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
+-  `Documenting Your Project Using
+   Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
+   from `an example pypi project’s
+   <http://packages.python.org/an_example_pypi_project/>`_
+-  The `ReStructuredText Documentation <http://docutils.sourceforge.net/docs/>`_
 
-- `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
-  - `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
+   -  `Docutil reStructuredText Primer
+      <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_
+      you may prefer the python the *Sphinx* nicely formated
+      documentation cited above, also available *with a distinct layout* as
+      `docs.python: reStructuredText Primer
+      <http://docs.python.org/dev/documenting/rest.html>`_
+   -  `Quick reStructuredText
+      <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
+   -  `reStructuredText Markup Specification
+      <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_
+   -  `Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/roles.html>`_
 
-- `Documenting Your Project Using
-  Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
-  from `an example pypi project’s <http://packages.python.org/an_example_pypi_project/>`_
+-  `Emacs Support for reStructuredText
+   <http://docutils.sourceforge.net/docs/user/emacs.html>`_
+-  `Epydoc reST markup <http://epydoc.sourceforge.net/manual-othermarkup.html>`_
+-  `Documenting Python <http://docs.python.org/dev/documenting/index.html>`_
+-  `Pylons Book:  Documentation
+   <http://pylonsbook.com/en/1.1/documentation.html>`_
+   is itself a good example of sphinx documentation.
+-  `sampledoc tutorial <http://matplotlib.sourceforge.net/sampledoc/>`_
+   from `matplotlib <http://matplotlib.sourceforge.neti/>`_
+   *a python 2D plotting library*.
+-  `rst2pdf <http://code.google.com/p/rst2pdf/>`_ is a
+   tool for transforming reStructuredText to PDF using ReportLab.
+   It supports Sphinx.
+-  How to write docstrings
 
+   -  Look at examples in `Official list of projects using Sphinx
+      <http://sphinx.pocoo.org/examples.html>`_
+   -  `OpenAlea
+      <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:how_to_document_python_api>`_
+      has a nice `comparaison of three way of filling the docstring
+      <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:sphinx_proposal#filling_the_docstring>_.
+      The source is  `template.py
+      <https://gforge.inria.fr/scm/viewvc.php/trunk/doc/source/sphinx/template.py?view=markup&root=openalea>`_
+   -  Sources of
+      `mongo python driver
+      <https://github.com/mongodb/mongo-python-driver>_`
+      are also a good example
 
-- The `ReStructuredText Documentation <http://docutils.sourceforge.net/docs/>`_
+-  Extending sphinx:
 
-  - `Docutil reStructuredText Primer
-    <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_
-    you may prefer the python the *Sphinx* nicely formated
-    documentation cited above, also available *with a distinct layout* as
-    `docs.python: reStructuredText Primer <http://docs.python.org/dev/documenting/rest.html>`_
-  - `Quick reStructuredText
-    <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
-  - `reStructuredText Markup Specification
-    <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_
-  - `Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/roles.html>`_
-- `Emacs Support for reStructuredText
-  <http://docutils.sourceforge.net/docs/user/emacs.html>`_
-
-- `Epydoc reST markup <http://epydoc.sourceforge.net/manual-othermarkup.html>`_
-
-- `Documenting Python <http://docs.python.org/dev/documenting/index.html>`_
-
-- `Pylons Book:  Documentation
-  <http://pylonsbook.com/en/1.1/documentation.html>`_
-  is itself a good example of sphinx documentation.
-
-- `sampledoc tutorial <http://matplotlib.sourceforge.net/sampledoc/>`_
-  from `matplotlib <http://matplotlib.sourceforge.neti/>`_
-  *a python 2D plotting library*.
-
-- `rst2pdf <http://code.google.com/p/rst2pdf/>`_ is a
-  tool for transforming reStructuredText to PDF using ReportLab.
-  It supports Sphinx.
-
-- Projects using Sphinx
-
-  - `Official list of projects using Sphinx <http://sphinx.pocoo.org/examples.html>`_
-
-  - `OpenAlea <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:how_to_document_python_api>`_
-
-    - `template.py <https://gforge.inria.fr/scm/viewvc.php/trunk/doc/source/sphinx/template.py?view=markup&root=openalea>`_
-
-- Extending sphinx
-
-  - `Sphinx Tutorial: Writing a simple extension <http://sphinx.pocoo.org/ext/tutorial.html>`_
-  - `Defining Custom Roles in Sphinx <http://www.doughellmann.com/articles/how-tos/sphinx-custom-roles/index.html>`_ a
-    `Sphinx post by Doug Hellmann <http://blog.doughellmann.com/search/label/sphinx>`_
-  - `Creating Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/rst-roles.html>`_ from docutils project.
-  - `Creating reStructuredText Directives <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_ from docutils project.
+   -  `Sphinx Tutorial: Writing a simple extension <http://sphinx.pocoo.org/ext/tutorial.html>`_
+   -  `Defining Custom Roles in Sphinx
+      <http://www.doughellmann.com/articles/how-tos/sphinx-custom-roles/index.html>`_
+      a  `Sphinx blog post by Doug Hellmann
+      <http://blog.doughellmann.com/search/label/sphinx>`_
+   -  `Creating Interpreted Text Roles
+      <http://docutils.sourceforge.net/docs/ref/rst/rst-roles.html>`_
+      from docutils project.
+   -  `Creating reStructuredText Directives
+      <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_
+      from docutils project.
