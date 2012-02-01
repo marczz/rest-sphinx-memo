@@ -6,8 +6,7 @@
 
 .. module:: reST
    :synopsis: Documentation of reStructuredText and Sphinx
-.. moduleauthor:: Christoph Reller <reller@isi.ee.ethz.ch> and
-                  Marc Zonzon <marc.zonzon@gmail.com>
+.. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
 
 .. highlight:: rest
 
@@ -822,70 +821,18 @@ A centered, boldface text block::
 .. centered:: This text is
       *centered, boldface*
 
+Selective inclusion
+^^^^^^^^^^^^^^^^^^^
 
-.. _info-fields:
+A block may be included depending of the presence of some tag::
 
-Info field lists
-^^^^^^^^^^^^^^^^
-.. sidebar:: Code for example
+   ..only:: <expression>
 
-   ::
+The expression is made of *tags* like ``html and draft``.
 
-      ..  function:: divide( i, j)
+You can define tags via the -t command-line option of ``sphinx-build``
+or in the configuration file use  ``tags.has('tag')``  to query, ``tags.add('tag')``  and ``tags.remove('tag')``  to change.
 
-          divide two numbers
-
-          :param i: numerator
-          :type i: int
-          :param j: denominator
-          :type j: int
-          :return: quotient
-          :rtype: integer
-          :raises: :exc:`ZeroDivisionError`
-
-Inside Python object description directives the following fields are recognized:
-``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``, ``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``, ``return``, ``rtype``
-
-..  function:: divide( i, j)
-
-    divide two numbers
-
-    :param i: numerator
-    :type i: int
-    :param j: denominator
-    :type i: int
-    :return: quotient
-    :rtype: integer
-    :raises: :exc:`ZeroDivisionError`
-
-Source code docstring
-^^^^^^^^^^^^^^^^^^^^^
-.. sidebar:: alternate syntax
-
-   .. literalinclude:: docstring.py
-      :language: python
-
-You can use the ref:`previous fields <info-fields>` or the alternate syntax
-
-.. automodule:: docstring
-   :members:
-
-autodoc
-^^^^^^^
-
-There is also an `autodoc <http://sphinx.pocoo.org/latest/ext/autodoc.html>`_
-version of the source code directives which include documentation from docstrings:
-
-- ``automodule``, ``autoclass``, ``autoexception``.
-   They  accept an option ``:member:`` to include
-   a specific list of members, or all members when the ``:members:`` option is empty.
-
-   ::
-
-      .. autoclass:: Noodle
-         :members: eat, slurp
-
-- ``autofunction``, ``autodata``, ``automethod``, ``autoattribute``
 
 
 Sphinx Roles
@@ -965,8 +912,8 @@ Not comment anymore
 
 Sphinx Source Code
 ==================
-Sphinx code highlighting
------------------------------
+Code highlighting
+-----------------
 
 **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
 `Literal Blocks`_  is set for following code examples by::
@@ -993,8 +940,9 @@ Details of options are in
 `Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
 
 Source code include
-^^^^^^^^^^^^^^^^^^^
-To include the source file example.py as a literal block use::
+-------------------
+To include the source file ``example.py`` 
+ as a literal block use::
 
    .. literalinclude:: example.py
       :linenos:
@@ -1023,8 +971,10 @@ include using the pyobject option::
     .. literalinclude:: example.py
        :pyobject: MyClass.some_method
 
-Sphinx source code directives
------------------------------
+.. _source-code-directives:
+
+Source code directives
+----------------------
 
 There are very powerful directives in Sphinx
 for `documenting source code
@@ -1059,6 +1009,75 @@ most are since *version 1.0* in `specific domains
 .. [#signature] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
 
    .. function:: compile(source[, filename, symbol])
+
+autodoc
+-------
+
+There is  an `autodoc <http://sphinx.pocoo.org/latest/ext/autodoc.html>`_
+version of the `source code directives <source-code-directives>`
+which include documentation from docstrings:
+
+- ``automodule``, ``autoclass``, ``autoexception``.
+   They  accept an option ``:member:`` to include
+   a specific list of members, or all members when the ``:members:`` option is empty.
+
+   ::
+
+      .. autoclass:: Noodle
+         :members: eat, slurp
+
+- ``autofunction``, ``autodata``, ``automethod``, ``autoattribute``
+
+.. _info-fields:
+
+Info field lists
+----------------
+.. sidebar:: Code for example
+
+   ::
+
+      ..  function:: divide( i, j)
+
+          divide two numbers
+
+          :param i: numerator
+          :type i: int
+          :param j: denominator
+          :type j: int
+          :return: quotient
+          :rtype: integer
+          :raises: :exc:`ZeroDivisionError`
+
+Inside Python object description directives the
+`following fields
+<http://sphinx.pocoo.org/markup/desc.html#info-field-lists>`_
+are recognized:
+``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``, ``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``, ``return``, ``rtype``
+
+..  function:: divide( i, j)
+
+    divide two numbers
+
+    :param i: numerator
+    :type i: int
+    :param j: denominator
+    :type i: int
+    :return: quotient
+    :rtype: integer
+    :raises: :exc:`ZeroDivisionError`
+
+Source code docstring
+---------------------
+.. sidebar:: alternate syntax
+
+   .. literalinclude:: docstring.py
+      :language: python
+
+You can use the ref:`previous fields <info-fields>` or the alternate syntax
+
+.. automodule:: docstring
+   :members:
+
 
 `Sphinx <http://sphinx.pocoo.org/>`_
 ====================================
@@ -1287,15 +1306,20 @@ References
 
    -  Look at examples in `Official list of projects using Sphinx
       <http://sphinx.pocoo.org/examples.html>`_
+   -  The last parts of `Documenting Python`_:
+      `function definitions
+      <http://packages.python.org/an_example_pypi_project/sphinx.html#function-definitions>`_
+      and `Full Code Example
+      <http://packages.python.org/an_example_pypi_project/sphinx.html#full-code-example>`_
    -  `OpenAlea
       <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:how_to_document_python_api>`_
       has a nice `comparaison of three way of filling the docstring
-      <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:sphinx_proposal#filling_the_docstring>_.
+      <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:sphinx_proposal#filling_the_docstring>`_.
       The source is  `template.py
       <https://gforge.inria.fr/scm/viewvc.php/trunk/doc/source/sphinx/template.py?view=markup&root=openalea>`_
    -  Sources of
       `mongo python driver
-      <https://github.com/mongodb/mongo-python-driver>_`
+      <https://github.com/mongodb/mongo-python-driver>`_
       are also a good example
 
 -  Extending sphinx:
@@ -1311,3 +1335,5 @@ References
    -  `Creating reStructuredText Directives
       <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_
       from docutils project.
+
+
