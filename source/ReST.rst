@@ -19,13 +19,13 @@ Sectioning
 ----------
 .. sidebar:: Emacs
 
-   ====================== =========================================
-   ``C-c C-=``            Adjust/rotate  or promote/demote the decorations
-   ``C-- C-c C-=``        reverse Adjust
-   ``C-c C-a C-d``        Display the title decoration hierarchy.
-   ``C-- C-c C-r <tab>``  shift region left
-   ``C-c C-r <tab>``      shift region right
-   ====================== =========================================
+   =======================  ==========================================
+   ``C-c C-=``              Adjust/rotate  or promote/demote the decorations
+   ``C-- C-c C-=``          reverse Adjust
+   ``C-c C-a C-d``          Display the title decoration hierarchy.
+   ``C-- C-c C-r <tab>``    shift region left
+   ``C-c C-r <tab>``        shift region right
+   =======================  ==========================================
 
 Titles are under- (and over-)lined (decorated) by ``=*-^"~`` as below.  The
 exact order of the decoration is not important, the one below is the Python
@@ -230,9 +230,17 @@ Literal Blocks
             indentation is
          preserved
 
+   .. warning::
+
+      Sphinx use literal blocks to :ref:`highlight source code
+      <code_highlighting>`, so the previous ``**No**`` is still written
+      with a  bold font.
+
+
 A block which is not interpreted at all is preceded by a ``::`` and a blank
 line. The block must be intended.  If no white space is preceding the
 ``::`` then it is displayed as ":".
+
 
 Block one::
 
@@ -244,6 +252,8 @@ Another block! ::
    In the text body,
       indentation is
    preserved
+
+
 
 Line blocks
 -----------
@@ -542,19 +552,25 @@ To define a label for any text location, precede it with::
 
    .. _‹label›:
 
-plus a blank line.  There are two ways of referencing a label.
+plus a blank line.
 
-The reST way is::
+A ``:name:`` option in any block is also an internal reference target.
+
+There are two ways of referencing a label.
+
+The `reST way
+<http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#hyperlink-targets>`_
+is::
 
     `‹label›`_
 
-The *preferred* Sphinx way, allows linking across files, it  use::
+The *preferred* `Sphinx way
+<http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
+allows linking across files, it  uses::
 
    :ref:`‹displayed text› <‹label›>`
 
 To reference ``‹label›`` defined in *any* document of the project::
-
-   :ref:`‹displayed text› <‹label›>`
 
 If the ``‹label›`` definition is followed by a section title then ``‹displayed
 text›`` can be omitted and will be replaced by the title.
@@ -564,16 +580,14 @@ E.g. this section is preceded with ``.. _internal:``, so we have:
 ================================== ==============================
 ``:ref:`internal```                :ref:`internal`
 ``:ref:`This section <internal>``` :ref:`This section <internal>`
+``:ref:`ref to a name <mytopic>``` :ref:`ref to a name <mytopic>`
 ================================== ==============================
-
 
 In Sphinx it is possible to reference a document as follows
 
 ===============  ==============
 ``:doc:`ReST```  :doc:`ReST`
 ===============  ==============
-
-
 
 Section titles, footnotes, and citations automatically are link targets.
 ```Project`_`` produces `Project`_.
@@ -583,13 +597,6 @@ Section titles, footnotes, and citations automatically are link targets.
 To reference  a Python Enhancement Proposal use ``:pep``, for a
 Request for Comments ``:rfc:``
 
-.. note::  The reference for *Rest way of hyperlinking*  is
-   `in ReST Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#hyperlink-targets>`_
-   and
-   `in Quick ReST <http://docutils.sourceforge.net/docs/user/rst/quickref.html#hyperlink-targets>`_
-
-   For the *Sphinx way of hyperlinking*  see
-   `Sphinx: Cross-referencing syntax <http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_
 
 Directives
 ==========
@@ -633,7 +640,6 @@ the section where it appears, otherwise it is for the whole file, the title may 
 
 images and figures
 ^^^^^^^^^^^^^^^^^^
-
 .. sidebar:: Code for examples
 
    ::
@@ -647,9 +653,15 @@ images and figures
 
        The logo for Sphinx
 
+   `Other options <ReST image directive>`_ are:
+
+   -  ``:scale: <integer percentage>``,
+   -  ``:align: {top|middle|bottom|left|right}``,
+   -  ``:target: <URI or reference>``
+
 **Include an image** (see also  `images in the Sphinx documentation
 <http://sphinx.pocoo.org/rest.html#images>`_ and
-`ReST reference
+`ReST image directive
 <http://docutils.sourceforge.net/docs/ref/rst/directives.html#images>`_)
 
 .. image:: _static/sphinx.png
@@ -684,6 +696,43 @@ file include
 |                            |            Otherwise Sphinx will mistake this        |
 |   .. include:: ‹file name> |            file as one of your regular source file.  |
 +----------------------------+------------------------------------------------------+
+
+sidebar, and topic
+^^^^^^^^^^^^^^^^^^
+A `sidebar
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html#sidebar>`_
+or a `topic <http://docutils.sourceforge.net/docs/ref/rst/directives.html#topic>`_ are treated like documents on
+their own::
+
+   .. sidebar:: ‹Title›
+
+      ‹body›
+
+   .. topic:: Topic Title
+      :name: mytopic
+
+      Subsequent indented lines comprise
+      the body of the topic, and are
+      interpreted as *body elements*.
+
+
+.. topic:: Topic Title
+   :name: mytopic
+
+   Subsequent indented lines comprise
+   the body of the topic, and are
+   interpreted as *body elements*.
+
+rubric
+^^^^^^
+A `rubric
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html#rubric>`_
+is a title not appearing in the table of contents::
+
+   .. rubric:: ‹Title›
+
+
+
 
 Sphinx directives
 -----------------
@@ -749,30 +798,6 @@ A **glossary** is a ‹reST definition list›::
          definition
 
 
-sidebar, and topic
-^^^^^^^^^^^^^^^^^^
-
-A **sidebar** or a **topic** with ‹Title› and ‹body› are treated like documents on
-their own::
-
-   .. sidebar:: ‹Title›
-
-      ‹body›
-
-
-   .. topic:: Topic Title
-
-       Subsequent indented lines comprise
-       the body of the topic, and are
-       interpreted as *body elements*.
-
-
-.. topic:: Topic Title
-
-    Subsequent indented lines comprise
-    the body of the topic, and are
-    interpreted as *body elements*.
-
 note, warning, seealso
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -806,13 +831,8 @@ note, warning, seealso
       A kind of `fruit <http://en.wikipedia.org/wiki/Fruit>`_.
 
 
-rubric, centered
-^^^^^^^^^^^^^^^^
-
-A rubric is a title not appearing in the table of contents::
-
-   .. rubric:: ‹Title›
-
+centered
+^^^^^^^^
 
 A centered, boldface text block::
 
@@ -912,6 +932,9 @@ Not comment anymore
 
 Sphinx Source Code
 ==================
+
+.. _code_highlighting:
+
 Code highlighting
 -----------------
 
@@ -941,7 +964,7 @@ Details of options are in
 
 Source code include
 -------------------
-To include the source file ``example.py`` 
+To include the source file ``example.py``
  as a literal block use::
 
    .. literalinclude:: example.py
@@ -1335,5 +1358,3 @@ References
    -  `Creating reStructuredText Directives
       <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_
       from docutils project.
-
-
