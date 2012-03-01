@@ -570,7 +570,7 @@ allows linking across files, it  uses::
 
    :ref:`‹displayed text› <‹label›>`
 
-To reference ``‹label›`` defined in *any* document of the project::
+To reference ``‹label›`` defined in *any* document of the project.
 
 If the ``‹label›`` definition is followed by a section title then ``‹displayed
 text›`` can be omitted and will be replaced by the title.
@@ -691,11 +691,15 @@ Possible ``‹directive›``\ s are ``replace`` or ``image``.
 file include
 ^^^^^^^^^^^^
 +----------------------------+------------------------------------------------------+
-|**Including** a reST file   | .. note::  Don't use the same file name              |
-|::                          |            extension as your source files.           |
-|                            |            Otherwise Sphinx will mistake this        |
-|   .. include:: ‹file name> |            file as one of your regular source file.  |
+|**Including** a reST file ::| .. note:: Don't use the same file name               |
+|                            |    extension as your source files.                   |
+|   .. include:: ‹file name> |    Otherwise Sphinx will mistake this                |
+|                            |    file as one of your regular source file.          |
+|                            |                                                      |
+|                            |    See also :ref:`Source code include                |
+|                            |    <source_code_include>`                            |
 +----------------------------+------------------------------------------------------+
+
 
 sidebar, and topic
 ^^^^^^^^^^^^^^^^^^
@@ -962,37 +966,34 @@ The ``linenos`` option switches on line numbering.
 Details of options are in
 `Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
 
+.. _source_code_include:
+
 Source code include
 -------------------
-To include the source file ``example.py``
- as a literal block use::
++---------------------------------------------+---------------------------------------------------------+
+|To include the source file ``example.py``    |.. literalinclude:: example.py                           |
+| as a literal block use::                    |   :linenos:                                             |
+|                                             |                                                         |
+|   .. literalinclude:: example.py            |                                                         |
+|      :linenos:                              |                                                         |
+|                                             |                                                         |
++---------------------------------------------+---------------------------------------------------------+
+|More Options::                               |The options ``language`` and ``linenos``                 |
+|                                             |set the highlighting to ``‹language›``                   |
+|   .. literalinclude:: ‹filename›            |and enables line numbers respectively.                   |
+|      :language: ‹language›                  |                                                         |
+|      :linenos:                              |You can select lines by the ``:lines:`` option or by     |
+|      :lines: 1,3,5-10,20-                   |``start-after:<string>`` and/or ``end-before:<string>``  |
+|                                             |                                                         |
++---------------------------------------------+---------------------------------------------------------+
+|::                                           |If it is a Python module, you can select a class,        |
+|                                             | function or method to include using the ``pyobject``    |
+|   .. literalinclude:: example.py            | option                                                  |
+|      :pyobject: MyClass.some_method         |                                                         |
+|                                             |                                                         |
++---------------------------------------------+---------------------------------------------------------+
 
-   .. literalinclude:: example.py
-      :linenos:
 
-.. literalinclude:: example.py
-   :linenos:
-
-
-More Options::
-
-   .. literalinclude:: ‹filename›
-      :language: ‹language›
-      :linenos:
-      :lines: 1,3,5-10,20-
-
-The options ``language`` and ``linenos`` set the highlighting to ``‹language›``
-and enables line numbers respectively.
-
-You can select lines by the ``:lines:`` option or by
-``start-after:<string>`` and/or ``end-before:<string>``
-
-
-If it is a Python module, you can select a class, function or method to
-include using the pyobject option::
-
-    .. literalinclude:: example.py
-       :pyobject: MyClass.some_method
 
 .. _source-code-directives:
 
@@ -1108,11 +1109,15 @@ You can use the ref:`previous fields <info-fields>` or the alternate syntax
 Project
 -------
 
-To start a Sphinx project use the interactive ``sphinx-quickstart`` command.
+To start a Sphinx project use the interactive `sphinx-quickstart
+<http://sphinx.pocoo.org/latest/man/sphinx-quickstart.html>`_ command.
 This will ask you all the necessary questions.You can choose to build with a
 Makefile.
 
-Customization is done in the file ``conf.py`` and the Makefile.
+Customization is done in the file `conf.py
+<http://sphinx.pocoo.org/latest/config.html>`_
+and the `Makefile
+<http://sphinx.pocoo.org/latest/invocation.html#makefile-options>`_.
 
 Math
 ----
@@ -1325,7 +1330,7 @@ References
 -  `rst2pdf <http://code.google.com/p/rst2pdf/>`_ is a
    tool for transforming reStructuredText to PDF using ReportLab.
    It supports Sphinx.
--  How to write docstrings
+-  How to write docstrings:
 
    -  Look at examples in `Official list of projects using Sphinx
       <http://sphinx.pocoo.org/examples.html>`_
