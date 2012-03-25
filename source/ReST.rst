@@ -15,6 +15,9 @@ A simple markup language for plain text files.
 Structural elements
 ===================
 
+.. index::
+   single: emacs; mode
+
 Sectioning
 ----------
 .. sidebar:: Emacs
@@ -26,6 +29,10 @@ Sectioning
    ``C-- C-c C-r <tab>``    shift region left
    ``C-c C-r <tab>``        shift region right
    =======================  ==========================================
+
+.. index::
+   !title
+   single: title; hierarchy
 
 Titles are under- (and over-)lined (decorated) by ``=*-^"~`` as below.  The
 exact order of the decoration is not important, the one below is the Python
@@ -60,6 +67,14 @@ blank line is a transition, and looks like this:
 
 ----
 
+.. index::
+   emphasize
+   strong
+   code
+   inline markup
+   inline markup; strong
+   inline markup; emphasize
+   inline markup; code
 
 Inline markup
 =============
@@ -83,8 +98,16 @@ The following example illustrates special cases:
 Asterisk \*, back-quote \`
 and a **mark**\ up.
 
+.. index::
+   !list
+
 Lists
 =====
+
+.. index::
+   single: list; bullet
+   single: list; itemize
+   bullet list
 
 Bullet list
 -----------
@@ -122,6 +145,9 @@ Bullet list
   across several lines.
 - Second item
 
+.. index::
+   single: list; horizontal
+   horizontal list
 
 Horizontal lists
 ----------------
@@ -134,6 +160,10 @@ Horizontal lists
        * displayed
        * horizontally
 
+.. index::
+   single: list; enumerated
+   enumerated list
+
 Enumerated list
 ---------------
 2. We start with point number 2
@@ -143,8 +173,9 @@ a) Point a
 b) Point b
 #) Automatic point c.
 
-.. note:: Automatic alphabetic numbering works wrongly in Sphinx, but does work
-   with plain ``rst2html``.
+.. index::
+   single: list; definition
+   definition list
 
 Definition list
 ---------------
@@ -158,7 +189,7 @@ Definition list
       how
         Definition of "how".
       why : cause
-        We define why we do it
+        We define "why" we do it.
 
         In many paragraphs
 
@@ -168,11 +199,13 @@ what
 how
   Definition of "how".
 why : cause
-  We define "why" we do it
+  We define "why" we do it.
 
   In many paragraphs.
 
-.
+.. index::
+   single: list; field
+   field list
 
 Field list
 ----------
@@ -183,7 +216,7 @@ Field list
       :Name: Isaac Newton
       :Long: Here we insert more
          text to show the effect of
-         many lines (in Pygments).
+         many lines.
       :Remark:
         Start on the next line.
 
@@ -197,9 +230,12 @@ Field list
 :Name: Isaac Newton
 :Long: Here we insert more
    text to show the effect of
-   many lines (in Pygments).
+   many lines.
 :Remark:
-  Start on the next line.
+  The source starts on the next line.
+
+.. index::
+   single: list; options
 
 Options list
 ------------
@@ -209,6 +245,11 @@ E.g. for listing command line options.
 -o file      Same with value
 --delta      A long option
 --delta=len  Same with value
+
+.. index::
+   !block
+   single: block; literal
+   literal block
 
 Blocks
 ======
@@ -254,9 +295,12 @@ Another block! ::
    preserved
 
 
+.. index::
+   single: block; line
+   single: quotes; line block
 
-Line blocks
------------
+:restref:`Line blocks <restructuredtext.html#line-blocks>`
+----------------------------------------------------------
 .. sidebar:: Code for example
 
    ::
@@ -273,33 +317,109 @@ In a line block every line is preceded with ``|`` and at least one space.
   the same line
 |   Yet a new line
 
-Block quotes
-------------
+.. index::
+   pair: block; quotes
+   !blockquotes
+   single: blockquotes; pull-quote
+   single: blockquotes; epigraph
+   single: blockquotes; highlights
+   directive; pull-quote
+   directive; epigraph
+   directive; highlights
+
+:restref:`Block quotes <restructuredtext.html#block-quotes>`
+------------------------------------------------------------
 .. sidebar:: Code for example
 
    ::
 
-      blah blah blah
+      indenting them more than the surrounding paragraphs.
 
-        blah blah blah blah blah
-        blah blah blah blah blah
-        blah blah blah blah blah
+         Neither from itself nor from another,
+         Nor from both,
+         Nor without a cause,
+         Does anything whatever, anywhere arise.
 
-      blah blah blah.
+         --Nagarjuna - *Mulamadhyamakakarika*
 
-The different indentation levels of paragraphs are preserved.
+         .. pull-quote::
 
-blah blah blah
+            Just as a solid rock ...
 
-  blah blah blah blah blah
-  blah blah blah blah blah
-  blah blah blah blah blah
+         .. highlights::
 
-blah blah blah.
+            With these *highlights* ...
+
+
+:restref:`Block quotes <restructuredtext.html#block-quotes>` are created by just
+indenting them more than the surrounding paragraphs.
+
+    Neither from itself nor from another,
+    Nor from both,
+    Nor without a cause,
+    Does anything whatever, anywhere arise.
+
+    --Nagarjuna - *Mulamadhyamakakarika*
+
+An optional attribution can be set by a line beginning by two or three
+minus signs flushed left at the level of the quote.
+
+There is also a :restref:`pull-quote
+<directives.html#pull-quote>`
+
+.. pull-quote::
+
+  Just as a solid rock is not shaken by the storm, even so
+  the wise are not affected by praise or blame.
+
+An :restref:`epigraph <directives.html#epigraph>` and an
+:restref:`highlights <directives.html#highlights>` *dont forget the
+final* **s** *or you fall down on the* :ref:`Sphinx code highlighting
+directive <code_highlighting>`.
+
+.. highlights::
+
+   With these *highlights* we have completed the Rest blocks.
+
+They all generates an
+html ``<blockquote>`` but with a `class` of ``pull-quote``,
+``highlights`` or ``epigraph`` that your css may use *but default css
+does not!*
+
+.. index:
+   block; container
+   directive; container
+
+Container
+---------
+.. sidebar:: Code for example
+
+   ::
+
+      .. container:: myclass
+
+         There is also a general ...
+
+.. container:: myclass
+
+   There is also a general :restref:`container directive
+   <directives.html#container>` whose unique effect is adding some class
+   name to the block that your css may use. In html this paragraph
+   is enclosed in a
+
+   .. code-block:: html
+
+      <div class="myclass container">  ... </div>
+
+
+
+.. index::
+   !tables
 
 
 Tables
 ======
+.. _simple_tables:
 
 Simple tables
 -------------
@@ -386,6 +506,8 @@ e.g:
 32. There    **aha**
 ===========  ================
 
+.. _grid_tables:
+
 Grid tables
 -----------
 .. sidebar:: Code for example
@@ -402,24 +524,194 @@ Grid tables
       |  *hey* |  #. hi | | a break |
       +--------+--------+-----------+
 
-`Grid tables <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#grid-tables>`_
+:restref:`Grid tables <restructuredtext.html#grid-tables>`
 have a more difficult syntax but can express more complex tables.
 
-+--------+--------+-----------+
-| Header | Header with 2 cols |
-+========+========+===========+
-| A      | Lists: | **C**     |
-+--------+  - aha +-----------+
-| B::    |  - yes | | a block |
-|        |        |   of text |
-|  *hey* |  #. hi | | a break |
-+--------+--------+-----------+
+.. only:: html
+
+          +--------+--------+-----------+
+          | Header | Header with 2 cols |
+          +========+========+===========+
+          | A      | Lists: | **C**     |
+          +--------+  - aha +-----------+
+          | B::    |  - yes | | a block |
+          |        |        |   of text |
+          |  *hey* |  #. hi | | a break |
+          +--------+--------+-----------+
+
+.. only:: latex
+
+          .. tabularcolumns:: |p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|
+
+          +--------+--------+-----------+
+          | Header | Header with 2 cols |
+          +========+========+===========+
+          | A      | Lists: | **C**     |
+          |        |  - aha |           |
+          | B::    |  - yes | | a block |
+          |        |        |   of text |
+          |  *hey* |  #. hi | | a break |
+          +--------+--------+-----------+
 
 You can edit them under emacs with ``table.el``
 (but be carefull about conflicts with ``rst-mode``) or
 use *org tables* with ``orgtbl-mode`` and export to table with
 ``org-table-convert`` or ``org-table-create-with-table.el`` ( bound
 to :kbd:`C-c ~` in ``org-mode``, but not in ``orgtbl-mode``)
+
+.. _csv_tables:
+
+csv tables
+----------
+.. sidebar:: Code
+
+   ::
+
+    .. csv-table:: Balance Sheet
+       :header: Description,In,Out,Balance
+       :widths: 20, 10, 10, 10
+       :stub-columns: 1
+
+       Travel,,230.00,-230.00
+       Fees,,400.00,-630.00
+       Grant,700.00,,70.00
+       Train Fare,,70.00,**0.00**
+
+    .. list-table:: Weather forecast
+       :header-rows: 1
+       :widths: 7 7 7 7 60
+       :stub-columns: 1
+
+       *  -  Day
+          -  Min Temp
+          -  Max Temp
+          -
+          -  Summary
+       *  -  Monday
+          -  11C
+          -  22C
+          -  .. image:: _static/sunny.svg
+                :width: 30
+
+          -  A clear day with lots of sunshine.
+             However, the strong breeze will bring
+             down the temperatures.
+       *  -  Tuesday
+       ........
+
+.. csv-table:: Balance Sheet
+   :header: Description,In,Out,Balance
+   :widths: 20, 10, 10, 10
+   :stub-columns: 1
+
+   Travel,,230.00,-230.00
+   Fees,,400.00,-630.00
+   Grant,700.00,,70.00
+   Train Fare,,70.00,**0.00**
+
+The options are explained in the reference: :restref:`rst directive: csv-table
+<directives.html#csv-table>`
+
+You can choose a delimiter with ``:delim:`` and source an external
+file with the option::
+
+   :file:/path/of/the/file
+
+.. _list_tables:
+
+List Tables
+-----------
+
+
+.. list-table:: Weather forecast
+   :header-rows: 1
+   :widths: 7 7 7 7 60
+   :stub-columns: 1
+
+   *  -  Day
+      -  Min Temp
+      -  Max Temp
+      -
+      -  Summary
+   *  -  Monday
+      -  11C
+      -  22C
+      -  .. only:: html
+
+            .. image:: _static/sunny.svg
+               :width: 30
+
+         .. only:: latex
+
+            .. image:: _static/sunny.png
+               :width: 30
+
+      -  A clear day with lots of sunshine.
+         However, the strong breeze will bring
+         down the temperatures.
+   *  -  Tuesday
+      -  9C
+      -  10C
+      -  .. only:: html
+
+            .. image:: _static/cloudy.svg
+               :width: 30
+
+         .. only:: latex
+
+            .. image:: _static/cloudy.png
+               :width: 30
+
+      -  Cloudy with rain, across many northern regions. Clear spells
+         across most of Scotland and Northern Ireland,
+         but rain reaching the far northwest.
+
+
+LaTeX table rendering
+---------------------
+
+Rendering with `tabulary`
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Sphinx use the latex package `tabulary
+<http://ctan.org/tex-archive/macros/latex/contrib/tabulary/tabulary.pdf>`_
+to render tables in laTeX.
+
+Tabulary is an extension of the *tabular* package which calculate le width
+of columns; it has four new formats specifications: ``LRCJ`` for Left
+(Right, Centered, Justified) column with automatic width.
+
+Sphinx uses by default ``L``, but you can override it with a directive
+like::
+
+    .. tabularcolumns:: |L|C|C|R|
+
+As examples in this document the re:`source code directives table
+source_code_directives` which has a proper Sphinx automatic rendering
+in tabulary ``|L|L|``, which adapt the column size with a wider left one.
+
+The two first :ref:`simple tables <simple_tables>` the :ref:`csv table
+<csv_tables>` and the :ref:`list table <list_tables>` are also
+rendered in `tabulary` with a proper calculation of table width by
+latex.
+
+Rendering with `tabular`
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tables that contain any kind of lists, such as object descriptions,
+blockquotes, or  literal blocks are set by
+default with the *tabular* environment with equal column size,
+you can taylor the rendering by giving
+`tabularcolumns` directive which uses the `p{width}` column
+type.
+
+An example is the following :ref:`source code include table
+<source_code_include>`
+which use both description and verbatim for wich the automatic
+Sphinx rendering in latex is::
+
+   \begin{tabular}{|p{0.475\linewidth}|p{0.475\linewidth}|}
+
+If necessary we can adapt the relative length of columns.
 
 Explicit Markup
 ===============
@@ -558,8 +850,8 @@ A ``:name:`` option in any block is also an internal reference target.
 
 There are two ways of referencing a label.
 
-The `reST way
-<http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#hyperlink-targets>`_
+The :restref:`reST way
+<restructuredtext.html#hyperlink-targets>`
 is::
 
     `‹label›`_
@@ -597,11 +889,27 @@ Section titles, footnotes, and citations automatically are link targets.
 To reference  a Python Enhancement Proposal use ``:pep``, for a
 Request for Comments ``:rfc:``
 
+Extensions that define new hyperlinks targets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-  The :sphinx:`extension intersphinx <ext/intersphinx.html>`
+   which generate automatic links to the documentation
+   in other projects for objects not in your own project. It interprets
+   the  references  to `roles`_
+
+   To configure it give in conf.py a dictionary like::
+
+      intersphinx_mapping = {
+          'python': ('http://docs.python.org/3.2', None)}
+
+-  The extension :sphinx:`extlinks` generates the previous link with
+   the code ``:sphinx:`extlinks``` and the configuration::
+
+      extlinks = {'sphinx': ('http://sphinx.pocoo.org/latest/%s', 'Sphinx: ')}
 
 Directives
 ==========
 
-`Directives <http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_
+:restref:`Directives <directives.html>`
 are a general-purpose extension mechanism.  The general syntax is
 similar to `Explicit Markup`_::
 
@@ -618,16 +926,16 @@ reST directives
    :local:
 
 They are detailled in the document
-`reStructuredText Directives
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html>`_
+:restref:`reStructuredText Directives
+<directives.html>`
+
+.. _reST-tableOfContents:
 
 table of contents
 ^^^^^^^^^^^^^^^^^
 
-.. _reST-tableOfContents:
-
-Create a `table of contents
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html#table-of-contents>`_
+Create a :restref:`table of contents
+<directives.html#table-of-contents>`
 containing (sub)titles ranging from level 1 to
 level ‹number› if you use the ``:local:`` option the TOC is local to
 the section where it appears, otherwise it is for the whole file, the title may be empty::
@@ -644,14 +952,14 @@ images and figures
 
    ::
 
-    .. image:: _static/sphinx.png
-       :width: 250
-       :alt: sphinx logo
-    .. figure:: _static/sphinx.png
-       :width: 250
-       :alt: sphinx logo
+     .. image:: _static/sphinx.png
+        :width: 250
+        :alt: sphinx logo
+     .. figure:: _static/sphinx.png
+        :width: 250
+        :alt: sphinx logo
 
-       The logo for Sphinx
+        The logo for Sphinx
 
    `Other options <ReST image directive>`_ are:
 
@@ -661,51 +969,92 @@ images and figures
 
 **Include an image** (see also  `images in the Sphinx documentation
 <http://sphinx.pocoo.org/rest.html#images>`_ and
-`ReST image directive
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html#images>`_)
+:restref:`ReST image directive
+<directives.html#images>` )
 
 .. image:: _static/sphinx.png
-   :width: 250
+   :width: 250px
    :alt: sphinx logo
+
 
 **Include a figure**
 
 .. figure:: _static/sphinx.png
-   :width: 250
+   :width: 250px
    :alt: sphinx logo
 
    The logo for Sphinx
+
+**figures and LaTeX export**
+
+The reST commant `rst2latex` use the width an hight of images and
+figures but
+the Sphinx laTeX exporter use also ``\includegraphics`` to import the figure;
+but (as a far as Sphinx 1.2pre) it does not use the width and height
+attribute.
+
+To get proper figure size in latex generated by Sphinx you may have either to
+
+   - resize the figure before including it,
+   - use the ``:scale:`` option that is supported and generates a latex
+     ``\scalebox``
+   - or put a distinct laTeX code in an ``only:: latex`` directive that
+     use something like::
+
+       \includegraphics[width=60mm, height=40mm]{myfig.png}
+
+Latex does not support svg and it has to be converted to eps or pdf,
+pdf being the only one to support transparency.
+The conversion can be done with  Inscape, it can be automated as `explained by Johan B. C. Engelen
+<http://ctan.tug.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf>`_.
+You can also use the `ipe drawing editor
+<http://ipe7.sourceforge.net/>`_.
+
 
 replacement
 ^^^^^^^^^^^
 
 General replacements::
 
-   .. |‹something›| ‹directive›:: here we define what ‹something› is
+   .. |‹something›| ‹directive›:: here we
+      define what ‹something› is.
 
-   here |‹something›| will be replaced by its definition.
+.. sidebar:: Code for example
 
-Possible ``‹directive›``\ s are ``replace`` or ``image``.
+   ::
+
+      .. |more-doc| replace::  *more in directives manual*
+      .. _more-doc: http://docutils.sourceforge.net/doc...
+
+      Possible ...  or ``image`` |more-doc|_
+
+Here ``|<something>|`` will be replaced by its definition.
+
+.. |more-doc| replace::  *more in directives manual*
+.. _more-doc: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
+
+Possible ``‹directive›``\ s are ``replace`` or ``image`` |more-doc|_
+
+It can be used *like above* for nesting inline markup.
 
 
 file include
 ^^^^^^^^^^^^
-+----------------------------+------------------------------------------------------+
-|**Including** a reST file ::| .. note:: Don't use the same file name               |
-|                            |    extension as your source files.                   |
-|   .. include:: ‹file name> |    Otherwise Sphinx will mistake this                |
-|                            |    file as one of your regular source file.          |
-|                            |                                                      |
-|                            |    See also :ref:`Source code include                |
-|                            |    <source_code_include>`                            |
-+----------------------------+------------------------------------------------------+
++----------------------------------+---------------------------------------------+
+|**Including** a reST file ::      | .. note:: Don't use the same file name      |
+|                                  |    extension as your source files.          |
+|   .. include:: ‹file name>       |    Otherwise Sphinx will mistake this       |
+|                                  |    file as one of your regular source file. |
+|See also :ref:`Source code include|                                             |
+|<source_code_include>`            |                                             |
++----------------------------------+---------------------------------------------+
 
 
 sidebar, and topic
 ^^^^^^^^^^^^^^^^^^
-A `sidebar
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html#sidebar>`_
-or a `topic <http://docutils.sourceforge.net/docs/ref/rst/directives.html#topic>`_ are treated like documents on
+A :restref:`sidebar
+<directives.html#sidebar>`
+or a :restref:`topic <directives.html#topic>`  are treated like documents on
 their own::
 
    .. sidebar:: ‹Title›
@@ -729,8 +1078,8 @@ their own::
 
 rubric
 ^^^^^^
-A `rubric
-<http://docutils.sourceforge.net/docs/ref/rst/directives.html#rubric>`_
+A :restref:`rubric
+<directives.html#rubric>`
 is a title not appearing in the table of contents::
 
    .. rubric:: ‹Title›
@@ -762,17 +1111,21 @@ Create a table of contents across files
 A ``glob`` option enables to use wildcards in the filenames, e.g. ``/comp/*``
 means all files under the directory ``comp``.
 
+Relative names are relative to the document the directive occurs in,
+absolute names are relative to the source directory.
+
 The depth can be further restricted per file by inserting the
 following `Field list`_ type element in the very first line of the file::
 
    :tocdepth: ‹depth›
 
+See :sphinx:`Sphinx: Toc tree <markup/toctree.html>` for other
+options.
 
-.. Note::
-      Don't try to reference the file which contains the ``toctree``
-      directive, otherwise a recursive loop occurs.
-      Use the normal :ref:`reST table of contents <reST-tableOfContents>`
-      directive instead.
+To get a table of content *inside* a file, use the :ref:`reST table of
+contents <reST-tableOfContents>`
+
+
 
 Index and glossaries
 ^^^^^^^^^^^^^^^^^^^^
@@ -780,7 +1133,8 @@ Index and glossaries
        single: index (Rest)
 
 Entries in the **index** are created automatically from all information units
-(like functions, classes or attributes).  Explicit manual entries are made as::
+like functions, classes or attributes but those with a ``:noindex:``
+option.  Explicit manual entries are made as::
 
    .. index:: ‹keyword 1›, ‹keyword 2›, ...
 
@@ -857,7 +1211,7 @@ The expression is made of *tags* like ``html and draft``.
 You can define tags via the -t command-line option of ``sphinx-build``
 or in the configuration file use  ``tags.has('tag')``  to query, ``tags.add('tag')``  and ``tags.remove('tag')``  to change.
 
-
+.. _roles:
 
 Sphinx Roles
 ------------
@@ -886,6 +1240,8 @@ Some common markup are:
 
 python
 ------
+
+.. tabularcolumns:: |p{0.15\linewidth}||p{0.25\linewidth}|
 
 +----------------+------------------------------------------+
 |    role        |       reference                          |
@@ -1038,11 +1394,11 @@ autodoc
 -------
 
 There is  an `autodoc <http://sphinx.pocoo.org/latest/ext/autodoc.html>`_
-version of the `source code directives <source-code-directives>`
+version of the :ref:`source code directives <source-code-directives>`
 which include documentation from docstrings:
 
 - ``automodule``, ``autoclass``, ``autoexception``.
-   They  accept an option ``:member:`` to include
+   They  accept an option ``:members:`` to include
    a specific list of members, or all members when the ``:members:`` option is empty.
 
    ::
@@ -1079,6 +1435,7 @@ are recognized:
 ``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``, ``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``, ``return``, ``rtype``
 
 ..  function:: divide( i, j)
+    :noindex:
 
     divide two numbers
 
@@ -1097,9 +1454,10 @@ Source code docstring
    .. literalinclude:: docstring.py
       :language: python
 
-You can use the ref:`previous fields <info-fields>` or the alternate syntax
+You can use the :ref:`previous fields <info-fields>` or the alternate syntax
 
 .. automodule:: docstring
+   :noindex:
    :members:
 
 
@@ -1119,11 +1477,16 @@ Customization is done in the file `conf.py
 and the `Makefile
 <http://sphinx.pocoo.org/latest/invocation.html#makefile-options>`_.
 
+In the conf file you put the configuration of the extensions
+
+
+
+
 Math
 ----
 
-There is a `mathematical typesetting Sphinx extension
-<file:///usr/share/doc/python-sphinx/html/ext/math.html?highlight=options#module-sphinx.ext.mathbase>`_
+There is a :sphinx:`mathematical typesetting Sphinx extension
+<ext/math.html?module-sphinx.ext.mathbase>`
 called ``sphinx.ext.pngmath`` based on LaTeX.
 
 To enable the extension, the following line has to appear in ``conf.py``:
@@ -1252,17 +1615,18 @@ See equation :eq:`pythag`.
 Graphs with `Graphviz <http://graphviz.org/>`_
 ----------------------------------------------
 
-There is a `graph drawing Sphinx extension
-<http://sphinx.pocoo.org/ext/graphviz.html>`_ based on `Graphviz
-<http://graphviz.org/>`_.
+The `Graphviz
+<http://graphviz.org/>`_
+`graph drawing Sphinx extension
+<http://sphinx.pocoo.org/ext/graphviz.html>`_ is provided in Sphinx distribution.
 
 To enable the extension we have to add it to the ``extensions`` list in
 ``conf.py``::
 
   extensions = ['sphinx.est.graphviz']
 
-On Ubuntu Linux the packages ``graphviz`` and ``libgraphviz4`` have to me
-installed.  There is no need to install ``python-graphviz``.
+It uses directly the dot command to process `DOT language
+<http://graphviz.org/content/dot-language>`_.
 
 Examples
 ^^^^^^^^
@@ -1296,13 +1660,19 @@ References
 
 -  This doc is a fork of `Cristoph Reller Memo
    <http://people.ee.ethz.ch/~creller/web/tricks/reST.html>`_
-   adapted according to my needs.
+   adapted according to my needs, they have diverged now, but some
+   part come from his work and  I have adopted his  layout.
 -  `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
 -  `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
 -  `Documenting Your Project Using
    Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
    from `an example pypi project’s
    <http://packages.python.org/an_example_pypi_project/>`_
+-  `Openalea project: How to use sphinx ?
+   <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/sphinx.html>`_
+   by Thomas Cokelaer, the author also gives a more recent version:
+   `Sphinx and RST syntax guide
+   <http://thomas-cokelaer.info/tutorials/sphinx/contents.html>`_.
 -  The `ReStructuredText Documentation <http://docutils.sourceforge.net/docs/>`_
 
    -  `Docutil reStructuredText Primer
@@ -1311,12 +1681,12 @@ References
       documentation cited above, also available *with a distinct layout* as
       `docs.python: reStructuredText Primer
       <http://docs.python.org/dev/documenting/rest.html>`_
-   -  `Quick reStructuredText
-      <http://docutils.sourceforge.net/docs/ref/rst/quick.html>`_
-   -  `reStructuredText Markup Specification
-      <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_
-   -  `Interpreted Text Roles <http://docutils.sourceforge.net/docs/ref/rst/roles.html>`_
-
+   -  :restref:`Quick reStructuredText
+      <quick.html>`
+   -  :restref:`reStructuredText Markup Specification
+      <restructuredtext.html>`
+   -  :restref:`Interpreted Text Roles <roles.html>`
+   -  `ReStructuredText Demonstration <http://docutils.sourceforge.net/docs/user/rst/demo.html>`_
 -  `Emacs Support for reStructuredText
    <http://docutils.sourceforge.net/docs/user/emacs.html>`_
 -  `Epydoc reST markup <http://epydoc.sourceforge.net/manual-othermarkup.html>`_
@@ -1357,9 +1727,9 @@ References
       <http://www.doughellmann.com/articles/how-tos/sphinx-custom-roles/index.html>`_
       a  `Sphinx blog post by Doug Hellmann
       <http://blog.doughellmann.com/search/label/sphinx>`_
-   -  `Creating Interpreted Text Roles
-      <http://docutils.sourceforge.net/docs/ref/rst/rst-roles.html>`_
+   -  :restref:`Creating Interpreted Text Roles
+      <rst-roles.html>`
       from docutils project.
-   -  `Creating reStructuredText Directives
-      <http://docutils.sourceforge.net/docs/ref/rst/rst-directives.html>`_
+   -  :restref:`Creating reStructuredText Directives
+      <rst-directives.html>`
       from docutils project.
