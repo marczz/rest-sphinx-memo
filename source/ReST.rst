@@ -34,7 +34,7 @@ Sectioning
    !title
    single: title; hierarchy
 
-Titles are under- (and over-)lined (decorated) by ``=*-^"~`` as below.  The
+Titles are under- (and over-)lined (decorated) by ``=*-^"~`:.'#`` as below.  The
 exact order of the decoration is not important, the one below is the Python
 convention. ::
 
@@ -461,7 +461,8 @@ Simple tables
       32. There    **aha**
       ===========  ================
 
-Tables are preceded and ended with a sequence of "``=``" to indicate the
+Simple tables (:restref:`ref <restructuredtext.html#simple-tables>`)
+are preceded and ended with a sequence of "``=``" to indicate the
 columns, e.g:
 
 ==  ==
@@ -493,7 +494,8 @@ False  True   True
 True          True
 ============  ======
 
-Table cells are treated like a small document on their own up to line breaks,
+Simple table cells are treated like a small document on their own up to line
+breaks, but the first column must contain a single line.
 e.g:
 
 ===========  ================
@@ -524,7 +526,7 @@ Grid tables
       |  *hey* |  #. hi | | a break |
       +--------+--------+-----------+
 
-:restref:`Grid tables <restructuredtext.html#grid-tables>`
+Grid tables (:restref:`ref <restructuredtext.html#grid-tables>`)
 have a more difficult syntax but can express more complex tables.
 
 .. only:: html
@@ -621,6 +623,11 @@ file with the option::
 
 List Tables
 -----------
+
+A list-table (:restref:`ref <directives.html#list-table>`) is a two
+level list, where the first level is a row and the second one a column
+list. The number of column must be uniform (*no column span*) but
+cell may contain structured markup.
 
 
 .. list-table:: Weather forecast
@@ -1663,7 +1670,7 @@ References
    adapted according to my needs, they have diverged now, but some
    part come from his work and  I have adopted his  layout.
 -  `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
--  `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
+-  Sphinx `reStructuredText Primer <http://sphinx.pocoo.org/latest/rest.html>`_
 -  `Documenting Your Project Using
    Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
    from `an example pypi project’s
@@ -1685,6 +1692,7 @@ References
       <quick.html>`
    -  :restref:`reStructuredText Markup Specification
       <restructuredtext.html>`
+   -  :restref:`reST Directives <directives.html>`
    -  :restref:`Interpreted Text Roles <roles.html>`
    -  `ReStructuredText Demonstration <http://docutils.sourceforge.net/docs/user/rst/demo.html>`_
 -  `Emacs Support for reStructuredText
