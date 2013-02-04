@@ -266,8 +266,8 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 #intersphinx_mapping = {'http://docs.python.org/': None}
-intersphinx_mapping = {'python': ('http://docs.python.org/3.2', None)}
+intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
 extlinks = {
-    'sphinx': ('http://sphinx.pocoo.org/latest/%s', 'Sphinx: '),
+    'sphinx': ('http://sphinx-doc.org/latest/%s', 'Sphinx: '),
     'restref': ('http://docutils.sourceforge.net/docs/ref/rst/%s', 'ReST Référence: ')
 }
