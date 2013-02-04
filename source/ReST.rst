@@ -1,3 +1,4 @@
+
 :tocdepth: 3
 
 ===============================
@@ -98,6 +99,8 @@ The following example illustrates special cases:
 Asterisk \*, back-quote \`
 and a **mark**\ up.
 
+:restref:`inline markup ref. <restructuredtext.html#inline-markup>`
+
 .. index::
    !list
 
@@ -145,6 +148,8 @@ Bullet list
   across several lines.
 - Second item
 
+:restref:`bullet list ref<restructuredtext.html#bullet-lists>`
+
 .. index::
    single: list; horizontal
    horizontal list
@@ -173,9 +178,13 @@ a) Point a
 b) Point b
 #) Automatic point c.
 
+:restref:`enumerated list ref<restructuredtext.html#enumerated-lists>`
+
 .. index::
    single: list; definition
    definition list
+
+.. _definition_list:
 
 Definition list
 ---------------
@@ -202,6 +211,8 @@ why : cause
   We define "why" we do it.
 
   In many paragraphs.
+
+:restref:`definition list ref<restructuredtext.html#definition-lists>`
 
 .. index::
    single: list; field
@@ -233,6 +244,8 @@ Field list
    many lines.
 :Remark:
   The source starts on the next line.
+
+:restref:`field list ref<restructuredtext.html#field-lists>`
 
 .. index::
    single: list; options
@@ -299,8 +312,8 @@ Another block! ::
    single: block; line
    single: quotes; line block
 
-:restref:`Line blocks <restructuredtext.html#line-blocks>`
-----------------------------------------------------------
+Line blocks
+-----------
 .. sidebar:: Code for example
 
    ::
@@ -310,7 +323,8 @@ Another block! ::
         the same line
       |   Yet a new line
 
-In a line block every line is preceded with ``|`` and at least one space.
+In a line block (:restref:` ref<restructuredtext.html#line-blocks>`)
+every line is preceded with ``|`` and at least one space.
 
 | Line block
 | New line and we are still on
@@ -319,16 +333,12 @@ In a line block every line is preceded with ``|`` and at least one space.
 
 .. index::
    pair: block; quotes
-   !blockquotes
-   single: blockquotes; pull-quote
-   single: blockquotes; epigraph
-   single: blockquotes; highlights
-   directive; pull-quote
-   directive; epigraph
-   directive; highlights
+   !blockquote
 
-:restref:`Block quotes <restructuredtext.html#block-quotes>`
-------------------------------------------------------------
+.. _blockquote:
+
+Block quote
+-----------
 .. sidebar:: Code for example
 
    ::
@@ -351,8 +361,8 @@ In a line block every line is preceded with ``|`` and at least one space.
             With these *highlights* ...
 
 
-:restref:`Block quotes <restructuredtext.html#block-quotes>` are created by just
-indenting them more than the surrounding paragraphs.
+Block quotes (:restref:`ref <restructuredtext.html#block-quotes>`) are
+created by just indenting them more than the surrounding paragraphs.
 
     Neither from itself nor from another,
     Nor from both,
@@ -364,31 +374,56 @@ indenting them more than the surrounding paragraphs.
 An optional attribution can be set by a line beginning by two or three
 minus signs flushed left at the level of the quote.
 
-There is also a :restref:`pull-quote
-<directives.html#pull-quote>`
+
+.. index::
+   pair:directive; pull-quote
+
+.. _pull-quote:
+
+Pull-quote
+----------
+
+Pull-quotes  (:restref:`ref <directives.html#pull-quote>`)
+are similar to blockquotes but are :ref:`directives <rest_directives>`
 
 .. pull-quote::
 
   Just as a solid rock is not shaken by the storm, even so
   the wise are not affected by praise or blame.
 
-An :restref:`epigraph <directives.html#epigraph>` and an
-:restref:`highlights <directives.html#highlights>` *dont forget the
-final* **s** *or you fall down on the* :ref:`Sphinx code highlighting
-directive <code_highlighting>`.
+.. index::
+   single: blockquote; epigraph
+   single: blockquote; highlights
+   directive; epigraph
+   directive; highlights
+
+
+.. _epigraph:
+
+Epigraph and highlights
+-----------------------
+
+An `epigraph` directive (:restref:`ref <directives.html#epigraph>`) and an
+`highlights` directive (:restref:`ref <directives.html#highlights>`)
+are aimed to put a quotation in a distinct font.
+
+*dont forget the final* **s** *of highlights, or you fall down on the*
+:ref:`Sphinx code highlighting directive <code_highlighting>`
 
 .. highlights::
 
    With these *highlights* we have completed the Rest blocks.
 
-They all generates an
-html ``<blockquote>`` but with a `class` of ``pull-quote``,
+These three directives are similar in
+html  rendering to :ref:`blockquote` but with a `class` of ``pull-quote``,
 ``highlights`` or ``epigraph`` that your css may use *but default css
 does not!*
 
-.. index:
+.. index::
    block; container
-   directive; container
+   pair: directive; container
+
+.. _container:
 
 Container
 ---------
@@ -411,14 +446,54 @@ Container
 
       <div class="myclass container">  ... </div>
 
+.. index::
+   pair: directive; class
+
+
+.. class_directive:
+
+Class
+-----
+.. sidebar:: Code for example
+
+   ::
+
+      .. class:: myclass
+
+      The class directive ....
+
+.. class:: myclass
+
+The class directive (:restref:`ref <directives.html#class>) add a
+class on its content or on the first immediately following non-comment
+element.  The name of the class is normalized by docutil to conform to
+the regexp: ``[a-z](-?[a-z0-9]+)*``.
+
+.. note::
+
+   While the docutil tool ``rst2html`` put as expected the previous
+   paragraph in a::
+
+     <p class="myclass">....</p>
+
+   Sphinx *as far as 1.2pre* does not put any class on the ``<p>``
+   element. The use of a :ref:`container` is presently better suited
+   to  apply a css decoration.
+
+
 
 
 .. index::
-   !tables
+   !table
 
 
 Tables
 ======
+
+.. index::
+   pair: table; simple
+
+
 .. _simple_tables:
 
 Simple tables
@@ -508,6 +583,9 @@ e.g:
 32. There    **aha**
 ===========  ================
 
+.. index::
+   pair: grid; table
+
 .. _grid_tables:
 
 Grid tables
@@ -554,12 +632,18 @@ have a more difficult syntax but can express more complex tables.
           |        |        |   of text |
           |  *hey* |  #. hi | | a break |
           +--------+--------+-----------+
+.. index::
+   table; emacs
 
 You can edit them under emacs with ``table.el``
 (but be carefull about conflicts with ``rst-mode``) or
 use *org tables* with ``orgtbl-mode`` and export to table with
 ``org-table-convert`` or ``org-table-create-with-table.el`` ( bound
 to :kbd:`C-c ~` in ``org-mode``, but not in ``orgtbl-mode``)
+
+
+.. index::
+   triple: directive; table; csv
 
 .. _csv_tables:
 
@@ -619,6 +703,10 @@ file with the option::
 
    :file:/path/of/the/file
 
+
+.. index::
+   triple: directive;  table; list
+
 .. _list_tables:
 
 List Tables
@@ -643,14 +731,14 @@ cell may contain structured markup.
    *  -  Monday
       -  11C
       -  22C
-      -  .. only:: html
+      -  .. only:: not latex
 
             .. image:: _static/sunny.svg
                :width: 30
 
          .. only:: latex
 
-            .. image:: _static/sunny.png
+            .. image:: _static/sunny.pdf
                :width: 30
 
       -  A clear day with lots of sunshine.
@@ -659,14 +747,14 @@ cell may contain structured markup.
    *  -  Tuesday
       -  9C
       -  10C
-      -  .. only:: html
+      -  .. only:: not latex
 
             .. image:: _static/cloudy.svg
                :width: 30
 
          .. only:: latex
 
-            .. image:: _static/cloudy.png
+            .. image:: _static/cloudy.pdf
                :width: 30
 
       -  Cloudy with rain, across many northern regions. Clear spells
@@ -674,11 +762,14 @@ cell may contain structured markup.
          but rain reaching the far northwest.
 
 
+.. index::
+   pair: table; latex
+
 LaTeX table rendering
 ---------------------
 
-Rendering with `tabulary`
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Rendering with *:index:`tabulary`*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Sphinx use the latex package `tabulary
 <http://ctan.org/tex-archive/macros/latex/contrib/tabulary/tabulary.pdf>`_
 to render tables in laTeX.
@@ -701,14 +792,14 @@ The two first :ref:`simple tables <simple_tables>` the :ref:`csv table
 rendered in `tabulary` with a proper calculation of table width by
 latex.
 
-Rendering with `tabular`
-^^^^^^^^^^^^^^^^^^^^^^^^
+Rendering with *:index:`tabular`*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tables that contain any kind of lists, such as object descriptions,
-blockquotes, or  literal blocks are set by
-default with the *tabular* environment with equal column size,
-you can taylor the rendering by giving
-`tabularcolumns` directive which uses the `p{width}` column
+blockquotes, or literal blocks are set by default with the `tabular
+<http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment>`_
+environment with equal column size, you can taylor the rendering by
+giving `tabularcolumns` directive which uses the `p{width}` column
 type.
 
 An example is the following :ref:`source code include table
@@ -720,12 +811,206 @@ Sphinx rendering in latex is::
 
 If necessary we can adapt the relative length of columns.
 
+
+Cross references
+================
+.. index::
+   hypertext; link
+   hypertext; target
+   cross reference
+
+Hypertext links
+---------------
+There exist two version for doing this.  Either in a citation style or in an
+inline style.
+
+.. sidebar:: Code for examples
+
+   ::
+
+      A link to `Sphinx Home`_ in citation style.
+
+      .. _Sphinx Home: http://sphinx.pocoo.org
+
+      In-line versions are
+      `Sphinx Home <http://sphinx.pocoo.org>`_
+       or `<http://sphinx.pocoo.org>`_
+      or (in Sphinx) http://sphinx.pocoo.org
+
+
+Citation style
+^^^^^^^^^^^^^^
+
+A link to `Sphinx Home`_ in citation style.
+
+.. _Sphinx Home: http://sphinx.pocoo.org
+
+In printed documents the link will be listed similar as a citation, as opposed
+to HTML documents.
+
+In-line style
+^^^^^^^^^^^^^
+
+In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
+`<http://sphinx.pocoo.org>`_ or (in Sphinx) http://sphinx.pocoo.org
+
+
+.. index::
+   reference
+   ref
+   reference; target
+   reference; label
+
+.. _internal:
+.. _ref:
+
+document reference
+------------------
+To define a label for any text location, precede it with::
+
+   .. _‹label›:
+
+plus a blank line.
+
+A ``:name:`` option in any block is also an internal reference target.
+
+There are two ways of referencing a label.
+
+The :restref:`reST way
+<restructuredtext.html#hyperlink-targets>`
+is::
+
+    `‹label›`_
+
+The *preferred* `Sphinx way
+<http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
+allows linking across files, it  uses::
+
+   :ref:`‹displayed text› <‹label›>`
+
+To reference ``‹label›`` defined in *any* document of the project.
+
+If the ``‹label›`` definition is followed by a section title then ``‹displayed
+text›`` can be omitted and will be replaced by the title.
+
+E.g. this section is preceded with ``.. _internal:``, so we have:
+
+================================== ==============================
+``:ref:`internal```                :ref:`internal`
+``:ref:`This section <internal>``` :ref:`This section <internal>`
+``:ref:`ref to a name <mytopic>``` :ref:`ref to a name <mytopic>`
+================================== ==============================
+
+.. index::
+   pair: doc; reference
+
+In Sphinx it is possible to reference a document as follows
+
+===============  ==============
+``:doc:`ReST```  :doc:`ReST`
+===============  ==============
+
+Section titles, footnotes, and citations automatically are link targets.
+```Project`_`` produces `Project`_.
+
+.. ```Internal`_`` produces `Internal`_.
+
+To reference  a Python Enhancement Proposal use ``:pep``, for a
+Request for Comments ``:rfc:``
+
+Extensions that define new hyperlinks targets
+---------------------------------------------
+-  The :index:`intersphinx extension <pair: intersphinx;extension>`
+   (:sphinx:`Sphinx ref <ext/intersphinx.html>`)
+   generates automatic links to the documentation
+   in other projects for objects not in your own project. It interprets
+   the  references  to `roles <role>`_
+
+   To configure it give in conf.py a dictionary like::
+
+      intersphinx_mapping = {
+          'python': ('http://docs.python.org/3.2', None)}
+
+-  The extension :sphinx:`ext/extlinks.html` generates the previous link with
+   the code ``:sphinx:`ext/extlinks.html``` and the configuration::
+
+      extlinks = {'sphinx': ('http://sphinx.pocoo.org/latest/%s', 'Sphinx: ')}
+
+
+.. index
+   pair: sphinx; role
+
+.. _role:
+
+
+Sphinx Roles
+------------
+
+they are described in `Sphinx: Inline markup
+<http://localhost/doc/python-sphinx/html/markup/inline.html>`_
+and in the specific domains e.g.
+`Sphynx domains - python roles
+<http://sphinx.pocoo.org/latest/domains.html#python-roles>`_
+
+Some common markup are:
+
++--------------------------------------+-----------------------------------+
+|``:abbr:`RFC(request for comments)``` |:abbr:`RFC(request for comments)`  |
+|                                      |                                   |
++--------------------------------------+-----------------------------------+
+| ``:file:`/etc/profile```             |:file:`/etc/profile`               |
++--------------------------------------+-----------------------------------+
+| ``:manpage:`ls(1)```                 |:manpage:`ls(1)`                   |
++--------------------------------------+-----------------------------------+
+| ``:regexp:`^[a-z]*.[0-9]```          |:regexp:`^[a-z]*.[0-9]`            |
++--------------------------------------+-----------------------------------+
+| ``:samp:`cp {file} {target}```       |:samp:`cp {file} {target}`         |
++--------------------------------------+-----------------------------------+
+
+
+python roles
+------------
+
+.. tabularcolumns:: |p{0.15\linewidth}||p{0.25\linewidth}|
+
++----------------+------------------------------------------+
+|    role        |       reference                          |
++================+==========================================+
+| ``:py:mod:``   | module                                   |
++----------------+------------------------------------------+
+| ``:py:func:``  | function                                 |
++----------------+------------------------------------------+
+| ``:py:data:``  | module-level variable.                   |
++----------------+------------------------------------------+
+| ``:py:const:`` | constant                                 |
++----------------+------------------------------------------+
+| ``:py:class:`` | class [#dotted]_                         |
++----------------+------------------------------------------+
+| ``:py:meth:``  | method [#dotted]_ [#text]_               |
++----------------+------------------------------------------+
+| ``:py:attr:``  | data attribute of an object              |
++----------------+------------------------------------------+
+| ``:py:exc:``   | exception [#dotted]_                     |
++----------------+------------------------------------------+
+
+
+.. [#dotted] Class, methods, exceptions may be dotted names.
+.. [#text] The role text should include the type name and the method name
+
+
+You may supply an explicit title and reference target: ``:role:`title <target>```
+
+.. _explicit_markup:
+
 Explicit Markup
 ===============
 They all begin with two periods and a white space.
 
-Footnotes
----------
+.. index::
+   !footnote
+
+Footnotes (:restref:`ref <restructuredtext.html#footnotes>`)
+------------------------------------------------------------
 .. sidebar:: Code
 
    ::
@@ -786,6 +1071,9 @@ More autosymbol [*]_.
 
 *There is no labeled version of these autosymbol footnotes.*
 
+.. index::
+   !citation
+
 Citations
 ---------
 .. sidebar:: Code for example
@@ -807,118 +1095,18 @@ or even rel09_.
 
 .. [REL09] Citation
 
-Hypertext links
----------------
+.. index::
+   !directive
+   rest; directives
 
-External
-^^^^^^^^
-There exist two version for doing this.  Either in a citation style or in an
-inline style.
+.. _rest_directives:
 
-.. sidebar:: Code for examples
-
-   ::
-
-      A link to `Sphinx Home`_ in citation style.
-
-      .. _Sphinx Home: http://sphinx.pocoo.org
-
-      In-line versions are
-      `Sphinx Home <http://sphinx.pocoo.org>`_
-       or `<http://sphinx.pocoo.org>`_
-      or (in Sphinx) http://sphinx.pocoo.org
-
-
-**Citation style**:
-
-A link to `Sphinx Home`_ in citation style.
-
-.. _Sphinx Home: http://sphinx.pocoo.org
-
-In printed documents the link will be listed similar as a citation, as opposed
-to HTML documents.
-
-**In-line style**:
-
-In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
-`<http://sphinx.pocoo.org>`_ or (in Sphinx) http://sphinx.pocoo.org
-
-.. _internal:
-
-Internal
-^^^^^^^^
-To define a label for any text location, precede it with::
-
-   .. _‹label›:
-
-plus a blank line.
-
-A ``:name:`` option in any block is also an internal reference target.
-
-There are two ways of referencing a label.
-
-The :restref:`reST way
-<restructuredtext.html#hyperlink-targets>`
-is::
-
-    `‹label›`_
-
-The *preferred* `Sphinx way
-<http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
-allows linking across files, it  uses::
-
-   :ref:`‹displayed text› <‹label›>`
-
-To reference ``‹label›`` defined in *any* document of the project.
-
-If the ``‹label›`` definition is followed by a section title then ``‹displayed
-text›`` can be omitted and will be replaced by the title.
-
-E.g. this section is preceded with ``.. _internal:``, so we have:
-
-================================== ==============================
-``:ref:`internal```                :ref:`internal`
-``:ref:`This section <internal>``` :ref:`This section <internal>`
-``:ref:`ref to a name <mytopic>``` :ref:`ref to a name <mytopic>`
-================================== ==============================
-
-In Sphinx it is possible to reference a document as follows
-
-===============  ==============
-``:doc:`ReST```  :doc:`ReST`
-===============  ==============
-
-Section titles, footnotes, and citations automatically are link targets.
-```Project`_`` produces `Project`_.
-
-.. ```Internal`_`` produces `Internal`_.
-
-To reference  a Python Enhancement Proposal use ``:pep``, for a
-Request for Comments ``:rfc:``
-
-Extensions that define new hyperlinks targets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
--  The :sphinx:`extension intersphinx <ext/intersphinx.html>`
-   which generate automatic links to the documentation
-   in other projects for objects not in your own project. It interprets
-   the  references  to `roles`_
-
-   To configure it give in conf.py a dictionary like::
-
-      intersphinx_mapping = {
-          'python': ('http://docs.python.org/3.2', None)}
-
--  The extension :sphinx:`extlinks` generates the previous link with
-   the code ``:sphinx:`extlinks``` and the configuration::
-
-      extlinks = {'sphinx': ('http://sphinx.pocoo.org/latest/%s', 'Sphinx: ')}
-
-Directives
-==========
+Rest Directives
+===============
 
 :restref:`Directives <directives.html>`
 are a general-purpose extension mechanism.  The general syntax is
-similar to `Explicit Markup`_::
+similar to `explicit_markup`_::
 
    .. ‹name›:: ‹argument 1›
                ‹argument 2›
@@ -926,20 +1114,35 @@ similar to `Explicit Markup`_::
 
       ‹body›
 
-reST directives
----------------
+The reST directives are detailed  in the
+:restref:`docutils reference: reStructuredText Directives
+<directives.html>`
+
+.. here we reference
+
+   :ref:`table of contents
+   <reST-tableOfContents>`,  :ref:`image`, :ref:`figure`,
+   :ref:`replacement <replacements>`, :ref:`file include
+   <file_include>`, :ref:`sidebar, and topic <sidebar>`,
+   :ref:`rubric`.
 
 .. contents::
    :local:
 
-They are detailled in the document
-:restref:`reStructuredText Directives
-<directives.html>`
+
+We have yet see above the directives ref:`pull-quote` and :ref:`epigraph`.
+
+.. rubric:: Rest Directives
+
+.. index::
+   toc
+   table; of contents
+   pair: contents; directive
 
 .. _reST-tableOfContents:
 
 table of contents
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Create a :restref:`table of contents
 <directives.html#table-of-contents>`
@@ -951,50 +1154,97 @@ the section where it appears, otherwise it is for the whole file, the title may 
       :depth: ‹number›
       :local:
 
+.. index::
+   pair: image; directive
+   pair: figure; directive
 
+.. _image:
 
-images and figures
-^^^^^^^^^^^^^^^^^^
+image and figure
+----------------
+
 .. sidebar:: Code for examples
 
    ::
 
-     .. image:: _static/sphinx.png
-        :width: 250
-        :alt: sphinx logo
-     .. figure:: _static/sphinx.png
-        :width: 250
-        :alt: sphinx logo
+      .. image:: _static/NeoHittiteSphinx.svg
+         :width: 120px
+         :alt: Sphinx Hittite
+         :target: https://it.wikipedia.org/wiki/Telepino
 
-        The logo for Sphinx
+      .. figure:: _static/NeoHittiteSphinx.svg
+         :width: 120px
+         :alt: Sphinx Hittite
+
+         Sphinx Hittite
+
+         Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
+         deity.
 
    `Other options <ReST image directive>`_ are:
 
    -  ``:scale: <integer percentage>``,
-   -  ``:align: {top|middle|bottom|left|right}``,
-   -  ``:target: <URI or reference>``
+   -  ``:align: {top|middle|bottom|left|right}``
 
-**Include an image** (see also  `images in the Sphinx documentation
-<http://sphinx.pocoo.org/rest.html#images>`_ and
-:restref:`ReST image directive
-<directives.html#images>` )
-
-.. image:: _static/sphinx.png
-   :width: 250px
-   :alt: sphinx logo
+**Images** (:restref:`ref <directives.html#images>`)
+are simple pictures, see also
+`images in the Sphinx documentation
+<http://sphinx.pocoo.org/rest.html#images>`_
 
 
-**Include a figure**
+.. only:: not latex
 
-.. figure:: _static/sphinx.png
-   :width: 250px
-   :alt: sphinx logo
+   .. image:: _static/NeoHittiteSphinx.svg
+      :width: 120px
+      :alt: Sphinx Hittite
+      :target: https://it.wikipedia.org/wiki/Telepino
 
-   The logo for Sphinx
+.. only:: latex
 
-**figures and LaTeX export**
+   .. image::  _static/NeoHittiteSphinx.pdf
+        :width: 120px
+        :alt: Sphinx Hittite
+        :target: https://it.wikipedia.org/wiki/Telepino
 
-The reST commant `rst2latex` use the width an hight of images and
+You can click on this image to go to the target `Wikipedia: Telepino
+<https://it.wikipedia.org/wiki/Telepino|>`_
+
+.. _figure:
+
+
+A **figure** (:restref:`ref <directives.html#figure>`) add to an image
+an optional caption and an optional legend.
+
+.. only:: not latex
+
+   .. figure:: _static/NeoHittiteSphinx.svg
+      :width: 120px
+      :alt: Sphinx Hittite
+
+      Sphinx Hittite
+
+      Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
+      deity.
+
+.. only:: latex
+
+   .. figure:: _static/NeoHittiteSphinx.pdf
+      :width: 120px
+      :alt: Sphinx Hittite
+
+      Sphinx Hittite
+
+      Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
+      deity.
+
+.. index::
+   image; latex
+   figure; latex
+
+Images and LaTeX export
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The reST command `rst2latex` use the width an hight of images and
 figures but
 the Sphinx laTeX exporter use also ``\includegraphics`` to import the figure;
 but (as a far as Sphinx 1.2pre) it does not use the width and height
@@ -1005,7 +1255,7 @@ To get proper figure size in latex generated by Sphinx you may have either to
    - resize the figure before including it,
    - use the ``:scale:`` option that is supported and generates a latex
      ``\scalebox``
-   - or put a distinct laTeX code in an ``only:: latex`` directive that
+   - or put a distinct laTeX code in an ``raw:: latex`` directive that
      use something like::
 
        \includegraphics[width=60mm, height=40mm]{myfig.png}
@@ -1017,9 +1267,37 @@ The conversion can be done with  Inscape, it can be automated as `explained by J
 You can also use the `ipe drawing editor
 <http://ipe7.sourceforge.net/>`_.
 
+.. _rst-code:
 
-replacement
-^^^^^^^^^^^
+.. index::
+   pair: code; directive
+
+code blocks
+-----------
+
+::
+
+   .. code:: ‹language›
+      :linenos:
+
+      ‹body›
+
+is the ReST directive which is called in python
+:ref:`code-block or sourcecode <code-block>`.
+
+ You must use the Sphinx name with Sphinx and the ReST one with ReST utilities.
+
+.. index::
+   !replacement
+   replace
+   pair: replacement; image
+   replacement; replace
+
+
+.. _replacements:
+
+replacements
+------------
 
 General replacements::
 
@@ -1033,7 +1311,7 @@ General replacements::
       .. |more-doc| replace::  *more in directives manual*
       .. _more-doc: http://docutils.sourceforge.net/doc...
 
-      Possible ...  or ``image`` |more-doc|_
+       Possible ...  or ``image`` |more-doc|_
 
 Here ``|<something>|`` will be replaced by its definition.
 
@@ -1044,9 +1322,14 @@ Possible ``‹directive›``\ s are ``replace`` or ``image`` |more-doc|_
 
 It can be used *like above* for nesting inline markup.
 
+.. index::
+   include
+   file include
 
-file include
-^^^^^^^^^^^^
+.. _file_include:
+
+file includes
+-------------
 +----------------------------------+---------------------------------------------+
 |**Including** a reST file ::      | .. note:: Don't use the same file name      |
 |                                  |    extension as your source files.          |
@@ -1056,9 +1339,20 @@ file include
 |<source_code_include>`            |                                             |
 +----------------------------------+---------------------------------------------+
 
+You can use the options: start-line, end-line, start-after, end-before
+as referenced in :restref:`reST Directives
+<directives.html#including-an-external-document-fragment>`.
+For including source code in Sphinx rather use :ref:`Source code include
+<source_code_include>`.
+
+.. index::
+   sidebar
+   topic
+
+.. _sidebar:
 
 sidebar, and topic
-^^^^^^^^^^^^^^^^^^
+------------------
 A :restref:`sidebar
 <directives.html#sidebar>`
 or a :restref:`topic <directives.html#topic>`  are treated like documents on
@@ -1075,6 +1369,7 @@ their own::
       the body of the topic, and are
       interpreted as *body elements*.
 
+.. index:: topic
 
 .. topic:: Topic Title
    :name: mytopic
@@ -1083,27 +1378,79 @@ their own::
    the body of the topic, and are
    interpreted as *body elements*.
 
+.. index:: rubric
+
+.. _rubric:
+
 rubric
-^^^^^^
+------
 A :restref:`rubric
 <directives.html#rubric>`
 is a title not appearing in the table of contents::
 
    .. rubric:: ‹Title›
 
+.. _common_options:
+
+Common options
+--------------
+.. sidebar:: Code for example
+
+   ::
+
+      .. topic:: The end
+         :class: exceptional
+         :name: say-no-more
+
+         A final word.
+
+
+The class options ``:class:`` and ``:name:``
+are supported by most of the directives.
+
+The following topic render in html as::
+
+  <div class="exceptional topic" id="say-no-more">
+  <p class="topic-title first">the end</p>
+  <p>A final word.</p>
+  </div>
+
+The ``:name:`` act as a reference target and allow to refer to the
+block as `say-no-more`_
+
+.. topic:: the end
+   :class: exceptional
+   :name: say-no-more
+
+   A final word.
+
 
 
 
 Sphinx directives
------------------
+=================
+
+Sphinx includes its own directives, which are not available in the
+docutils builders.
+
+.. We reference here
+
+   :ref:`toctree`, :ref:`index`, :ref`glossary`,
+   :ref:`note`, :ref:`warning`, :ref:`seealso`, :ref:`centered`,
+   :ref:`only`,  :ref:`role`
 
 .. contents::
-   :depth: 1
    :local:
 
+.. index::
+   pair: toctree; directive
+   table of contents
+
+
+.. _toctree:
 
 table of contents
-^^^^^^^^^^^^^^^^^
+-----------------
 ::
 
    .. toctree::
@@ -1132,39 +1479,66 @@ options.
 To get a table of content *inside* a file, use the :ref:`reST table of
 contents <reST-tableOfContents>`
 
-
-
-Index and glossaries
-^^^^^^^^^^^^^^^^^^^^
 .. index::
-       single: index (Rest)
+   pair: index; directive
+   index; single
+   index; pair
+   index; triple
+   index; see
+   index; seealso
 
-Entries in the **index** are created automatically from all information units
+.. _index:
+
+Index
+-----
+
+Entries in the **index** (:sphinx:`sphinx ref
+<markup/misc.html#index-generating-markup>`)
+are created automatically from all information units
 like functions, classes or attributes but those with a ``:noindex:``
 option.  Explicit manual entries are made as::
 
-   .. index:: ‹keyword 1›, ‹keyword 2›, ...
+   .. index:: ‹entry 1›, ‹entry 2›, ...
+      single: ‹entry›; ‹sub-entry›
+      pair: ‹1st part›; ‹2nd part›
+      triple:  ‹1st part›; ‹2nd part›; <3rd part>
 
-   .. index::
-      single: ‹keyword›; ‹sub-keyword›
+The first two versions create single (sub-)entries, while `pair`
+creates two entries "‹1st part›; ‹2nd part›" and "‹2nd part›; <1st
+part›"; and `triple` makes three entries.
 
-   .. index::
-      pair: ‹keyword 1st part›; ‹keyword 2nd part›
+You can also use the keywords  `see` and `seealso`.
 
-The first two versions create single (sub-)entries, while the last version
-creates two entries "‹keyword 1st part›; ‹keyword 2nd part›" and "‹keyword 2nd
-part›; ‹keyword 1st part›".
+.. index::
+   pair: glossary; directive
 
-A **glossary** is a ‹reST definition list›::
+.. _glossary:
+
+glossary
+--------
+
+A **glossary**   (:sphinx:`sphinx ref
+<markup/para.html#directive-glossary>`)
+is a :ref:`definition_list`::
 
    .. glossary::
+      :sorted:
 
-      name
-         definition
+      name1
+      name2
+         definition of both name1 and name2
 
+.. index::
+   pair: note; directive
+   pair: warning; directive
+   pair: seealso; directive
+
+.. _note:
+.. _warning:
+.. _seealso:
 
 note, warning, seealso
-^^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. sidebar:: Code
 
@@ -1195,9 +1569,13 @@ note, warning, seealso
    `Apples <http://en.wikipedia.org/wiki/Apple>`_
       A kind of `fruit <http://en.wikipedia.org/wiki/Fruit>`_.
 
+.. index::
+   pair: centered; directive
+
+.. _centered:
 
 centered
-^^^^^^^^
+--------
 
 A centered, boldface text block::
 
@@ -1206,79 +1584,34 @@ A centered, boldface text block::
 .. centered:: This text is
       *centered, boldface*
 
-Selective inclusion
-^^^^^^^^^^^^^^^^^^^
+.. index::
+   include; selective
+   pair: only; directive
+   tag
 
-A block may be included depending of the presence of some tag::
+.. _only:
+
+Selective inclusion
+-------------------
+
+A block may be included depending of the presence of some tag
+(:sphinx:`Sphinx ref <markup/misc.html#including-content-based-on-tags>`)::
 
    ..only:: <expression>
 
 The expression is made of *tags* like ``html and draft``.
 
-You can define tags via the -t command-line option of ``sphinx-build``
+You can define tags via the -t command-line option of
+:sphinx:`sphinx-build <invocation.html#build>`
 or in the configuration file use  ``tags.has('tag')``  to query, ``tags.add('tag')``  and ``tags.remove('tag')``  to change.
 
-.. _roles:
+.. index::
+   comment
 
-Sphinx Roles
-------------
+.. _comment:
 
-they are described in `Sphinx: Inline markup
-<http://localhost/doc/python-sphinx/html/markup/inline.html>`_
-and in the specific domains e.g.
-`Sphynx domains - python roles
-<http://sphinx.pocoo.org/latest/domains.html#python-roles>`_
-
-Some common markup are:
-
-+--------------------------------------+-----------------------------------+
-|``:abbr:`RFC(request for comments)``` |:abbr:`RFC(request for comments)`  |
-|                                      |                                   |
-+--------------------------------------+-----------------------------------+
-| ``:file:`/etc/profile```             |:file:`/etc/profile`               |
-+--------------------------------------+-----------------------------------+
-| ``:manpage:`ls(1)```                 |:manpage:`ls(1)`                   |
-+--------------------------------------+-----------------------------------+
-| ``:regexp:`^[a-z]*.[0-9]```          |:regexp:`^[a-z]*.[0-9]`            |
-+--------------------------------------+-----------------------------------+
-| ``:samp:`cp {file} {target}```       |:samp:`cp {file} {target}`         |
-+--------------------------------------+-----------------------------------+
-
-
-python
-------
-
-.. tabularcolumns:: |p{0.15\linewidth}||p{0.25\linewidth}|
-
-+----------------+------------------------------------------+
-|    role        |       reference                          |
-+================+==========================================+
-| ``:py:mod:``   | module                                   |
-+----------------+------------------------------------------+
-| ``:py:func:``  | function                                 |
-+----------------+------------------------------------------+
-| ``:py:data:``  | module-level variable.                   |
-+----------------+------------------------------------------+
-| ``:py:const:`` | constant                                 |
-+----------------+------------------------------------------+
-| ``:py:class:`` | class [#dotted]_                         |
-+----------------+------------------------------------------+
-| ``:py:meth:``  | method [#dotted]_ [#role]_               |
-+----------------+------------------------------------------+
-| ``:py:attr:``  | data attribute of an object              |
-+----------------+------------------------------------------+
-| ``:py:exc:``   | exception [#dotted]_                     |
-+----------------+------------------------------------------+
-
-
-.. [#dotted] Class, methods, exceptions may be dotted names.
-.. [#role] The role text should include the type name and the method name
-
-
-You may supply an explicit title and reference target: ``:role:`title <target>```
-
-Comments
---------
+Comment
+-------
 
 .. sidebar:: Code for example
 
@@ -1297,13 +1630,123 @@ followed by normal text is a comment.  Mark the indentation in the example:
 
 Not comment anymore
 
+Defining a Class for some part
+==============================
+
+There is at least three ways of doing it:
+
+.. sidebar:: Rendered result
+
+
+   .. role:: red
+
+   An example of :red:`red text`.
+
+   .. container:: red
+
+      Here the full block  is red.
+
+   An undecorated paragraph.
+
+   .. rst-class:: red
+
+   This paragraph too is is red.
+
+   .. admonition:: Big warning
+      :class: red
+
+      Big warning text is red.
+
+
+.. code-block:: rest
+
+   .. role:: red
+
+   An example of :red:`red text`.
+
+   .. container:: red
+
+      Here the full block is red.
+
+   An undecorated paragraph.
+
+   .. class:: red
+
+   This paragraph too is is red.
+
+   .. admonition:: Big warning
+      :class: red
+
+      Big warning text is red.
+
+After applying `rst2html` you get:
+
+.. code-block:: html
+
+   <p>An example of <span class="red">red text</span>.</p>
+   <div class="red container">
+   Here the full block of test is red.</div>
+   <p>An undecorated paragraph.</p>
+   <p class="red">This paragraph too is is red.</p>
+   <div class="red admonition">
+   <p class="first admonition-title">Big warning</p>
+   <p class="last">Big warning text is red.</p>
+
+
+
+Here I have taken the `admonition` directive as example but any
+directive that allow the `:class:` option would do.
+
+As it generates a `span` the `role` directive is the only one that
+allow to apply your style to a part of a paragraph.
+
+The ``class`` works as expected with ``rest2html``,
+but directive fail with **Sphinx**. You have to replace it with
+
+.. code-block:: rest
+
+   .. rst-class:: red
+
+   This paragraph too is is red.
+
+This is *only* stated in a small `footnote of Sphinx reSt
+Primer <http://sphinx-doc.org/rest.html#id3>`_.
+
+Using your new style
+--------------------
+
+To use your new class you need a css style like:
+
+.. code-block:: css
+
+   .red {
+     color: red;
+   }
+
+You put it in a stylesheet, to give it's location:
+
+-  With ``rst2html`` you must specify the stylesheet's location with
+   a ``--stylesheet`` (for a URL) or ``--stylesheet-path`` for a
+   local file.
+-  With Sphinx a flexible solution is to add your own css file in the
+   ``_static`` directory and give its location with a template that
+   you put in the ``_template`` directory. You can use a file ``layout.html``
+   wich extend the original template of the same name::
+
+      {% extends "!layout.html" %}
+      {% set css_files = css_files + ["_static/style.css"] %}
+
+   For more details refer to :sphinx:`Sphinx: Templating <templating.html>`.
+
 Sphinx Source Code
 ==================
-
+.. _code-block:
 .. _code_highlighting:
 
 Code highlighting
 -----------------
+.. index::
+   pair: highlight; directive
 
 **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
 `Literal Blocks`_  is set for following code examples by::
@@ -1317,7 +1760,10 @@ The option language may be any of
 The additional ``linenothreshold`` option switches on line numbering for blocks
 of size beyond ‹number› lines.
 
-Specify the highlighting for a single literal block::
+.. index::
+   pair: code-block; directive
+
+For Sphinx parser you specify the highlighting in a single literal block::
 
    .. code-block:: ‹language›
       :linenos:
@@ -1329,6 +1775,12 @@ The ``linenos`` option switches on line numbering.
 Details of options are in
 `Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
 
+*When using base ReST parser use instead :ref:`code keyword <_rst-code>`*
+
+.. index::
+   pair: literalinclude; directive
+   source code include
+
 .. _source_code_include:
 
 Source code include
@@ -1337,17 +1789,17 @@ Source code include
 |To include the source file ``example.py``    |.. literalinclude:: example.py                           |
 | as a literal block use::                    |   :linenos:                                             |
 |                                             |                                                         |
-|   .. literalinclude:: example.py            |                                                         |
-|      :linenos:                              |                                                         |
+|   .. literalinclude:: example.py            |The name of the file is relative to your source          |
+|      :linenos:                              |directory.                                               |
 |                                             |                                                         |
 +---------------------------------------------+---------------------------------------------------------+
 |More Options::                               |The options ``language`` and ``linenos``                 |
 |                                             |set the highlighting to ``‹language›``                   |
 |   .. literalinclude:: ‹filename›            |and enables line numbers respectively.                   |
 |      :language: ‹language›                  |                                                         |
-|      :linenos:                              |You can select lines by the ``:lines:`` option or by     |
-|      :lines: 1,3,5-10,20-                   |``start-after:<string>`` and/or ``end-before:<string>``  |
-|                                             |                                                         |
+|      :linenos:                              |You can select lines by the ``lines`` option or by       |
+|      :lines: 1,3,5-10,20-                   |``start-after: <string>`` and/or ``end-before: <string>``|
+|                                             |*(<string>s are not quoted)*                             |
 +---------------------------------------------+---------------------------------------------------------+
 |::                                           |If it is a Python module, you can select a class,        |
 |                                             | function or method to include using the ``pyobject``    |
@@ -1356,7 +1808,20 @@ Source code include
 |                                             |                                                         |
 +---------------------------------------------+---------------------------------------------------------+
 
+More options and exemples in :sphinx:`Sphinx ref. <markup/code.html#includes>`. For including a ReST source
+file use the :ref:`rest directive include <file_include>`.
 
+.. index::
+   pair: directive; source code
+   pair: directive; module
+   pair: python directive; currentmodule
+   pair: python directive; exception
+   pair: python directive; class
+   pair: python directive; attribute
+   pair: python directive; method
+   pair: python directive; staticmethod
+   pair: python directive; classmethod
+   pair: python directive; decorator
 
 .. _source-code-directives:
 
@@ -1391,16 +1856,25 @@ most are since *version 1.0* in `specific domains
 +--------------------------------------+-----------------------------------------------------+
 | ``.. classmethod:: name(signature)`` |  Describes a class method.                          |
 +--------------------------------------+-----------------------------------------------------+
+| ``.. decorator:: name(signature)``   |  Describes a class method.                          |
++--------------------------------------+-----------------------------------------------------+
+| ``.. classmethod:: name(signature)`` |  Describes a class method.                          |
++--------------------------------------+-----------------------------------------------------+
 
 .. [#class] Methods and attributes belonging to the class should be placed in this directive’s body.
-.. [#signature] Signatures of functions, methods and class constructors can be given like in Python, but with  optional parameters indicated by brackets::
+.. [#signature] Signatures of functions, methods, class constructors,
+   decorators can be given like in Python, but with
+   optional parameters indicated by brackets::
 
    .. function:: compile(source[, filename, symbol])
+
+.. index::
+   pair: autodoc; directive
 
 autodoc
 -------
 
-There is  an `autodoc <http://sphinx.pocoo.org/latest/ext/autodoc.html>`_
+There is  an autodoc (:sphinx:`Sphinx ref  <ext/autodoc.html>`)
 version of the :ref:`source code directives <source-code-directives>`
 which include documentation from docstrings:
 
@@ -1414,6 +1888,9 @@ which include documentation from docstrings:
          :members: eat, slurp
 
 - ``autofunction``, ``autodata``, ``automethod``, ``autoattribute``
+
+.. index::
+   info fields
 
 .. _info-fields:
 
@@ -1454,6 +1931,9 @@ are recognized:
     :rtype: integer
     :raises: :exc:`ZeroDivisionError`
 
+.. index:
+   docstring
+
 Source code docstring
 ---------------------
 .. sidebar:: alternate syntax
@@ -1474,17 +1954,18 @@ You can use the :ref:`previous fields <info-fields>` or the alternate syntax
 Project
 -------
 
-To start a Sphinx project use the interactive `sphinx-quickstart
-<http://sphinx.pocoo.org/latest/man/sphinx-quickstart.html>`_ command.
-This will ask you all the necessary questions.You can choose to build with a
-Makefile.
+To start a Sphinx project use the interactive
+:index:`sphinx-quickstart`  command
+(:sphinx: Sphinx ref <man/sphinx-quickstart.html>`).
+This will ask you all the necessary questions. You can use a Mkefile
+to build the documentation.
 
-Customization is done in the file `conf.py
-<http://sphinx.pocoo.org/latest/config.html>`_
-and the `Makefile
-<http://sphinx.pocoo.org/latest/invocation.html#makefile-options>`_.
+Customization is done in the file :index:`conf.py`
+(:sphinx:`Sphinx ref <config.html>`)
+and the :index:`Makefile <pair: sphinx; Makefile>`
+(:sphinx:`Sphinx ref <invocation.html#makefile-options>`).
 
-In the conf file you put the configuration of the extensions
+The configuration of the extensions go also in ``conf.py``.
 
 
 
@@ -1494,7 +1975,7 @@ Math
 
 There is a :sphinx:`mathematical typesetting Sphinx extension
 <ext/math.html?module-sphinx.ext.mathbase>`
-called ``sphinx.ext.pngmath`` based on LaTeX.
+called *:index:`sphinx.ext.pngmath`* based on LaTeX.
 
 To enable the extension, the following line has to appear in ``conf.py``:
 
@@ -1581,7 +2062,7 @@ lines are not separated by a blank line.
 **Explicit LaTeX with amsmath mechanism**
 
 If the option ``nowrap`` is specified then the full LaTeX code (including the
-math-environment) has to be given.  We can assume that the ``amsmath`` package
+math-environment) has to be given.  We can assume that the *:index:`amsmath`* package
 is loaded.  This is not limited to math typesetting, any LaTeX construct can be
 rendered in this way.
 
@@ -1619,8 +2100,8 @@ E.g:
 
 See equation :eq:`pythag`.
 
-Graphs with `Graphviz <http://graphviz.org/>`_
-----------------------------------------------
+Graphs with :index:`Graphviz`
+-----------------------------
 
 The `Graphviz
 <http://graphviz.org/>`_
@@ -1635,32 +2116,33 @@ To enable the extension we have to add it to the ``extensions`` list in
 It uses directly the dot command to process `DOT language
 <http://graphviz.org/content/dot-language>`_.
 
-Examples
-^^^^^^^^
+..
+   Examples
+   ^^^^^^^^
 
-.. sidebar:: Undirected graph
+   .. sidebar:: Undirected graph
 
-   ::
+      ::
 
-      .. graph:: foo
+         .. graph:: foo
 
-         "bar" -- "baz";
+            "bar" -- "baz";
 
-.. graph:: foo
+   .. graph:: foo
 
-   "bar" -- "baz";
+      "bar" -- "baz";
 
-.. sidebar:: Directed graph
+   .. sidebar:: Directed graph
 
-   ::
+      ::
 
-      .. digraph:: foo
+         .. digraph:: foo
 
-         "bar" -> "baz";
+            "bar" -> "baz";
 
-.. digraph:: foo
+   .. digraph:: foo
 
-   "bar" -> "baz";
+      "bar" -> "baz";
 
 References
 ==========
@@ -1719,7 +2201,7 @@ References
       <http://packages.python.org/an_example_pypi_project/sphinx.html#full-code-example>`_
    -  `OpenAlea
       <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:how_to_document_python_api>`_
-      has a nice `comparaison of three way of filling the docstring
+      has a nice `comparaison of three ways of filling the docstring
       <http://openalea.gforge.inria.fr/wiki/doku.php?id=documentation:doctests:sphinx_proposal#filling_the_docstring>`_.
       The source is  `template.py
       <https://gforge.inria.fr/scm/viewvc.php/trunk/doc/source/sphinx/template.py?view=markup&root=openalea>`_
@@ -1741,3 +2223,16 @@ References
    -  :restref:`Creating reStructuredText Directives
       <rst-directives.html>`
       from docutils project.
+
+
+.. topic:: topic title
+   :class: exceptional
+   :name: say_no_more
+
+   A final word.
+
+::
+   <div class="exceptional topic">
+   <p class="topic-title first">topic title</p>
+   <p>A final word.</p>
+   </div>
