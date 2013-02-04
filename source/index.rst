@@ -9,7 +9,7 @@ Sphinx/Rest Memo
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    ReST
 
