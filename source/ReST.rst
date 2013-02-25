@@ -99,7 +99,8 @@ The following example illustrates special cases:
 Asterisk \*, back-quote \`
 and a **mark**\ up.
 
-:restref:`inline markup ref. <restructuredtext.html#inline-markup>`
+See :restref:`inline markup reference
+<restructuredtext.html#inline-markup>`.
 
 .. index::
    !list
@@ -148,7 +149,7 @@ Bullet list
   across several lines.
 - Second item
 
-:restref:`bullet list ref<restructuredtext.html#bullet-lists>`
+See :restref:`bullet list reference<restructuredtext.html#bullet-lists>`
 
 .. index::
    single: list; horizontal
@@ -178,7 +179,8 @@ a) Point a
 b) Point b
 #) Automatic point c.
 
-:restref:`enumerated list ref<restructuredtext.html#enumerated-lists>`
+See :restref:`enumerated list reference
+<restructuredtext.html#enumerated-lists>`.
 
 .. index::
    single: list; definition
@@ -212,7 +214,8 @@ why : cause
 
   In many paragraphs.
 
-:restref:`definition list ref<restructuredtext.html#definition-lists>`
+See :restref:`definition list reference
+<restructuredtext.html#definition-lists>`.
 
 .. index::
    single: list; field
@@ -245,7 +248,8 @@ Field list
 :Remark:
   The source starts on the next line.
 
-:restref:`field list ref<restructuredtext.html#field-lists>`
+See :restref:`field list reference
+<restructuredtext.html#field-lists>`.
 
 .. index::
    single: list; options
@@ -323,7 +327,7 @@ Line blocks
         the same line
       |   Yet a new line
 
-In a line block (:restref:` ref<restructuredtext.html#line-blocks>`)
+In a line block (:restref:`ref <restructuredtext.html#line-blocks>`)
 every line is preceded with ``|`` and at least one space.
 
 | Line block
@@ -464,7 +468,7 @@ Class
 
 .. class:: myclass
 
-The class directive (:restref:`ref <directives.html#class>) add a
+The class directive (:restref:`ref <directives.html#class>`) add a
 class on its content or on the first immediately following non-comment
 element.  The name of the class is normalized by docutil to conform to
 the regexp: ``[a-z](-?[a-z0-9]+)*``.
@@ -876,11 +880,15 @@ A ``:name:`` option in any block is also an internal reference target.
 
 There are two ways of referencing a label.
 
+.. _rest_ref:
+
 The :restref:`reST way
 <restructuredtext.html#hyperlink-targets>`
 is::
 
     `‹label›`_
+
+.. _sphinx_ref:
 
 The *preferred* `Sphinx way
 <http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
@@ -911,12 +919,28 @@ In Sphinx it is possible to reference a document as follows
 ===============  ==============
 
 Section titles, footnotes, and citations automatically are link targets.
-```Project`_`` produces `Project`_.
+```Project`_`` produces `Project`_. But they don't work with the
+:ref:`Sphinx ref syntax <sphinx_ref>`.
+
+If you want to change the displayed text with the
+:ref:`ReST ref syntax <rest_ref>`
+you can use an indirect
+reference. You can then also reference the `Project`_ section
+as `how to start a new project`_ with
+the hyperlink: ```how to start a new project`_`` and the
+indirect target::
+
+  .. _how to start a new project: Project_
+
+.. _how to start a new project: Project_
 
 .. ```Internal`_`` produces `Internal`_.
 
 To reference  a Python Enhancement Proposal use ``:pep``, for a
 Request for Comments ``:rfc:``
+
+.. index::
+   Sphinx extension; intersphinx
 
 Extensions that define new hyperlinks targets
 ---------------------------------------------
@@ -926,7 +950,7 @@ Extensions that define new hyperlinks targets
    in other projects for objects not in your own project. It interprets
    the  references  to `roles <role>`_
 
-   To configure it give in conf.py a dictionary like::
+   To configure it, give in ``conf.py`` a dictionary like::
 
       intersphinx_mapping = {
           'python': ('http://docs.python.org/3.2', None)}
@@ -1169,14 +1193,14 @@ image and figure
 
       .. image:: _static/NeoHittiteSphinx.svg
          :width: 120px
-         :alt: Sphinx Hittite
-         :target: https://it.wikipedia.org/wiki/Telepino
+         :alt: Sphinx Neo-Hittite
+         :target: https://it.wikipedia.org/wiki/Telepinu_(divinità)
 
       .. figure:: _static/NeoHittiteSphinx.svg
          :width: 120px
-         :alt: Sphinx Hittite
+         :alt: Sphinx Neo-Hittite
 
-         Sphinx Hittite
+         Sphinx Neo-Hittite
 
          Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
          deity.
@@ -1191,23 +1215,28 @@ are simple pictures, see also
 `images in the Sphinx documentation
 <http://sphinx.pocoo.org/rest.html#images>`_
 
+.. for ulterior reference
+
+   http://www.britishmuseum.org/system_pages/beta_collection_introduction/beta_collection_object_details.aspx?objectId=1650465&partId=1
+
+
 
 .. only:: not latex
 
    .. image:: _static/NeoHittiteSphinx.svg
       :width: 120px
       :alt: Sphinx Hittite
-      :target: https://it.wikipedia.org/wiki/Telepino
+      :target: https://it.wikipedia.org/wiki/Telipinu_(divinità)
 
 .. only:: latex
 
    .. image::  _static/NeoHittiteSphinx.pdf
         :width: 120px
         :alt: Sphinx Hittite
-        :target: https://it.wikipedia.org/wiki/Telepino
+        :target: https://it.wikipedia.org/wiki/Telipinu_(divinità)
 
-You can click on this image to go to the target `Wikipedia: Telepino
-<https://it.wikipedia.org/wiki/Telepino|>`_
+You can click on this image to go to the target `Wikipedia (it): Telepinu
+<http://it.wikipedia.org/wiki/Telipinu_(divinità)>`_
 
 .. _figure:
 
@@ -1267,10 +1296,11 @@ The conversion can be done with  Inscape, it can be automated as `explained by J
 You can also use the `ipe drawing editor
 <http://ipe7.sourceforge.net/>`_.
 
-.. _rst-code:
 
 .. index::
    pair: code; directive
+
+.. _rst-code:
 
 code blocks
 -----------
@@ -1763,7 +1793,7 @@ of size beyond ‹number› lines.
 .. index::
    pair: code-block; directive
 
-For Sphinx parser you specify the highlighting in a single literal block::
+When using Sphinx you can specify the highlighting in a single literal block::
 
    .. code-block:: ‹language›
       :linenos:
@@ -1775,7 +1805,7 @@ The ``linenos`` option switches on line numbering.
 Details of options are in
 `Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
 
-*When using base ReST parser use instead :ref:`code keyword <_rst-code>`*
+When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 
 .. index::
    pair: literalinclude; directive
@@ -1931,7 +1961,7 @@ are recognized:
     :rtype: integer
     :raises: :exc:`ZeroDivisionError`
 
-.. index:
+.. index::
    docstring
 
 Source code docstring
@@ -1947,6 +1977,10 @@ You can use the :ref:`previous fields <info-fields>` or the alternate syntax
    :noindex:
    :members:
 
+.. index::
+   pair: sphinx; configuration
+   conf.py
+   pair: sphinx; Makefile
 
 `Sphinx <http://sphinx.pocoo.org/>`_
 ====================================
@@ -1956,26 +1990,36 @@ Project
 
 To start a Sphinx project use the interactive
 :index:`sphinx-quickstart`  command
-(:sphinx: Sphinx ref <man/sphinx-quickstart.html>`).
-This will ask you all the necessary questions. You can use a Mkefile
+(:sphinx:`Sphinx ref <man/sphinx-quickstart.html>`).
+This will ask you all the necessary questions. You can use a ``Makefile``
 to build the documentation.
 
-Customization is done in the file :index:`conf.py`
+Customization is done in the file ``conf.py``
 (:sphinx:`Sphinx ref <config.html>`)
 and the :index:`Makefile <pair: sphinx; Makefile>`
 (:sphinx:`Sphinx ref <invocation.html#makefile-options>`).
 
 The configuration of the extensions go also in ``conf.py``.
 
+See :sphinx:`Sphinx description of configuration options
+<config.html>`.
 
+
+.. index::
+   math expression
+   Sphinx extension; pngmath
 
 
 Math
 ----
 
-There is a :sphinx:`mathematical typesetting Sphinx extension
-<ext/math.html?module-sphinx.ext.mathbase>`
-called *:index:`sphinx.ext.pngmath`* based on LaTeX.
+There is some :sphinx:`mathematical typesetting Sphinx extensions
+<ext/math.html>`.
+
+
+The extension :sphinx:`pngmath
+</ext/math.html#module-sphinx.ext.pngmath>`
+is based on LaTeX.
 
 To enable the extension, the following line has to appear in ``conf.py``:
 
@@ -2012,6 +2056,10 @@ E.g:
 Pythagoras :math:`a^2+b^2=c^2`
 
 .. math:: \sum_{n=0}^N x_n = y
+
+:sphinx:`mathjax <ext/math.html#module-sphinx.ext.mathjax>`
+is an other extension that render math through javascript.
+
 
 Multiline Math
 ^^^^^^^^^^^^^^
@@ -2099,6 +2147,9 @@ E.g:
    :label: pythag
 
 See equation :eq:`pythag`.
+
+.. index::
+   Sphinx extension; graphviz
 
 Graphs with :index:`Graphviz`
 -----------------------------
@@ -2236,3 +2287,11 @@ References
    <p class="topic-title first">topic title</p>
    <p>A final word.</p>
    </div>
+
+
+..
+
+   Local Variables:
+   mode: rst
+   ispell-local-dictionary: "english"
+   End:
