@@ -22,10 +22,9 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # theme: one among 'default', 'bootstrap','cloud', 'sphinxtrap',
 # 'readability', 'sphinx_rtd_theme'
 # theme = 'sphinxtrap'
-# theme = 'default'
+theme = 'default'
 if not on_rtd:
     theme = 'sphinx_rtd_theme'
-
 if theme == 'cloud':
     import cloud_sptheme
 elif theme == 'bootstrap':
