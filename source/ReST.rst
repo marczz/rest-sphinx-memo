@@ -1,9 +1,8 @@
-
 :tocdepth: 3
 
-===============================
+*******************************
 :mod:`reST` -- reStructuredText
-===============================
+*******************************
 
 .. module:: reST
    :synopsis: Documentation of reStructuredText and Sphinx
@@ -59,10 +58,12 @@ convention. ::
   Paragraph
   """""""""
 
-Normal paragraphs are separated by a blank line.
+  Normal paragraphs are separated by a blank line.
 
-Transitions
------------
+.. _Transition:
+
+Transition
+----------
 Any repetition of 4 or more punctuation characters with preceding and trailing
 blank line is a transition, and looks like this:
 
@@ -79,6 +80,13 @@ blank line is a transition, and looks like this:
 
 Inline markup
 =============
+.. sidebar:: Special cases
+
+   ================== =============
+   ``Asterisk \*``    Asterisk \*
+   ``back-quote \```  back-quote \`
+   ``**mark**\ up.``  **mark**\ up.
+   ================== =============
 
 ========================== ======================
 ``*emphasize*``            *emphasize*
@@ -86,18 +94,6 @@ Inline markup
 ````code````               ``code``
 ```don't know```           `don't know`
 ========================== ======================
-
-.. sidebar:: Code for example
-
-   ::
-
-      Asterisk \*, back-quote \`
-      and a **mark**\ up.
-
-The following example illustrates special cases:
-
-Asterisk \*, back-quote \`
-and a **mark**\ up.
 
 See :restref:`inline markup reference
 <restructuredtext.html#inline-markup>`.
@@ -107,14 +103,6 @@ See :restref:`inline markup reference
 
 Lists
 =====
-
-.. index::
-   single: list; bullet
-   single: list; itemize
-   bullet list
-
-Bullet list
------------
 .. sidebar:: Code for examples
 
    ::
@@ -143,6 +131,26 @@ Bullet list
       a) Point a
       b) Point b
       #) Automatic point c.
+
+   ::
+
+      what
+        Definition of "what". We add a few
+        words to show the line wrapping.
+      how
+        Definition of "how".
+      why : cause
+        We define "why" we do it.
+
+        In many paragraphs
+
+.. index::
+   single: list; bullet
+   single: list; itemize
+   bullet list
+
+Bullet list
+-----------
 
 - First item with some lengthy
   text wrapping hopefully
@@ -190,19 +198,6 @@ See :restref:`enumerated list reference
 
 Definition list
 ---------------
-.. sidebar:: Code for example
-
-   ::
-
-      what
-        Definition of "what". We add a few
-        words to show the line wrapping.
-      how
-        Definition of "how".
-      why : cause
-        We define "why" we do it.
-
-        In many paragraphs
 
 what
   Definition of "what". We add a few
@@ -220,6 +215,8 @@ See :restref:`definition list reference
 .. index::
    single: list; field
    field list
+
+.. _Field list:
 
 Field list
 ----------
@@ -268,11 +265,6 @@ E.g. for listing command line options.
    single: block; literal
    literal block
 
-Blocks
-======
-
-Literal Blocks
---------------
 .. sidebar:: Code for example
 
    ::
@@ -294,6 +286,19 @@ Literal Blocks
       <code_highlighting>`, so the previous ``**No**`` is still written
       with a  bold font.
 
+   ::
+
+      | Line block
+      | New line and we are still on
+        the same line
+      |   Yet a new line
+
+
+Blocks
+======
+
+Literal Blocks
+--------------
 
 A block which is not interpreted at all is preceded by a ``::`` and a blank
 line. The block must be intended.  If no white space is preceding the
@@ -318,14 +323,6 @@ Another block! ::
 
 Line blocks
 -----------
-.. sidebar:: Code for example
-
-   ::
-
-      | Line block
-      | New line and we are still on
-        the same line
-      |   Yet a new line
 
 In a line block (:restref:`ref <restructuredtext.html#line-blocks>`)
 every line is preceded with ``|`` and at least one space.
@@ -868,9 +865,10 @@ In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
 .. _internal:
 .. _ref:
 
-document reference
-------------------
-To define a label for any text location, precede it with::
+internal document reference
+---------------------------
+To define a label for any text location internal to a document,
+precede it with::
 
    .. _‹label›:
 
@@ -894,28 +892,25 @@ allows linking across files, it  uses::
 
    :ref:`‹displayed text› <‹label›>`
 
+it is specific to Sphinx and ref:`you find it in the Sphinx section
+<sphinx_cross_references>`.
 
 Section titles, footnotes, and citations automatically are link targets.
-```Project`_`` produces `Project`_. But they don't work with the
+```Transition`_`` produces `Transition`_. But they don't work with the
 :ref:`Sphinx ref syntax <sphinx_ref>`.
 
 If you want to change the displayed text with the
 :ref:`ReST ref syntax <rest_ref>`
 you can use an indirect
-reference. You can then also reference the `Project`_ section
-as `how to start a new project`_ with
-the hyperlink: ```how to start a new project`_`` and the
+reference. You can then also reference the `Transition`_ section
+as `how to draw an horizontal line`_ with
+the hyperlink: ```how to draw an horizontal line`_`` and the
 indirect target::
 
-  .. _how to start a new project: Project_
+  .. _how to draw an horizontal line: Transition_
 
-.. _how to start a new project: Project_
+.. _how to draw an horizontal line: Transition_
 
-.. ```Internal`_`` produces `Internal`_.
-
-
-
-You may supply an explicit title and reference target: ``:role:`title <target>```
 
 .. _explicit_markup:
 
@@ -1192,6 +1187,8 @@ You can also use the `ipe drawing editor
 
 .. index::
    pair: code; directive
+   pair: code-block; directive
+   pair: sourcecode; directive
 
 .. _rst-code:
 
@@ -1206,9 +1203,10 @@ code blocks
       ‹body›
 
 is the ReST directive which is called in python
-:ref:`code-block or sourcecode <code-block>`.
+:ref:`code-block` or :ref:`sourcecode <code-block>`.
 
- You must use the Sphinx name with Sphinx and the ReST one with ReST utilities.
+You must use ``code-block`` or ``sourcecode`` with Sphinx
+and the  ``code`` with ReST utilities.
 
 .. index::
    !replacement
@@ -1313,46 +1311,11 @@ is a title not appearing in the table of contents::
 
    .. rubric:: ‹Title›
 
-.. _common_options:
-
-Common options
---------------
-.. sidebar:: Code for example
-
-   ::
-
-      .. topic:: The end
-         :class: exceptional
-         :name: say-no-more
-
-         A final word.
-
-
-The class options ``:class:`` and ``:name:``
-are supported by most of the directives.
-
-The following topic render in html as::
-
-  <div class="exceptional topic" id="say-no-more">
-  <p class="topic-title first">the end</p>
-  <p>A final word.</p>
-  </div>
-
-The ``:name:`` act as a reference target and allow to refer to the
-block as `say-no-more`_
-
-.. topic:: the end
-   :class: exceptional
-   :name: say-no-more
-
-   A final word.
-
-
 
 .. index::
    comment
 
-.. _comment:
+   .. _comment:
 
 Comment
 -------
@@ -1372,39 +1335,39 @@ followed by normal text is a comment.  Mark the indentation in the example:
 .. Comment
    Even more comment
 
-Not comment anymore
+   Not comment anymore
 
+.. _common_options:
 
+Common options
+--------------
 
+The class options ``:class:`` and ``:name:``
+are supported by most of the directives.
 
+The following topic render in html as::
 
-
+  <div class="exceptional topic" id="say-no-more">
+  <p class="topic-title first">the end</p>
+  <p>A final word.</p>
+</div>
 
 .. sidebar:: Code for example
 
    ::
 
+      .. topic:: The end
+         :class: exceptional
+         :name: say-no-more
+
+         A final word.
 
 
+The ``:name:`` act as a reference target and allow to refer to the
+block as `say-no-more`_
 
-
-
-.. topic:: topic title
+.. topic:: the end
    :class: exceptional
-   :name: say_no_more
+   :name: say-no-more
 
    A final word.
-
-::
-   <div class="exceptional topic">
-   <p class="topic-title first">topic title</p>
-   <p>A final word.</p>
-   </div>
-
-
-..
-
-   Local Variables:
-   mode: rst
-   ispell-local-dictionary: "english"
-   End:
