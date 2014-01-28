@@ -3,6 +3,7 @@
 ***********************
 :mod:`Sphinx` -- Sphinx
 ***********************
+.. highlight:: rest
 
 Sphinx inline markup
 ====================
@@ -453,15 +454,25 @@ Code highlighting
 -----------------
 .. index::
    pair: highlight; directive
+   single: block; literal
+   literal block
 
-**Highlighting language** used by  `Pygment <http://pygments.org>`_ in
-ref:`Literal Blocks`  is set for following code examples by::
+:sphinx:`Sphinx ref: showing code <http://sphinx-doc.org/markup/code.html>`
+
+The code blocks are highlighted by sphinx, there is a default language
+of ``Python`` that can be changed in the configuration, by setting the
+configuration option ``highlight_language``.
+
+The default **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
+:ref:`Literal Blocks <literal_block>`  is set for following snippets of code examples by::
 
    .. highlight:: ‹language›
       :linenothreshold: ‹number›
 
-The option language may be any of
-`Pygment supported languages <http://pygments.org/languages/>`_
+The option language may be any
+`language <http://pygments.org/languages/>`_
+supported by a `Pygment lexer
+<http://pygments.org/docs/lexers/>`_.
 
 The additional ``linenothreshold`` option switches on line numbering for blocks
 of size beyond ‹number› lines.
@@ -485,7 +496,7 @@ When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 
 .. index::
    pair: literalinclude; directive
-   source code include
+   pair: source code; include
 
 .. _source_code_include:
 
