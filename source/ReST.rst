@@ -297,13 +297,18 @@ E.g. for listing command line options.
 Blocks
 ======
 
-Literal Blocks
---------------
+.. _literal_block:
+
+Literal Block
+-------------
+
+:restref:`rest literal blocks <restructuredtext.html#literal-blocks>`
 
 A block which is not interpreted at all is preceded by a ``::`` and a blank
 line. The block must be intended.  If no white space is preceding the
 ``::`` then it is displayed as ":".
 
+To use a specific formatting, you can use the :ref:`code directive <rst-code>`
 
 Block one::
 
@@ -1195,6 +1200,8 @@ You can also use the `ipe drawing editor
 code blocks
 -----------
 
+:restref:`ref: code directive <directives.html#code>`
+
 ::
 
    .. code:: ‹language›
@@ -1214,6 +1221,10 @@ and the  ``code`` with ReST utilities.
    pair: replacement; image
    replacement; replace
 
+
+reST use the same :ref:`code highlighting <code_highlighting>` than
+Sphinx, look at  :ref:`Sphinx code highlighting <code_highlighting>`
+to learn about the ways to specify it.
 
 .. _replacements:
 
@@ -1315,7 +1326,7 @@ is a title not appearing in the table of contents::
 .. index::
    comment
 
-   .. _comment:
+.. _comment:
 
 Comment
 -------
@@ -1350,7 +1361,7 @@ The following topic render in html as::
   <div class="exceptional topic" id="say-no-more">
   <p class="topic-title first">the end</p>
   <p>A final word.</p>
-</div>
+  </div>
 
 .. sidebar:: Code for example
 
