@@ -1,8 +1,8 @@
 References
 ==========
 
--  This doc is a fork of `Cristoph Reller Memo
-   <http://people.ee.ethz.ch/~creller/web/tricks/reST.html>`_
+-  This doc is a fork of `Cristoph Reller reST Memo
+   <http://aert-notes-dev.readthedocs.org/en/latest/content/rest/>`_
    adapted according to my needs, they have diverged now, but it still
    inherit from some content and layout.
 -  `Sphinx documentation <http://sphinx.pocoo.org/latest/contents.html>`_
