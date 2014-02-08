@@ -15,6 +15,7 @@ Contents:
 
    ReST
    Sphinx
+   Extensions
    Project
    References
 
