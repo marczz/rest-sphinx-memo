@@ -1,6 +1,12 @@
 *****************
 Sphinx extensions
 *****************
+
+We have described in the previous section the extensions:
+:ref:`intersphinx <intersphinx_extension>`,
+:ref:`extlinks <extlinks_extension>`,
+:ref:`ifconfig <ifconfig_extension>`.
+
 .. index:
    pair: extension; todo
    pair: directive; todo
@@ -40,9 +46,15 @@ doing:
 Sphinx Math
 ===========
 
-There is some :sphinx:`mathematical typesetting Sphinx extensions
-<ext/math.html>`.
+There are three  :sphinx:`mathematical typesetting Sphinx extensions
+<ext/math.html>` :ref:`pngmath <pngmath_extension>`,
+:sphinx:`mathjax
+</ext/math.html#module-sphinx.ext.mathjax>`,
+and
+:sphinx:`jsmath
+</ext/math.html#module-sphinx.ext.jsmath>`.
 
+.. _pngmath_extension:
 
 The extension :sphinx:`pngmath
 </ext/math.html#module-sphinx.ext.pngmath>`
