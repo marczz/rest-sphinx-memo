@@ -5,7 +5,7 @@
 *******************************
 
 .. module:: reST
-   :synopsis: Documentation of reStructuredText and Sphinx
+   :synopsis: reStructuredText Memo
 .. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
 
 .. highlight:: rest
@@ -35,16 +35,16 @@ Sectioning
    single: title; hierarchy
 
 Titles are under- (and over-)lined (decorated) by ``=*-^"~`:.'#`` as below.  The
-exact order of the decoration is not important, the one below is the Python
-convention. ::
+exact order of the decoration is not important, the one below is the
+`Python convention <http://docs.python.org/devguide/documenting.html#sections>`_. ::
 
   ####
   Part
   ####
 
-  *******
-  Chapter
-  *******
+  *********
+   Chapter
+  *********
 
   Section
   =======
@@ -62,6 +62,16 @@ convention. ::
 
 .. _Transition:
 
+A ``=`` with overlines is very often preferred to a ``*`` with
+overlines for chapters. The previously quoted
+`Python development guide
+<http://docs.python.org/devguide/documenting.html#sections>`_ while
+advising to use stars uses internally equal character.
+
+`Docutils documentation <http://docutils.sourceforge.net/>`_ uses
+overlined ``=`` for parts, overlined ``-`` for chapters, ``=`` for sections,
+``-`` for subsections, back quotes (`) for subsubsections.
+
 Transition
 ----------
 Any repetition of 4 or more punctuation characters with preceding and trailing
@@ -77,6 +87,8 @@ blank line is a transition, and looks like this:
    inline markup; strong
    inline markup; emphasize
    inline markup; code
+
+.. _rest_inline_markup:
 
 Inline markup
 =============
@@ -97,6 +109,10 @@ Inline markup
 
 See :restref:`inline markup reference
 <restructuredtext.html#inline-markup>`.
+
+These inline markups are also provided by
+:restref:`ReStructuredText Interpreted Text Roles <roles.html>`.
+The roles are described in the :ref:`Sphinx chapter <sphinx_roles>`
 
 .. index::
    !list
@@ -282,9 +298,13 @@ E.g. for listing command line options.
 
    .. warning::
 
-      Sphinx use literal blocks to :ref:`highlight source code
+      *Sphinx* use literal blocks to :ref:`highlight source code
       <code_highlighting>`, so the previous ``**No**`` is still written
-      with a  bold font.
+      with a  bold font by *Sphinx* while being not interpreted by
+      *rst2html*.
+
+      *Sphinx* users better use a :ref:`code block <code_block>` in
+      ``text`` language, to disable *Pygment* decorations.
 
    ::
 
@@ -897,7 +917,7 @@ allows linking across files, it  uses::
 
    :ref:`‹displayed text› <‹label›>`
 
-it is specific to Sphinx and ref:`you find it in the Sphinx section
+it is specific to Sphinx and :ref:`you find it in the Sphinx section
 <sphinx_cross_references>`.
 
 Section titles, footnotes, and citations automatically are link targets.
@@ -1228,54 +1248,65 @@ to learn about the ways to specify it.
 
 .. _replacements:
 
+.. index::
+   pair: replace; directive
+   pair: image; directive
+
 replacements
 ------------
 
 General replacements::
 
-   .. |‹something›| ‹directive›:: here we
+   .. |‹something›| replace:: here we
       define what ‹something› is.
 
 .. sidebar:: Code for example
 
    ::
 
-      .. |more-doc| replace::  *more in directives manual*
+      .. |more-doc| replace::  *more in* **reST** *directives manual*
       .. _more-doc: http://docutils.sourceforge.net/doc...
 
        Possible ...  or ``image`` |more-doc|_
 
 Here ``|<something>|`` will be replaced by its definition.
 
-.. |more-doc| replace::  *more in directives manual*
+.. |more-doc| replace::  *more in* **reST** *directives manual*
 .. _more-doc: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
 
-Possible ``‹directive›``\ s are ``replace`` or ``image`` |more-doc|_
+Instead of  ``replace`` you can also use ``image`` |more-doc|_
 
-It can be used *like above* for nesting inline markup.
+It is the only way  for nesting inline markup to create styled references
+like we did  *above*.
 
 .. index::
-   include
+   pair: include; directive
    file include
 
 .. _file_include:
 
 file includes
 -------------
-+----------------------------------+---------------------------------------------+
-|**Including** a reST file ::      | .. note:: Don't use the same file name      |
-|                                  |    extension as your source files.          |
-|   .. include:: ‹file name>       |    Otherwise Sphinx will mistake this       |
-|                                  |    file as one of your regular source file. |
-|See also :ref:`Source code include|                                             |
-|<source_code_include>`            |                                             |
-+----------------------------------+---------------------------------------------+
+To include a reST file use::
 
-You can use the options: start-line, end-line, start-after, end-before
+.. include:: subdir/incl.rst
+
+You can put the file wherever you want the relative paths are
+interpreted relative to the source directory.
+
+The options: ``start-line``, ``end-line``, ``start-after``, ``end-before``
 as referenced in :restref:`reST Directives
 <directives.html#including-an-external-document-fragment>`.
+
 For including source code in Sphinx rather use :ref:`Source code include
-<source_code_include>`.
+<source_code_include>` like:
+
+If you use ``include`` with Sphinx, you should exclude the included
+files from the source file lookup, by setting in ``conf.py`` a
+glob pattern in ``exclude_patterns``, like::
+
+   exclude_patterns = ["include/*"]
+
 
 .. index::
    sidebar
@@ -1374,7 +1405,7 @@ The following topic render in html as::
          A final word.
 
 
-The ``:name:`` act as a reference target and allow to refer to the
+The ``:name:`` act as a reference target and allow to refer to the following
 block as `say-no-more`_
 
 .. topic:: the end
