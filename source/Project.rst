@@ -29,10 +29,40 @@ The configuration of the extensions go also in ``conf.py``.
 See :sphinx:`Sphinx description of configuration options
 <config.html>`.
 
+.. index:
+   pair: extension; todo
+   pair: directive; todo
+   pair: directive; todolist
+
+todo extension
+==============
+The extension ``sphinx.ext.todo`` allow to include todo blocks like::
+::
+
+   .. todo::
+
+         We need to achieve:
+
+         .. include:: include/feature.rst
+
+
+An other directive ``todolist`` is replaced by a list of all todo directives in the whole documentation.
+
+These blocks are by default excluded but can be included by setting to
+``True`` the configuration variable ``todo_include_todos``.
+
+You can either set it in the ``conf.py`` file or trigger it by adding
+the option to sphinx-build. An easy way is through the Make process by
+doing:
+
+.. code-block:: shell-session
+
+   $ make -k html SPHINXOPTS="-D todo_include_todos=True"
+
 
 .. index::
    math expression
-   Sphinx extension; pngmath
+   pair: extension; pngmath
 
 
 Sphinx Math
@@ -165,7 +195,7 @@ E.g:
 See equation :eq:`pythag`.
 
 .. index::
-   Sphinx extension; graphviz
+   pair: extension; graphviz
 
 Graphs with :index:`Graphviz`
 =============================
