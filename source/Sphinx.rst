@@ -3,7 +3,15 @@
 ***********************
 :mod:`Sphinx` -- Sphinx
 ***********************
+.. module:: Sphinx
+   :synopsis:  Sphinx Memo.
+.. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
+
 .. highlight:: rest
+.. index::
+   role!
+
+.. _sphinx_inline_markup:
 
 Sphinx inline markup
 ====================
@@ -13,7 +21,30 @@ Sphinx inline markup
 
 :sphinx:`sphinx ref: Inline markup <markup/inline.html>`
 
-They are written ``:rolename:`content`.``.
+.. _sphinx_roles:
+
+Sphinx inline markup is down through interpreted text roles;
+they are written ``:rolename:`content`.``.
+
+There are four types of roles:
+
+-  The :restref:`ReStructuredText Interpreted Text Roles <roles.html>`
+   they are valid both for reST and Sphinx processing.
+   They are: ``:emphasis:``, ``:literal:``, ``:code:``, ``:math:``,
+   ``:pep-reference:``, ``:rfc-reference:``, ``:strong:``, ``:subscript:``,
+   ``:superscript:``, ``:title-reference:``,  ``:raw:``. They are
+   seldom used because we prefer the shortcuts provided by
+   :ref:`reST inline markup <rest_inline_markup>`.
+-  The Sphinx roles that are described in the section
+   :ref:`sphinx_role` and the :ref:`Sphinx cross references
+   <sphinx_cross_references>`
+-  The roles added by :sphinx:`Sphinx domains <domains.html>` like
+   the :ref:`Python roles <python_roles>` referenced below.
+-  The :restref:`Custom Interpreted Text Roles <directives.html#role>`
+   which is a reST directive ``role``, thet tailor the renderer to
+   apply some special formatting. We use it :ref:`below <css_class>`
+   to use a special css class for some span of text.
+
 
 .. _sphinx_ref:
 .. _sphinx_cross_references:
@@ -57,20 +88,28 @@ In Sphinx it is possible to reference a document as follows
 ``:doc:`ReST```  :doc:`ReST`
 ===============  ==============
 
+.. index::
+   pair: role; cross-reference
+
 Extra cross-reference roles
 ---------------------------
 Many are described in the
 :sphinx:`sphinx ref:Cross-referencing other items of interest
 <markup/inline.html#cross-referencing-other-items-of-interest>`.
 
-To reference  a Python Enhancement Proposal use ``:pep``, for a
+To reference  a Python Enhancement Proposal use ``:pep:``, for a
 Request for Comments ``:rfc:``
 
 .. index::
-   Sphinx extension; intersphinx
+   pair: extension; intersphinx
+   pair: extension; extlink
+   single: hyperlink; target
 
 Extensions that define new hyperlinks targets
 ---------------------------------------------
+.. _intersphinx_extension:
+.. _extlinks_extension:
+
 -  The :index:`intersphinx extension <pair: intersphinx;extension>`
    (:sphinx:`Sphinx ref <ext/intersphinx.html>`)
    generates automatic links to the documentation
@@ -80,7 +119,7 @@ Extensions that define new hyperlinks targets
    To configure it, give in ``conf.py`` a dictionary like::
 
       intersphinx_mapping = {
-          'python': ('http://docs.python.org/3.2', None)}
+          'python': ('http://docs.python.org/3', None)}
 
 -  The extension :sphinx:`ext/extlinks.html` generates the previous link with
    the code ``:sphinx:`ext/extlinks.html``` and the configuration::
@@ -91,7 +130,7 @@ Extensions that define new hyperlinks targets
 .. index
    pair: sphinx; role
 
-.. _role:
+.. _sphinx_role:
 
 
 Sphinx Roles
@@ -118,6 +157,10 @@ Some common markup are:
 | ``:samp:`cp {file} {target}```       |:samp:`cp {file} {target}`         |
 +--------------------------------------+-----------------------------------+
 
+.. index
+   pair: python; role
+
+.. _python_roles:
 
 python roles
 ------------
@@ -149,7 +192,11 @@ python roles
 .. [#text] The role text should include the type name and the method name
 
 
-You may supply an explicit title and reference target: ``:role:`title <target>```
+You may supply an explicit title and reference target: ``:role:`title
+<target>```.
+
+.. index::
+   pair: sphinx; directive
 
 Sphinx directives
 =================
@@ -161,7 +208,7 @@ docutils builders.
 
    :ref:`toctree`, :ref:`index`, :ref`glossary`,
    :ref:`note`, :ref:`warning`, :ref:`seealso`, :ref:`centered`,
-   :ref:`only`,  :ref:`role`
+   :ref:`only`,  :ref:`role`, :ref:`only`, :ref:`ifconfig`
 
 .. contents::
    :local:
@@ -169,7 +216,7 @@ docutils builders.
 .. index::
    pair: toctree; directive
    table of contents
-
+   see toc; toctree
 
 .. _toctree:
 
@@ -234,7 +281,8 @@ part›"; and `triple` makes three entries.
 With the exclamation mark, the *<entry 3>* is the main entry for this
 term and is put in bold.
 
-You can also use the keywords  `see` and `seealso`.
+You can also use the keywords  `see` and `seealso` with ``see: foo
+bar`` or ``seealso: bar foo``.
 
 .. index::
    pair: glossary; directive
@@ -314,6 +362,9 @@ A centered, boldface text block::
 .. index::
    include; selective
    pair: only; directive
+   pair: ifconfig; directive
+   pair: ifconfig; extension
+   config value
    tag
 
 .. _only:
@@ -326,15 +377,48 @@ A block may be included depending of the presence of some tag
 
    ..only:: <expression>
 
-The expression is made of *tags* like ``html and draft``.
+The expression is made of *tags* combined in boolean expressions
+like ``html and draft``.
+
+The format and the name of the current
+builder is set as predefined tag, if needed it can be prefixed to differentiate
+format and builer, like ``format_html`` or ``builder_html``
+
 
 You can define tags via the -t command-line option of
-:sphinx:`sphinx-build <invocation.html#build>`
-or in the configuration file use  ``tags.has('tag')``  to query, ``tags.add('tag')``  and ``tags.remove('tag')``  to change.
+:sphinx:`sphinx-build <invocation.html#build>`.
 
+In the configuration file you can use
+``tags.has('tag')``  to query,
+``tags.add('tag')``  and ``tags.remove('tag')``  to change.
 
-Defining a Class for some part
-==============================
+.. _ifconfig_extension:
+
+An alternative is the ``ifconfig`` directive
+(:sphinx:`Sphinx ref <ext/ifconfig.html>`)
+from the ``sphinx.ext.ifconfig`` extension::
+
+   .. ifconfig:: <Python expression>
+
+To evaluate the expression all variables registered from ``conf.py``
+are availables, to add a config value use the setup function in
+``conf.py``::
+
+   def setup(app):
+    app.add_config_value('newconf', 'default', True)
+
+the third parameter should always be ``True``.
+
+.. _css_class:
+
+Defining a css class for some part
+==================================
+
+.. index::
+   pair: role; directive
+   pair: container; directive
+   pair: class; directive
+   pair: rst-class; directive
 
 There is at least three ways of doing it:
 
@@ -476,6 +560,8 @@ supported by a `Pygment lexer
 
 The additional ``linenothreshold`` option switches on line numbering for blocks
 of size beyond ‹number› lines.
+
+.. _code_block:
 
 .. index::
    pair: code-block; directive
