@@ -892,10 +892,10 @@ In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
 
 internal document reference
 ---------------------------
-To define a label for any text location internal to a document,
-precede it with::
+To define ``label`` as label for any text location internal to a document,
+precede the text location with::
 
-   .. _‹label›:
+   .. _label:
 
 plus a blank line.
 
@@ -909,13 +909,13 @@ The :restref:`reST way
 <restructuredtext.html#hyperlink-targets>`
 is::
 
-    `‹label›`_
+    `label`_
 
 The *preferred* `Sphinx way
 <http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
 allows linking across files, it  uses::
 
-   :ref:`‹displayed text› <‹label›>`
+   :ref:`displayed text <label>`
 
 it is specific to Sphinx and :ref:`you find it in the Sphinx section
 <sphinx_cross_references>`.

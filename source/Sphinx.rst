@@ -56,14 +56,14 @@ Location cross references
 
 We use::
 
-   :ref:`‹displayed text› <‹label›>`
+   :ref:`displayed text <label>`
 
-To reference ``‹label›`` defined in *any* document of the project.
+To reference ``label`` defined in *any* document of the project.
 It allows linking across files, while the :ref:`rest way <rest_ref>`
 is limited to a location in the same file.
 
-If the ``‹label›`` definition is followed by a section title then ``‹displayed
-text›`` can be omitted and will be replaced by the title.
+If the ``label`` definition is followed by a section title then ``displayed
+text`` can be omitted and will be replaced by the title.
 
 E.g. the *rest reference* section is preceded
 with ``.. _internal:``, so we have:
