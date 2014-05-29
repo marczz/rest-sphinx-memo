@@ -1067,9 +1067,7 @@ The reST directives are detailed  in the
    :local:
 
 
-We have yet see above the directives ref:`pull-quote` and :ref:`epigraph`.
-
-.. rubric:: Rest Directives
+We have yet see above the directives :ref:`pull-quote` and :ref:`epigraph`.
 
 .. index::
    toc
@@ -1179,6 +1177,7 @@ an optional caption and an optional legend.
       Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
       deity.
 
+
 .. index::
    image; latex
    figure; latex
@@ -1235,30 +1234,45 @@ is the ReST directive which is called in python
 You must use ``code-block`` or ``sourcecode`` with Sphinx
 and the  ``code`` with ReST utilities.
 
-.. index::
-   !replacement
-   replace
-   pair: replacement; image
-   replacement; replace
-
-
-reST use the same :ref:`code highlighting <code_highlighting>` than
+ReST use the same :ref:`code highlighting <code_highlighting>` than
 Sphinx, look at  :ref:`Sphinx code highlighting <code_highlighting>`
 to learn about the ways to specify it.
 
 .. _replacements:
 
 .. index::
+   !replacement
+   pair: replacement; image
    pair: replace; directive
    pair: image; directive
+   pair: unicode; directive
+   pair: date; directive
+   single: substitution; definition
+   single: reference; styled
+   single: unicode; character code
 
 replacements
 ------------
+rest references: :restref:`substitution definitions (specification)
+<restructuredtext.html#substitution-definitions>`,
+:restref:`substitution definition (definition files)
+<definitions.html#substitution-definitions>`,
+:restref:`Character Entity Sets
+<definitions.html#character-entity-sets>`,
+:restref:`replace directive
+<directives.html#replacement-text>`,
+:restref:`unicode directive
+<directives.html#unicode-character-codes>`,
+:restref:`date directive
+<directives.html#date>`.
+
+See also: `docutil FAQ: How can I represent esoteric characters?
+<http://docutils.sourceforge.net/FAQ.html#how-can-i-represent-esoteric-characters-e-g-character-entities-in-a-document>`_.
 
 General replacements::
 
-   .. |‹something›| replace:: here we
-      define what ‹something› is.
+   .. |something| replace:: here we
+      define what something is.
 
 .. sidebar:: Code for example
 
@@ -1266,10 +1280,12 @@ General replacements::
 
       .. |more-doc| replace::  *more in* **reST** *directives manual*
       .. _more-doc: http://docutils.sourceforge.net/doc...
+      .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
 
-       Possible ...  or ``image`` |more-doc|_
+       Instead ...  use ``image`` |more-doc|_
+       ... include unicode characters like |copy|.
 
-Here ``|<something>|`` will be replaced by its definition.
+Here ``|something|`` will be replaced by its definition.
 
 .. |more-doc| replace::  *more in* **reST** *directives manual*
 .. _more-doc: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
@@ -1278,6 +1294,14 @@ Instead of  ``replace`` you can also use ``image`` |more-doc|_
 
 It is the only way  for nesting inline markup to create styled references
 like we did  *above*.
+
+.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
+
+We also use substitutions to include unicode characters like |copy|.
+
+If you use sphinx there are also three :sphinx:`predefined substitutions
+<markup/inline.html#substitutions>`:
+``|release|``, ``|version|``, ``|today|``.
 
 .. index::
    pair: include; directive
