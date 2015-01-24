@@ -325,7 +325,7 @@ Literal Block
 :restref:`rest literal blocks <restructuredtext.html#literal-blocks>`
 
 A block which is not interpreted at all is preceded by a ``::`` and a blank
-line. The block must be intended.  If no white space is preceding the
+line. The block must be indented.  If no white space is preceding the
 ``::`` then it is displayed as ":".
 
 To use a specific formatting, you can use the :ref:`code directive <rst-code>`
