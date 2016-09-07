@@ -632,10 +632,10 @@ Source code directives
 ----------------------
 
 There are very powerful directives in Sphinx
-for `documenting source code
-<http://sphinx.pocoo.org/markup/desc.html#module-specific-markup>`_
-most are since *version 1.0* in `specific domains
-<http://sphinx.pocoo.org/domains.html>`_ the following are related to
+for documenting source code, each programming langage
+has a `specific domains <http://sphinx.pocoo.org/domains.html>`_.
+
+The following markups are related to
 `documenting python source code
 <http://sphinx.pocoo.org/domains.html#the-python-domain>`_
 
