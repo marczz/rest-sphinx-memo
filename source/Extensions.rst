@@ -35,7 +35,7 @@ doing:
 
 .. code-block:: shell-session
 
-   $ make -k html SPHINXOPTS="-D todo_include_todos=True"
+   $ make -k html SPHINXOPTS="-D todo_include_todos=1"
 
 
 .. index::
