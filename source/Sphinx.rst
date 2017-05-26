@@ -732,18 +732,69 @@ are recognized:
     :rtype: integer
     :raises: :exc:`ZeroDivisionError`
 
-.. index::
-   docstring
 
-Source code docstring
----------------------
-.. sidebar:: alternate syntax
+.. literalinclude:: code/divide.py
+   :language: python
 
-   .. literalinclude:: docstring.py
-      :language: python
-
-You can use the :ref:`previous fields <info-fields>` or the alternate syntax
-
-.. automodule:: docstring
+.. automodule:: code.divide
    :noindex:
    :members:
+
+
+Docstring alternate syntax.
+---------------------------
+
+For docstrings you can use the :ref:`previous fields <info-fields>`
+or the alternate syntax that is `recommended by Openalea Project
+<http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/sphinx_python_docstring.html>`_.
+:
+
+.. literalinclude:: code/docstring.py
+   :language: python
+
+.. automodule:: code.docstring
+   :noindex:
+   :members:
+
+.. index::
+   extension; napoleon
+   coding style; google
+   coding style; numpy
+
+.. _napoleon:
+
+Google style docstrings.
+------------------------
+Using Restructured texts in your python code, is quite cumbersome, it
+produces an easily readable documentation, but cryptic source code.
+
+
+If we want to follow the style of `PEP257
+<https://www.python.org/dev/peps/pep-0257/>`_ we  can use
+the `Google Python style guide`_ also recommended by the
+`Khan Academy Style Guide
+<https://github.com/Khan/style-guides/blob/master/style/python.md>`_.
+
+`NumPy style guide`_
+Alternatively there is a `NumPy/SciPy style of documentation`_.
+
+But they produces docstrings that are not recognized by Sphinx, and
+not decorated in html output.
+
+The extension :sphinx:`napoleon <ext/napoleon.html>` preprocess NumPy
+and Google style docstrings and converts them to reStructuredText
+before Sphinx parse the source code. You need to
+`configure it in your conf.py file
+<http://www.sphinx-doc.org/en/latest/ext/napoleon.html#configuration>`
+
+.. literalinclude:: code/gstyle_docstring.py
+   :language: python
+
+.. automodule:: code.gstyle_docstring
+   :noindex:
+   :members:
+
+Look :sphinx:`here for a larger example
+<http://www.sphinx-doc.org/en/latest/ext/example_google.html>`.
+
+.. include:: include/commonref.rst
