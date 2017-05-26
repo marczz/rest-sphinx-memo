@@ -1065,7 +1065,7 @@ or even rel09_.
 
 .. index::
    !directive
-   rest; directives
+   directives; rest
 
 .. _rest_directives:
 

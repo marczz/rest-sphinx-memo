@@ -6,7 +6,7 @@ We have described in the previous section the extensions:
 :ref:`intersphinx <intersphinx_extension>`,
 :ref:`extlinks <extlinks_extension>`,
 :ref:`ifconfig <ifconfig_extension>`,
-:ref:`napoleon <napoleon extension>`.
+:ref:`napoleon <napoleon_extension>`.
 
 .. index:
    pair: extension; todo

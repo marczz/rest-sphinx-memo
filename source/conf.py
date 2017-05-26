@@ -311,14 +311,15 @@ latex_elements = {
 
     # Latex figure (float) alignment
     #
-    # 'figure_align': 'htbp',}
+    # 'figure_align': 'htbp',
+}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'SphinxRestMemo.tex', 'Sphinx/Rest Memo',
-   author, 'manual'),
+    (master_doc, 'SphinxRestMemo.tex', 'Sphinx/Rest Memo',
+    author, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

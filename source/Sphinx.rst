@@ -761,7 +761,7 @@ or the alternate syntax that is `recommended by Openalea Project
    coding style; google
    coding style; numpy
 
-.. _napoleon:
+.. _napoleon_extension:
 
 Google style docstrings.
 ------------------------
