@@ -589,10 +589,10 @@ When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 Source code include
 -------------------
 +---------------------------------------------+---------------------------------------------------------+
-|To include the source file ``example.py``    |.. literalinclude:: example.py                           |
+|To include the source file ``example.py``    |.. literalinclude:: code/example.py                      |
 | as a literal block use::                    |   :linenos:                                             |
 |                                             |                                                         |
-|   .. literalinclude:: example.py            |The name of the file is relative to your source          |
+|   .. literalinclude:: code/example.py       |The name of the file is relative to your source          |
 |      :linenos:                              |directory.                                               |
 |                                             |                                                         |
 +---------------------------------------------+---------------------------------------------------------+
@@ -606,7 +606,7 @@ Source code include
 +---------------------------------------------+---------------------------------------------------------+
 |::                                           |If it is a Python module, you can select a class,        |
 |                                             | function or method to include using the ``pyobject``    |
-|   .. literalinclude:: example.py            | option                                                  |
+|   .. literalinclude:: code/example.py       | option                                                  |
 |      :pyobject: MyClass.some_method         |                                                         |
 |                                             |                                                         |
 +---------------------------------------------+---------------------------------------------------------+
