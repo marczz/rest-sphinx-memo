@@ -1,4 +1,4 @@
-def example(self, arg1, arg2):
+def example(arg1, arg2):
     """Docstring example.
 
     :Parameters:
