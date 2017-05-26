@@ -5,7 +5,8 @@ Sphinx extensions
 We have described in the previous section the extensions:
 :ref:`intersphinx <intersphinx_extension>`,
 :ref:`extlinks <extlinks_extension>`,
-:ref:`ifconfig <ifconfig_extension>`.
+:ref:`ifconfig <ifconfig_extension>`,
+:ref:`napoleon <napoleon extension>`.
 
 .. index:
    pair: extension; todo
@@ -14,8 +15,9 @@ We have described in the previous section the extensions:
 
 todo extension
 ==============
-The extension ``sphinx.ext.todo`` allow to include todo blocks like::
-::
+
+The extension :sphinx:`sphinx.ext.todo <ext/todo.html>` allow to
+include todo blocks like ::
 
    .. todo::
 
@@ -24,7 +26,8 @@ The extension ``sphinx.ext.todo`` allow to include todo blocks like::
          .. include:: include/feature.rst
 
 
-An other directive ``todolist`` is replaced by a list of all todo directives in the whole documentation.
+An other directive ``todolist`` is replaced by a list of all todo
+directives in the whole documentation.
 
 These blocks are by default excluded but can be included by setting to
 ``True`` the configuration variable ``todo_include_todos``.
@@ -47,26 +50,27 @@ Sphinx Math
 ===========
 
 There are three  :sphinx:`mathematical typesetting Sphinx extensions
-<ext/math.html>` :ref:`pngmath <pngmath_extension>`,
+<ext/math.html>` :ref:`imgmath <imgmath_extension>`,
 :sphinx:`mathjax
 </ext/math.html#module-sphinx.ext.mathjax>`,
 and
 :sphinx:`jsmath
 </ext/math.html#module-sphinx.ext.jsmath>`.
 
-.. _pngmath_extension:
+.. _imgmath_extension:
 
-The extension :sphinx:`pngmath
+The extension :sphinx:`imgmath
 </ext/math.html#module-sphinx.ext.pngmath>`
-is based on LaTeX.
+use LaTeX and ``dvipng`` or ``dvisvgm`` to render math into PNG or SVG
+images. You need to install one of these utilities on the machine
+where the doc is built.
 
 To enable the extension, the following line has to appear in ``conf.py``:
 
 .. code-block:: python
 
-   extensions = ['sphinx.ext.pngmath']
+   extensions = ['sphinx.ext.imgmath']
 
-.. note:: The ``sphinx.ext.pngmath`` extension needs ``dvipng``.
 
 You then can type standard LaTeX math expressions, either inline::
 
