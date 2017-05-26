@@ -9,7 +9,7 @@
 
 .. highlight:: rest
 .. index::
-   role!
+   role; sphinx
 
 .. _sphinx_inline_markup:
 
@@ -110,8 +110,7 @@ Extensions that define new hyperlinks targets
 .. _intersphinx_extension:
 .. _extlinks_extension:
 
--  The :index:`intersphinx extension <pair: intersphinx;extension>`
-   (:sphinx:`Sphinx ref <ext/intersphinx.html>`)
+-  The :sphinx:`intersphinx extension <ext/intersphinx.html>`
    generates automatic links to the documentation
    in other projects for objects not in your own project. It interprets
    the  references  to `roles <role>`_
@@ -121,10 +120,12 @@ Extensions that define new hyperlinks targets
       intersphinx_mapping = {
           'python': ('http://docs.python.org/3', None)}
 
--  The extension :sphinx:`ext/extlinks.html` generates the previous link with
-   the code ``:sphinx:`ext/extlinks.html``` and the configuration::
+-  The extension :sphinx:`extlinks <ext/extlinks.html>` help when you
+   have many links pointing to the same site. I use it for the
+   previous reference with the code
+   ``:sphinx:`extlinks <ext/extlinks.html>``` and the configuration::
 
-      extlinks = {'sphinx': ('http://sphinx.pocoo.org/latest/%s', 'Sphinx: ')}
+      extlinks = {'sphinx': ('http://sphinx.pocoo.org/en/latest/%s', 'Sphinx: ')}
 
 
 .. index
@@ -136,11 +137,10 @@ Extensions that define new hyperlinks targets
 Sphinx Roles
 ------------
 
-they are described in `Sphinx: Inline markup
-<http://localhost/doc/python-sphinx/html/markup/inline.html>`_
-and in the specific domains e.g.
-`Sphynx domains - python roles
-<http://sphinx.pocoo.org/latest/domains.html#python-roles>`_
+The Sphinx roles  are described in :sphinx:`Sphinx: Inline markup
+<markup/inline.html>`
+and in the specific domains,  e.g.
+:sphinx:`python roles <domains.html#python-roles>`.
 
 Some common markup are:
 
@@ -196,18 +196,18 @@ You may supply an explicit title and reference target: ``:role:`title
 <target>```.
 
 .. index::
-   pair: sphinx; directive
+   directive; sphinx
 
 Sphinx directives
 =================
 
-Sphinx includes its own directives, which are not available in the
-docutils builders.
+Sphinx includes its own :sphinx:`directives <markup/index.html>`, which
+are not available in the docutils builders.
 
 .. We reference here
 
    :ref:`toctree`, :ref:`index`, :ref`glossary`,
-   :ref:`note`, :ref:`warning`, :ref:`seealso`, :ref:`centered`,
+   :ref:`note`, :ref:`warning`, :ref:`seealso`,
    :ref:`only`,  :ref:`role`, :ref:`only`, :ref:`ifconfig`
 
 .. contents::
@@ -231,7 +231,8 @@ table of contents
       ‹file 1 without file name extension›
       ‹file 2 without file name extension›
 
-Create a table of contents across files
+The :sphinx:`toctree directive <markup/toctree.html>` create a table of
+contents across files.
 
 A ``glob`` option enables to use wildcards in the filenames, e.g. ``/comp/*``
 means all files under the directory ``comp``.
@@ -263,8 +264,8 @@ contents <reST-tableOfContents>`
 Index
 -----
 
-Entries in the **index** (:sphinx:`sphinx ref
-<markup/misc.html#index-generating-markup>`)
+Entries in the :sphinx:`index
+<markup/misc.html#index-generating-markup>`
 are created automatically from all information units
 like functions, classes or attributes but those with a ``:noindex:``
 option.  Explicit manual entries are made as::
@@ -292,8 +293,7 @@ bar`` or ``seealso: bar foo``.
 glossary
 --------
 
-A **glossary**   (:sphinx:`sphinx ref
-<markup/para.html#directive-glossary>`)
+A :sphinx:`glossary <markup/para.html#directive-glossary>`
 is a :ref:`definition_list`::
 
    .. glossary::
@@ -314,6 +314,8 @@ is a :ref:`definition_list`::
 
 note, warning, seealso
 ----------------------
+
+They are :sphinx:`paragraph-level markups <markup/para.html>`
 
 .. sidebar:: Code
 
@@ -343,21 +345,6 @@ note, warning, seealso
 
    `Apples <http://en.wikipedia.org/wiki/Apple>`_
       A kind of `fruit <http://en.wikipedia.org/wiki/Fruit>`_.
-
-.. index::
-   pair: centered; directive
-
-.. _centered:
-
-centered
---------
-
-A centered, boldface text block::
-
-   .. centered:: ‹text block›
-
-.. centered:: This text is
-      *centered, boldface*
 
 .. index::
    include; selective
@@ -438,6 +425,9 @@ There is at least three ways of doing it:
    .. rst-class:: red
 
    This paragraph too is is red.
+
+   ``rst-class`` is the name that Sphinx use to replace the ReSt
+   :ref:`class <class_directive>` directive that is shadowed by Sphinx.
 
    .. admonition:: Big warning
       :class: red
@@ -633,11 +623,11 @@ Source code directives
 
 There are very powerful directives in Sphinx
 for documenting source code, each programming langage
-has a `specific domains <http://sphinx.pocoo.org/domains.html>`_.
+has a :sphinx:`specific domains <domains.html>` .
 
 The following markups are related to
-`documenting python source code
-<http://sphinx.pocoo.org/domains.html#the-python-domain>`_
+:sphinx:`documenting python source code
+<domains.html#the-python-domain>`.
 
 +--------------------------------------+-----------------------------------------------------+
 |``.. module:: name``                  |Marks the beginning of the description of a module   |
@@ -677,13 +667,16 @@ The following markups are related to
 autodoc
 -------
 
-There is  an autodoc (:sphinx:`Sphinx ref  <ext/autodoc.html>`)
+There is  an :sphinx:`autodoc  <ext/autodoc.html>`
 version of the :ref:`source code directives <source-code-directives>`
 which include documentation from docstrings:
 
-- ``automodule``, ``autoclass``, ``autoexception``.
-   They  accept an option ``:members:`` to include
-   a specific list of members, or all members when the ``:members:`` option is empty.
+-  ``automodule``, ``autoclass``, ``autoexception``.
+   Document a module, class or exception. They insert the docstring
+   of the object itself; if you add a ``:members:`` option followed by
+   a specific list of members, they will be included in the
+   documentation.
+   An empty list of members includes all members.
 
    ::
 
@@ -691,14 +684,18 @@ which include documentation from docstrings:
          :members: eat, slurp
 
 - ``autofunction``, ``autodata``, ``automethod``, ``autoattribute``
+   are used to document the respective type of object. ``autodata``
+   and ``autoattribute`` support an annotation option taht will show
+   not only the name but the representation of the object.
 
 .. index::
    info fields
+   docstring
 
 .. _info-fields:
 
-Info field lists
-----------------
+Using info field lists in Docstrings.
+-------------------------------------
 .. sidebar:: Code for example
 
    ::
@@ -716,10 +713,11 @@ Info field lists
           :raises: :exc:`ZeroDivisionError`
 
 Inside Python object description directives the
-`following fields
-<http://sphinx.pocoo.org/markup/desc.html#info-field-lists>`_
+:sphinx:`following fields <domains.html#info-field-lists>`
 are recognized:
-``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``, ``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``, ``return``, ``rtype``
+``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``,
+``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``,
+``return``, ``rtype``.
 
 ..  function:: divide( i, j)
     :noindex:
