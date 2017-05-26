@@ -476,7 +476,7 @@ Container
    pair: directive; class
 
 
-.. class_directive:
+.. _class_directive:
 
 Class
 -----
@@ -502,11 +502,9 @@ the regexp: ``[a-z](-?[a-z0-9]+)*``.
 
      <p class="myclass">....</p>
 
-   Sphinx *as far as 1.2pre* does not put any class on the ``<p>``
-   element. The use of a :ref:`container` is presently better suited
-   to  apply a css decoration.
-
-
+   Sphinx shadows the class directive, so the previous code will not
+   have the expected result. In Sphinx you have to replace ``class``
+   by ``rst-class``.
 
 
 .. index::
@@ -841,9 +839,11 @@ If necessary we can adapt the relative length of columns.
 Cross references
 ================
 .. index::
+   hyperlink
    hypertext; link
    hypertext; target
-   cross reference
+   reference; cross
+   reference; indirect
 
 Hypertext links
 ---------------
@@ -860,25 +860,57 @@ inline style.
 
       In-line versions are
       `Sphinx Home <http://sphinx.pocoo.org>`_
-       or `<http://sphinx.pocoo.org>`_
-      or (in Sphinx) http://sphinx.pocoo.org
+      or `<http://sphinx.pocoo.org>`_
 
 
 Citation style
 ^^^^^^^^^^^^^^
 
-A link to `Sphinx Home`_ in citation style.
-
-.. _Sphinx Home: http://sphinx.pocoo.org
+A link to `Sphinx Home`_ in citation style ( :restref:`ref
+<restructuredtext.html#hyperlink-targets>`).
 
 In printed documents the link will be listed similar as a citation, as opposed
 to HTML documents.
+
+.. _indirect reference:
+
+If for the same hyperlink target you want to use a you want to use a
+new link text you can use an *indirect reference*. With the following
+indirect references `pocoo`_, `Sphinx`_ and `The manual`_ refer to the
+same place.
+
+::
+
+   .. _pocoo:  http://sphinx.pocoo.org
+   .. _Sphinx: pocoo_
+   .. _The manual: pocoo_
+
+.. _Sphinx Home: http://sphinx.pocoo.org
+.. _pocoo:  http://sphinx.pocoo.org
+.. _Sphinx: pocoo_
+.. _The manual: pocoo_
+
+Even if it does not seem stated in the ReST Manual, it seems that the
+right part of an indirect target should not have embedded whitespaces.
+
+Note that if you only want to have multiple link text with the same
+target you can also use::
+
+  .. _Sphinx:
+  .. _The manual:
+  .. _pocoo:  http://sphinx.pocoo.org
+
+Multiple adjacent internal hyperlink targets
+will  all point to the same element.
 
 In-line style
 ^^^^^^^^^^^^^
 
 In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
-`<http://sphinx.pocoo.org>`_ or (in Sphinx) http://sphinx.pocoo.org
+`<http://sphinx.pocoo.org>`_.
+
+Any URI like http://sphinx.pocoo.org or an email adress like
+project@sphinx.oorg are also recognized.
 
 
 .. index::
@@ -921,16 +953,15 @@ it is specific to Sphinx and :ref:`you find it in the Sphinx section
 <sphinx_cross_references>`.
 
 Section titles, footnotes, and citations automatically are link targets.
-```Transition`_`` produces `Transition`_. But they don't work with the
+```Transition`_`` produces `Transition`_. But you cannot use them as
+target of a link in  the
 :ref:`Sphinx ref syntax <sphinx_ref>`.
 
-If you want to change the displayed text with the
-:ref:`ReST ref syntax <rest_ref>`
-you can use an indirect
-reference. You can then also reference the `Transition`_ section
+
+You can then also reference the `Transition`_ section
 as `how to draw an horizontal line`_ with
 the hyperlink: ```how to draw an horizontal line`_`` and the
-indirect target::
+`indirect reference`_::
 
   .. _how to draw an horizontal line: Transition_
 
