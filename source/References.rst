@@ -1,5 +1,11 @@
-References
-==========
+************
+ References
+************
+
+
+
+Sphinx and Rest References
+==========================
 
 -  This doc began as a fork of a 2011 version of `Cristoph Reller reST Memo
    <http://aert-notes-dev.readthedocs.org/en/latest/content/rest/>`_
@@ -45,8 +51,8 @@ References
    It supports Sphinx formatting.
 -  `Epydoc reST markup <http://epydoc.sourceforge.net/manual-othermarkup.html>`_
 
-How to write docstrings.
-------------------------
+How to write docstrings
+=======================
 
 -  Look at examples in `Official list of projects using Sphinx
    <http://sphinx.pocoo.org/examples.html>`_
@@ -72,8 +78,8 @@ How to write docstrings.
    <https://github.com/mongodb/mongo-python-driver>`_
    are also a good example
 
-Extending Sphinx.
------------------
+Extending Sphinx
+================
 
 -  `Sphinx Tutorial: Writing a simple extension
    <http://sphinx.pocoo.org/ext/tutorial.html>`_.
