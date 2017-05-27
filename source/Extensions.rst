@@ -100,8 +100,10 @@ Pythagoras :math:`a^2+b^2=c^2`
 
 .. math:: \sum_{n=0}^N x_n = y
 
-:sphinx:`mathjax <ext/math.html#module-sphinx.ext.mathjax>`
-is an other extension that render math through javascript.
+:sphinx:`Mathjax <ext/math.html#module-sphinx.ext.mathjax>`
+and its predecessor :sphinx:`jsmath
+<ext/math.html#module-sphinx.ext.jsmath>`
+render math through javascript.
 
 
 Multiline Math
