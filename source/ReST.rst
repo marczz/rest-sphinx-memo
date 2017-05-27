@@ -1,5 +1,3 @@
-:tocdepth: 3
-
 *******************************
 :mod:`reST` -- reStructuredText
 *******************************
@@ -12,8 +10,15 @@
 
 A simple markup language for plain text files.
 
+.. contents::
+   :local:
+   :depth: 1
+
+
 Structural elements
 ===================
+.. contents::
+   :local:
 
 .. index::
    single: emacs; mode
@@ -92,6 +97,9 @@ blank line is a transition, and looks like this:
 
 Inline markup
 =============
+.. contents::
+   :local:
+
 .. sidebar:: Special cases
 
    ================== =============
@@ -119,6 +127,10 @@ The roles are described in the :ref:`Sphinx chapter <sphinx_roles>`
 
 Lists
 =====
+
+.. contents::
+   :local:
+
 .. sidebar:: Code for examples
 
    ::
@@ -317,6 +329,9 @@ E.g. for listing command line options.
 Blocks
 ======
 
+.. contents::
+   :local:
+
 .. _literal_block:
 
 Literal Block
@@ -513,6 +528,9 @@ the regexp: ``[a-z](-?[a-z0-9]+)*``.
 
 Tables
 ======
+
+.. contents::
+   :local:
 
 .. index::
    pair: table; simple
@@ -792,15 +810,18 @@ cell may contain structured markup.
 LaTeX table rendering
 ---------------------
 
-Rendering with *:index:`tabulary`*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. index::
+   latex; tabulary
+
+Rendering with *tabulary*
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Sphinx use the latex package `tabulary
 <http://ctan.org/tex-archive/macros/latex/contrib/tabulary/tabulary.pdf>`_
 to render tables in laTeX.
 
-Tabulary is an extension of the *tabular* package which calculate le width
-of columns; it has four new formats specifications: ``LRCJ`` for Left
-(Right, Centered, Justified) column with automatic width.
+Tabulary is an extension of the *tabular* package which calculate the
+width of columns; it has four new formats specifications: ``LRCJ`` for
+Left (Right, Centered, Justified) column with automatic width.
 
 Sphinx uses by default ``L``, but you can override it with a directive
 like::
@@ -816,8 +837,11 @@ The two first :ref:`simple tables <simple_tables>` the :ref:`csv table
 rendered in `tabulary` with a proper calculation of table width by
 latex.
 
-Rendering with *:index:`tabular`*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. index::
+   latex; tabular
+
+Rendering with *tabular*
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tables that contain any kind of lists, such as object descriptions,
 blockquotes, or literal blocks are set by default with the `tabular
@@ -838,6 +862,10 @@ If necessary we can adapt the relative length of columns.
 
 Cross references
 ================
+
+.. contents::
+   :local:
+
 .. index::
    hyperlink
    hypertext; link
@@ -1071,6 +1099,9 @@ or even rel09_.
 
 Rest Directives
 ===============
+
+.. contents::
+   :local:
 
 :restref:`Directives <directives.html>`
 are a general-purpose extension mechanism.  The general syntax is
