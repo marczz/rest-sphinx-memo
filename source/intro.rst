@@ -29,7 +29,7 @@ Moreover Sphinx seems first to be an extension of Rest, but it is not
 always true and there are some difference of aims, and
 incompatibilities, between Sphinx and Rest constructs.
 
-This is why I did this Memo re I give the constructs that I use the
-most often, and give cross-references to the manuals for details.
+This Memo give the constructs that I use the most often, and give
+cross-references to the manuals for details.
 
 .. _by-nc-sa: http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
