@@ -1,15 +1,19 @@
-:tocdepth: 3
-
 ***********************
 :mod:`Sphinx` -- Sphinx
 ***********************
+
 .. module:: Sphinx
    :synopsis:  Sphinx Memo.
 .. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
 
 .. highlight:: rest
 .. index::
-   role; sphinx
+   pair: role; sphinx
+   pair: sphinx; in-line markup
+
+.. contents::
+   :local:
+   :depth: 1
 
 .. _sphinx_inline_markup:
 
@@ -19,7 +23,7 @@ Sphinx inline markup
 .. contents::
    :local:
 
-:sphinx:`sphinx ref: Inline markup <markup/inline.html>`
+:sphinx:`sphinx reference: Inline markup <markup/inline.html>`
 
 .. _sphinx_roles:
 
@@ -49,6 +53,9 @@ There are four types of roles:
 .. _sphinx_ref:
 .. _sphinx_cross_references:
 
+.. index::
+   pair: sphinx; cross-reference
+
 Location cross references
 -------------------------
 :sphinx:`sphinx ref:  Cross-referencing arbitrary locations
@@ -75,7 +82,7 @@ with ``.. _internal:``, so we have:
 ================================== ==============================
 
 .. index::
-   pair: doc; reference
+   pair: document; cross-reference
 
 Cross-referencing documents
 ---------------------------
@@ -196,7 +203,7 @@ You may supply an explicit title and reference target: ``:role:`title
 <target>```.
 
 .. index::
-   directive; sphinx
+   pair: directive; sphinx
 
 Sphinx directives
 =================
@@ -215,7 +222,7 @@ are not available in the docutils builders.
 
 .. index::
    pair: toctree; directive
-   table of contents
+   see toc; table of contents
    see toc; toctree
 
 .. _toctree:
