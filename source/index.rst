@@ -13,6 +13,7 @@ Contents:
 .. toctree::
    :maxdepth: 3
 
+   intro
    ReST
    Sphinx
    Extensions
