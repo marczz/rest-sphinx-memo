@@ -544,8 +544,9 @@ The code blocks are highlighted by sphinx, there is a default language
 of ``Python`` that can be changed in the configuration, by setting the
 configuration option ``highlight_language``.
 
-The default **Highlighting language** used by  `Pygment <http://pygments.org>`_ in
-:ref:`Literal Blocks <literal_block>`  is set for following snippets of code examples by::
+The default **Highlighting language** used by `Pygment
+<http://pygments.org>`_ in :ref:`Literal Blocks <literal_block>` is
+set for following snippets of code examples by::
 
    .. highlight:: ‹language›
       :linenothreshold: ‹number›
@@ -555,15 +556,16 @@ The option language may be any
 supported by a `Pygment lexer
 <http://pygments.org/docs/lexers/>`_.
 
-The additional ``linenothreshold`` option switches on line numbering for blocks
-of size beyond ‹number› lines.
+The additional ``linenothreshold`` option switches on line numbering
+for blocks of size beyond ‹number› lines.
 
 .. _code_block:
 
 .. index::
    pair: code-block; directive
 
-When using Sphinx you can specify the highlighting in a single literal block::
+When using Sphinx you can specify the highlighting in a single literal
+block::
 
    .. code-block:: ‹language›
       :linenos:
@@ -571,9 +573,9 @@ When using Sphinx you can specify the highlighting in a single literal block::
       ‹body›
 
 The ``linenos`` option switches on line numbering.
-
-Details of options are in
-`Sphinx Manual: code examples <http://sphinx.pocoo.org/markup/code.html>`_.
+You can also use some options that are described for the
+:ref:`literalinclude directive`, namely ``linenos``, ``lineno-start``,
+``caption``, ``name``, ``dedent``.
 
 When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 
@@ -581,35 +583,62 @@ When using base ReST parser use instead :ref:`code keyword <rst-code>`.
    pair: literalinclude; directive
    pair: source code; include
 
+.. _literalinclude directive:
 .. _source_code_include:
 
 Source code include
 -------------------
-+---------------------------------------------+---------------------------------------------------------+
-|To include the source file ``example.py``    |.. literalinclude:: code/example.py                      |
-| as a literal block use::                    |   :linenos:                                             |
-|                                             |                                                         |
-|   .. literalinclude:: code/example.py       |The name of the file is relative to your source          |
-|      :linenos:                              |directory.                                               |
-|                                             |                                                         |
-+---------------------------------------------+---------------------------------------------------------+
-|More Options::                               |The options ``language`` and ``linenos``                 |
-|                                             |set the highlighting to ``‹language›``                   |
-|   .. literalinclude:: ‹filename›            |and enables line numbers respectively.                   |
-|      :language: ‹language›                  |                                                         |
-|      :linenos:                              |You can select lines by the ``lines`` option or by       |
-|      :lines: 1,3,5-10,20-                   |``start-after: <string>`` and/or ``end-before: <string>``|
-|                                             |*(<string>s are not quoted)*                             |
-+---------------------------------------------+---------------------------------------------------------+
-|::                                           |If it is a Python module, you can select a class,        |
-|                                             | function or method to include using the ``pyobject``    |
-|   .. literalinclude:: code/example.py       | option                                                  |
-|      :pyobject: MyClass.some_method         |                                                         |
-|                                             |                                                         |
-+---------------------------------------------+---------------------------------------------------------+
 
-More options and exemples in :sphinx:`Sphinx ref. <markup/code.html#includes>`. For including a ReST source
-file use the :ref:`rest directive include <file_include>`.
+Source code is included in Sphinx with the :sphinx:`directive
+literalinclude <markup/code.html#directive-literalinclude>`.
+
+To include the source file ``example.py`` as a literal block use::
+
+   .. literalinclude:: code/example.py
+      :linenos:
+
+.. literalinclude:: code/example.py
+   :linenos:
+
+There are more options::
+
+  .. literalinclude:: code/example.py
+     :caption: Example of code
+     :name: example.py
+     :language: python
+     :dedent: 4
+     :linenos:
+     :lines: 1,3,5-10,20-
+     :emphasize-line: 4,5
+
+``caption`` is the displayed title before the block, ``name`` is the
+:ref:`reST name option <name-option>` used as an
+:ref:`internal reference <internal>` target.
+
+``dedent`` strip left whitespaces, ``linenos`` add a line numbering
+alternatively ``lineno-start`` begin the numbering at the given number.
+
+The options ``language`` and ``linenos`` set the highlighting to
+``‹language›`` and enables line numbers respectively.
+
+You can select lines by the ``lines`` option or by
+``start-after: <string>`` and/or ``end-before: <string>``
+*(<string>s are not quoted)*.
+
+Whe emphasize the fourth and fifth *selected* line, which in the above
+example are the lines 5 and 10 of the source.
+
+
+
+If it is a Python module, instead of selecting by lines you can select
+a a class function or method to include by using the option
+``pyobject``::
+
+  .. literalinclude:: code/example.py
+     :pyobject: MyClass.some_method
+
+For including a ReST source file use the :ref:`rest directive include
+<file_include>`.
 
 .. index::
    pair: directive; source code
