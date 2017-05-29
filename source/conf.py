@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Sphinx/Rest Memo documentation build configuration file
+# Rest and Sphinx Memo documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -89,7 +89,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Sphinx/Rest Memo'
+project = 'Rest and Sphinx Memo'
 author = 'Marc Zonzon'
 copyright = '2011-2017, ' + author
 
@@ -126,7 +126,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = []
+exclude_patterns = ['include/**']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -294,7 +294,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'SphinxRestMemodoc'
+htmlhelp_basename = 'RestSphinxMemodoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -318,7 +318,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'SphinxRestMemo.tex', 'Sphinx/Rest Memo',
+    (master_doc, 'RestSphinxMemo.tex', project,
     author, 'manual'),
 ]
 
@@ -360,7 +360,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'sphinxrestmemo', 'Sphinx ReST Memo',
+    (master_doc, 'rest-sphinx-memo', 'ReST Sphinx Memo',
      [author], 1)
 ]
 
@@ -375,8 +375,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'SphinRestMemo', 'Sphinx/reST Memo',
-   author, 'SphinRestMemo', 'Sphinx/reST Memo.',
+  (master_doc, 'RestSphinxMemo', project,
+   author, 'RestSphinxMemo', project,
    'Miscellaneous'),
 ]
 
