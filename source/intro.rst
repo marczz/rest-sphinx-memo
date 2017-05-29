@@ -10,14 +10,14 @@ Introduction
 
       ..
 
-      | `Sphinx/Rest Memo by Marc Zonzon <http://rest-sphinx-memo.readthedocs.io/en/latest/Sphinx.html>`_
+      | `Rest and Sphinx Memo by Marc Zonzon <http://rest-sphinx-memo.readthedocs.io/en/latest/Sphinx.html>`_
       | is licensed under a `Creative Commons Attribution-NonCommercial 4.0 International License <http://creativecommons.org/licenses/by-nc/4.0/>`__.
-      | Source `in GitHub <https://github.com/marczz/rest-sphinx-memo.Git>`_
+      | Source `in GitHub <https://github.com/marczz/rest-sphinx-memo>`_
 
 This Memo is a fork of a previous version of `Cristoph Reller reST Memo
 <http://aert-notes-dev.readthedocs.org/en/latest/content/rest/>`_
-it has been modified and extended, and Cristoph Reller also has also
-modified his memo.
+it has been modified and largely extended on the Sphinx part,
+and Cristoph Reller also has also modified his memo.
 
 Sphinx itself is very well documented, but is very large and cover
 many aspects, all of them  not for daily use. And the Documentation of
@@ -31,5 +31,3 @@ incompatibilities, between Sphinx and Rest constructs.
 
 This Memo give the constructs that I use the most often, and give
 cross-references to the manuals for details.
-
-.. _by-nc-sa: http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US
