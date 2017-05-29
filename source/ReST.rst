@@ -1,5 +1,5 @@
 *******************************
-:mod:`reST` -- reStructuredText
+:mod:`ReST` -- reStructuredText
 *******************************
 
 .. module:: reST
@@ -946,6 +946,8 @@ project@sphinx.oorg are also recognized.
    ref
    reference; target
    reference; label
+   pair: internal; reference
+   pair: option; name
 
 .. _internal:
 .. _ref:
@@ -1384,15 +1386,15 @@ The options: ``start-line``, ``end-line``, ``start-after``, ``end-before``
 as referenced in :restref:`reST Directives
 <directives.html#including-an-external-document-fragment>`.
 
-For including source code in Sphinx rather use :ref:`Source code include
-<source_code_include>` like:
-
 If you use ``include`` with Sphinx, you should exclude the included
-files from the source file lookup, by setting in ``conf.py`` a
-glob pattern in ``exclude_patterns``, like::
+files from the source file lookup, by setting in ``conf.py`` the value
+`exclude_patterns <config.html#confval-exclude_patterns>` to a glob
+pattern in like::
 
-   exclude_patterns = ["include/*"]
+   exclude_patterns = ["include/**"]
 
+For including source code in Sphinx rather use the Sphinx directive
+:ref:`literalinclude <source_code_include>`.
 
 .. index::
    sidebar
@@ -1402,10 +1404,9 @@ glob pattern in ``exclude_patterns``, like::
 
 sidebar, and topic
 ------------------
-A :restref:`sidebar
-<directives.html#sidebar>`
-or a :restref:`topic <directives.html#topic>`  are treated like documents on
-their own::
+
+A :restref:`sidebar <directives.html#sidebar>` or a :restref:`topic
+<directives.html#topic>` are treated like documents on their own::
 
    .. sidebar:: ‹Title›
 
@@ -1466,6 +1467,12 @@ followed by normal text is a comment.  Mark the indentation in the example:
    Not comment anymore
 
 .. _common_options:
+
+.. index:
+   pair: option; name
+   pair: option; class
+
+.. _name-option:
 
 Common options
 --------------
