@@ -833,4 +833,34 @@ before Sphinx parse the source code. You need to
 Look :sphinx:`here for a larger example
 <http://www.sphinx-doc.org/en/latest/ext/example_google.html>`.
 
+How napoleon transform my docstrings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We may be curious to know what exactly napoleon generates. It can
+allow us to fix error in the output by changing our docstring or
+adding Sphinx fields.
+
+We can call napoleon from python to learn what it generates:
+
+.. code-block:: pycon
+
+   >>> docstring="""
+   ... Division of two reals.
+   ...
+   ..."""
+   >>> from sphinx.ext.napoleon import Config
+   >>> from sphinx.ext.napoleon.docstring import GoogleDocstring
+   >>> config = Config(napoleon_use_param=True, napoleon_use_rtype=True)
+   >>> print(GoogleDocstring(docstring), config)
+
+And we have the decorated result:
+
+.. literalinclude:: code/napoleon_output.rst
+   :language: rest
+
+
+If you want to experiment with output of Napoleon you can look at the
+parameters of ``GoogleDocstring`` in the `source code
+<https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/napoleon/docstring.py>`_
+
 .. include:: include/commonref.rst
