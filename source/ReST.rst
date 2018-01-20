@@ -894,8 +894,10 @@ Cross references
 
 Hypertext links
 ---------------
-There exist two version for doing this.  Either in a citation style or in an
-inline style.
+
+There exist two way to write hyperlink references
+(:restref:`ref<restructuredtext.html#hyperlink-references>`),
+either in a citation style or in an inline style.
 
 .. sidebar:: Code for examples
 
@@ -916,8 +918,8 @@ Citation style
 A link to `Sphinx Home`_ in citation style ( :restref:`ref
 <restructuredtext.html#hyperlink-targets>`).
 
-In printed documents the link will be listed similar as a citation, as opposed
-to HTML documents.
+In printed documents the link will be listed similar as a citation, as
+opposed to HTML documents.
 
 .. _indirect reference:
 
@@ -956,8 +958,12 @@ In-line style
 In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
 `<http://sphinx.pocoo.org>`_.
 
+.. index::
+   hyperlink; standalone
+
 Any URI like http://sphinx.pocoo.org or an email adress like
-project@sphinx.oorg are also recognized.
+project@sphinx.org are also recognized (:restref:`ref
+<restructuredtext.html#standalone-hyperlink>`).
 
 
 .. index::
@@ -982,6 +988,14 @@ plus a blank line.
 
 A ``:name:`` option in any block is also an internal reference target.
 
+You can also use :restref:`inline internal targets
+<restructuredtext.html#inline-internal-targets>`
+
+::
+
+   which are a _`span of running text` in a paragraph.
+
+
 There are two ways of referencing a label.
 
 .. _rest_ref:
@@ -992,8 +1006,8 @@ is::
 
     `label`_
 
-The *preferred* `Sphinx way
-<http://sphinx.pocoo.org/latest/markup/inline.html#cross-referencing-syntax>`_,
+The *preferred*
+:sphinx:`Sphinx way <markup/inline.html#cross-referencing-syntax>`
 allows linking across files, it  uses::
 
    :ref:`displayed text <label>`
@@ -1206,8 +1220,7 @@ image and figure
 
 **Images** (:restref:`ref <directives.html#images>`)
 are simple pictures, see also
-`images in the Sphinx documentation
-<http://sphinx.pocoo.org/rest.html#images>`_
+:sphinx:`images in the Sphinx documentation <rest.html#images>`
 
 .. for ulterior reference
 
@@ -1517,8 +1530,8 @@ The following topic render in html as::
          A final word.
 
 
-The ``:name:`` act as a reference target and allow to refer to the following
-block as `say-no-more`_
+The ``:name:`` act as a reference target. Here we can refer to the
+following block as `say-no-more`_.
 
 .. topic:: the end
    :class: exceptional
