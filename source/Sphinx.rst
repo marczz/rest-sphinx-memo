@@ -433,9 +433,6 @@ There is at least three ways of doing it:
 
    This paragraph too is is red.
 
-   ``rst-class`` is the name that Sphinx use to replace the ReSt
-   :ref:`class <class_directive>` directive that is shadowed by Sphinx.
-
    .. admonition:: Big warning
       :class: red
 
@@ -493,6 +490,9 @@ but directive fail with **Sphinx**. You have to replace it with
 
    This paragraph too is is red.
 
+
+Sphinx use ``rst-class`` to replace the ReSt
+:ref:`class <class_directive>` directive that is shadowed by Sphinx.
 This is *only* stated in a small `footnote of Sphinx reSt
 Primer <http://sphinx-doc.org/rest.html#id3>`_.
 
@@ -669,8 +669,8 @@ The following markups are related to
 |``.. module:: name``                  |Marks the beginning of the description of a module   |
 |                                      |                                                     |
 +--------------------------------------+-----------------------------------------------------+
-|``.. currentmodule:: name``           |Tells Sphinx that the classes, functions             |
-|                                      |etc. documented from here are in the given module    |
+|``.. currentmodule:: name``           |The classes, functions etc. documented from here     |
+|                                      |are in the given module                              |
 |                                      |                                                     |
 +--------------------------------------+-----------------------------------------------------+
 | ``.. exception:: name[(signature)]`` |  Describes an exception class.                      |
@@ -821,7 +821,7 @@ The extension :sphinx:`napoleon <ext/napoleon.html>` preprocess NumPy
 and Google style docstrings and converts them to reStructuredText
 before Sphinx parse the source code. You need to
 `configure it in your conf.py file
-<http://www.sphinx-doc.org/en/latest/ext/napoleon.html#configuration>`
+<http://www.sphinx-doc.org/en/latest/ext/napoleon.html#configuration>`_.
 
 .. literalinclude:: code/gstyle_docstring.py
    :language: python
