@@ -486,6 +486,6 @@ epub_exclude_files = ['search.html']
 #intersphinx_mapping = {'http://docs.python.org/': None}
 intersphinx_mapping = {'python': ('http://docs.python.org/3', None)}
 extlinks = {
-    'sphinx': ('http://sphinx-doc.org/en/latest/%s', 'Sphinx: '),
+    'sphinx': ('http://www.sphinx-doc.org/en/latest/%s', 'Sphinx: '),
     'restref': ('http://docutils.sourceforge.net/docs/ref/rst/%s', 'ReST Référence: ')
     }
