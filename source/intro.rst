@@ -10,7 +10,7 @@ Introduction
 
       ..
 
-      | `Rest and Sphinx Memo by Marc Zonzon <http://rest-sphinx-memo.readthedocs.io/en/latest/Sphinx.html>`_
+      | `Rest and Sphinx Memo by Marc Zonzon <http://rest-sphinx-memo.readthedocs.io/en/latest/>`_
       | is licensed under a `Creative Commons Attribution-NonCommercial 4.0 International License <http://creativecommons.org/licenses/by-nc/4.0/>`__.
       | Source `in GitHub <https://github.com/marczz/rest-sphinx-memo>`_
 
