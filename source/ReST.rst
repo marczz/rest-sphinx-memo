@@ -297,10 +297,16 @@ E.g. for listing command line options.
 
    ::
 
-      Block one::
+      Block one
+
+      ::
 
          **No** interpretation of
          |special| characters.
+
+      Block in condensed syntax::
+
+         -  Im not a list.
 
       Another block! ::
 
@@ -311,12 +317,12 @@ E.g. for listing command line options.
    .. warning::
 
       *Sphinx* use literal blocks to :ref:`highlight source code
-      <code_highlighting>`, so the previous ``**No**`` is still written
+      <code_highlighting>`, so ``**No**`` is still written
       with a  bold font by *Sphinx* while being not interpreted by
       *rst2html*.
 
-      *Sphinx* users better use a :ref:`code block <code_block>` in
-      ``text`` language, to disable *Pygment* decorations.
+      to disable *Pygment* decorations in *Sphinx* use a
+      :ref:`code block <code_block>` in ``text`` language.
 
    ::
 
@@ -339,16 +345,29 @@ Literal Block
 
 :restref:`rest literal blocks <restructuredtext.html#literal-blocks>`
 
-A block which is not interpreted at all is preceded by a ``::`` and a blank
-line. The block must be indented.  If no white space is preceding the
-``::`` then it is displayed as ":".
+A block which is not interpreted at all is preceded by a  paragraph
+consisting of ``::``   and a blank line. The block must be indented.
 
-To use a specific formatting, you can use the :ref:`code directive <rst-code>`
+The double ``::`` is removed from the output.
 
-Block one::
+To use a specific formatting, you can use the
+:ref:`code directive <rst-code>`
+
+Block one
+
+::
 
    **No** interpretation of
    |special| characters.
+
+You can also put the ``::`` at the end of the paragraph preceding the
+block. When text immediately precedes the ``::`` the two colons are
+displayed as ":", if there is a space before the colons they are
+removed from the output.
+
+Block in condensed syntax::
+
+  -  Im not a list.
 
 Another block! ::
 
