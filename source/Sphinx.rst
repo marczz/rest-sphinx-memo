@@ -30,25 +30,14 @@ Sphinx inline markup
 Sphinx inline markup is down through interpreted text roles;
 they are written ``:rolename:`content`.``.
 
-There are four types of roles:
+There are three types of roles:
 
--  The :restref:`ReStructuredText Interpreted Text Roles <roles.html>`
-   they are valid both for reST and Sphinx processing.
-   They are: ``:emphasis:``, ``:literal:``, ``:code:``, ``:math:``,
-   ``:pep-reference:``, ``:rfc-reference:``, ``:strong:``, ``:subscript:``,
-   ``:superscript:``, ``:title-reference:``,  ``:raw:``. They are
-   seldom used because we prefer the shortcuts provided by
-   :ref:`reST inline markup <rest_inline_markup>`.
+- The :ref:`ReStructuredText Text Roles <rest_roles>`.
 -  The Sphinx roles that are described in the section
    :ref:`sphinx_role` and the :ref:`Sphinx cross references
    <sphinx_cross_references>`
 -  The roles added by :sphinx:`Sphinx domains <domains.html>` like
    the :ref:`Python roles <python_roles>` referenced below.
--  The :restref:`Custom Interpreted Text Roles <directives.html#role>`
-   which is a reST directive ``role``, thet tailor the renderer to
-   apply some special formatting. We use it :ref:`below <css_class>`
-   to use a special css class for some span of text.
-
 
 .. _sphinx_ref:
 .. _sphinx_cross_references:
