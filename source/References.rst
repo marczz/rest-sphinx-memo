@@ -13,7 +13,7 @@ Sphinx and Rest References
    <http://aert-notes-dev.readthedocs.io/en/latest/>`_. I
    adapted it according to my needs, and they have largely diverged
    now, but it still inherits from some content and layout.
--  :sphinx:`Sphinx documentation <http://contents.html>`
+-  :sphinx:`Sphinx documentation <contents.html>`
 -  :sphinx:`Sphinx reStructuredText Primer <rest.html>`
 -  `Documenting Your Project Using
    Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
