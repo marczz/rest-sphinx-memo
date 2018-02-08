@@ -23,17 +23,22 @@ Structural elements
 .. index::
    single: emacs; mode
 
+Emacs ReST mode
+---------------
+
+=======================  ==========================================
+``C-c C-=``              Adjust/rotate  or promote/demote the decorations
+``C-- C-c C-=``          reverse Adjust
+``C-c C-a C-d``          Display the title decoration hierarchy.
+``C-- C-c C-r <tab>``    shift region left
+``C-c C-r <tab>``        shift region right
+``C-c C-t C-t``          display a table of content to navigate buffer
+=======================  ==========================================
+
 Sectioning
 ----------
-.. sidebar:: Emacs
 
-   =======================  ==========================================
-   ``C-c C-=``              Adjust/rotate  or promote/demote the decorations
-   ``C-- C-c C-=``          reverse Adjust
-   ``C-c C-a C-d``          Display the title decoration hierarchy.
-   ``C-- C-c C-r <tab>``    shift region left
-   ``C-c C-r <tab>``        shift region right
-   =======================  ==========================================
+
 
 .. index::
    !title
@@ -41,29 +46,26 @@ Sectioning
 
 Titles are under- (and over-)lined (decorated) by ``=*-^"~`:.'#`` as below.  The
 exact order of the decoration is not important, the one below is the
-`Python convention <http://docs.python.org/devguide/documenting.html#sections>`_. ::
+`Python convention <http://docs.python.org/devguide/documenting.html#sections>`_.
 
-  ####
-  Part
-  ####
++------------------------------+------------------------------+
+|  ::                          |  ::                          |
+|                              |                              |
+|     ####                     |                              |
+|     Part                     |     Subsection               |
+|     ####                     |     ----------               |
+|                              |                              |
+|     *********                |                              |
+|     Chapter                  |     Subsubsection            |
+|     *********                |     ^^^^^^^^^^^^^            |
+|                              |                              |
+|     Section                  |     Paragraph                |
+|     =======                  |     """""""""                |
+|                              |                              |
++------------------------------+------------------------------+
 
-  *********
-   Chapter
-  *********
 
-  Section
-  =======
-
-  Subsection
-  ----------
-
-  Subsubsection
-  ^^^^^^^^^^^^^
-
-  Paragraph
-  """""""""
-
-  Normal paragraphs are separated by a blank line.
+Normal paragraphs are separated by a blank line.
 
 .. _Transition:
 
@@ -97,30 +99,38 @@ blank line is a transition, and looks like this:
 
 Inline markup
 =============
-.. contents::
-   :local:
 
-.. sidebar:: Special cases
-
-   ================== =============
-   ``Asterisk \*``    Asterisk \*
-   ``back-quote \```  back-quote \`
-   ``**mark**\ up.``  **mark**\ up.
-   ================== =============
-
-========================== ======================
-``*emphasize*``            *emphasize*
-``**emphasize strongly**`` **emphasize strongly**
-````code````               ``code``
-```don't know```           `don't know`
-========================== ======================
+==========================  ======================
+``*emphasize*``             *emphasize*
+``**emphasize strongly**``  **emphasize strongly**
+````code````                ``code``
+```don't know```            `don't know`
+``Asterisk \*``             Asterisk \*
+``back-quote \```           back-quote \`
+``**mark**\ up.``           **mark**\ up.
+==========================  ======================
 
 See :restref:`inline markup reference
 <restructuredtext.html#inline-markup>`.
 
-These inline markups are also provided by
-:restref:`ReStructuredText Interpreted Text Roles <roles.html>`.
-The roles are described in the :ref:`Sphinx chapter <sphinx_roles>`
+..  _rest_roles:
+
+ReStructuredText Text Roles.
+----------------------------
+
+The :restref:`ReStructuredText Interpreted Text Roles <roles.html>`
+are valid both for reST and Sphinx processing.  They are:
+``:emphasis:``, ``:strong:``, ``:literal:``, ``:code:``, ``:math:``,
+``:pep-reference:``, ``:rfc-reference:``, ``:subscript:``,
+``:superscript:``, ``:title-reference:``, ``:raw:``. The first three
+are seldom used because we prefer the shortcuts provided by previous
+:ref:`reST inline markup <rest_inline_markup>`.
+
+The :restref:`Custom Interpreted Text Roles <directives.html#role>`
+which is a reST directive ``role``, thet tailor the renderer to
+apply some special formatting. We use it
+:ref:`in Sphinx section <css_class>`
+to use a special css class for some span of text.
 
 .. index::
    !list
@@ -131,46 +141,6 @@ Lists
 .. contents::
    :local:
 
-.. sidebar:: Code for examples
-
-   ::
-
-      - First item with some lengthy
-        text wrapping hopefully
-        across several lines.
-      - Second item
-
-   ::
-
-    .. hlist::
-       :columns: 3
-
-       * list of
-       * short items
-       * that should be
-       * displayed
-       * horizontally
-
-   ::
-
-      2. We start with point number 2
-      #. Automatically numbered item.
-
-      a) Point a
-      b) Point b
-      #) Automatic point c.
-
-   ::
-
-      what
-        Definition of "what". We add a few
-        words to show the line wrapping.
-      how
-        Definition of "how".
-      why : cause
-        We define "why" we do it.
-
-        In many paragraphs
 
 .. index::
    single: list; bullet
@@ -180,10 +150,33 @@ Lists
 Bullet list
 -----------
 
+::
+
+   - First item with some lengthy
+     text wrapping hopefully
+     across several lines.
+
+     * We can have subitems
+     * separated by a blank line
+     * and indented.
+
+   - Second item
+
+
 - First item with some lengthy
   text wrapping hopefully
   across several lines.
+
+  * We can have subitems
+  * separated by a blank line
+  * and indented.
+
 - Second item
+
+
+We can begin each item with ``*``, ``+``, ``-``, ``•``, ``‣``, or
+``⁃`` followed by at least one space, you should keep the indentation
+of the text of the first line in subsequents lines.
 
 See :restref:`bullet list reference<restructuredtext.html#bullet-lists>`
 
@@ -193,6 +186,8 @@ See :restref:`bullet list reference<restructuredtext.html#bullet-lists>`
 
 Horizontal lists
 ----------------
+  ::
+
     .. hlist::
        :columns: 3
 
@@ -202,18 +197,55 @@ Horizontal lists
        * displayed
        * horizontally
 
+.. hlist::
+   :columns: 3
+
+   * list of
+   * short items
+   * that should be
+   * displayed
+   * horizontally
+
+*hlist is a sphinx extension, not a ReST directive*
+
 .. index::
    single: list; enumerated
    enumerated list
 
 Enumerated list
 ---------------
+::
+
+   2. We start with point number 2
+   #. Automatically numbered item.
+
+   a) Point a
+
+      i) first subitem
+      ii) second subitem
+
+   b) Point b
+   #) Automatic point c.
+
 2. We start with point number 2
 #. Automatically numbered item.
 
 a) Point a
+
+   i) first subitem
+   ii) second subitem
+
 b) Point b
 #) Automatic point c.
+
+We can use enumerate with numerals, alphabetic lower case or upper
+case, roman numerals lower case or upper case.
+
+We can write enumeration followed by a period, a right parenthese, or
+surrounded by a parentheses; but these punctuation are not kept in the
+rendering.
+
+Any break of sequence in the source, produces a new list.
 
 See :restref:`enumerated list reference
 <restructuredtext.html#enumerated-lists>`.
@@ -226,16 +258,33 @@ See :restref:`enumerated list reference
 
 Definition list
 ---------------
+::
+
+   what
+     Definition of "what". We add a few
+     words to show the line wrapping.
+
+   how
+     Definition of "how".
+
+   why : cause
+     We define "why" we do it.
+
+     In many paragraphs
 
 what
   Definition of "what". We add a few
   words to show the line wrapping.
+
 how
   Definition of "how".
+
 why : cause
   We define "why" we do it.
 
   In many paragraphs.
+
+*The classifier ": cause" is a ReST construct not known by Sphinx.*
 
 See :restref:`definition list reference
 <restructuredtext.html#definition-lists>`.
