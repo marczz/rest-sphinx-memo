@@ -243,7 +243,12 @@ case, roman numerals lower case or upper case.
 
 We can write enumeration followed by a period, a right parenthese, or
 surrounded by a parentheses; but these punctuation are not kept in the
-rendering.
+rendering; *rst2html* render ``i.``, ``i)`` or ``(i)`` as "i." and
+Sphinx render them as "a.".
+
+A list must be separated from previous paragraph by a blank line, in
+the same way sublists must be separated from items of upper list by a
+blank line.
 
 Any break of sequence in the source, produces a new list.
 
@@ -267,7 +272,7 @@ Definition list
    how
      Definition of "how".
 
-   why : cause
+   why :
      We define "why" we do it.
 
      In many paragraphs
@@ -284,7 +289,21 @@ why : cause
 
   In many paragraphs.
 
-*The classifier ": cause" is a ReST construct not known by Sphinx.*
+With ReST but not Sphinx you can use a classifier after the main term
+like
+::
+
+   why : cause
+     We define "why" we do it.
+
+We may have to escape a markup character to clear ambiguity between
+a definition list and an other construct like:
+
+::
+
+   \(w)
+      This is a definition list, not an enumeration.
+
 
 See :restref:`definition list reference
 <restructuredtext.html#definition-lists>`.
@@ -297,30 +316,22 @@ See :restref:`definition list reference
 
 Field list
 ----------
-.. sidebar:: Code for examples
+.. list-table::
+   :widths: 30, 40
 
-   ::
+   *
+      - .. code-block:: ReST
 
-      :Name: Isaac Newton
-      :Long: Here we insert more
-         text to show the effect of
-         many lines.
-      :Remark:
-        Start on the next line.
-
-   ::
-
-      -v           An option
-      -o file      Same with value
-      --delta      A long option
-      --delta=len  Same with value
-
-:Name: Isaac Newton
-:Long: Here we insert more
-   text to show the effect of
-   many lines.
-:Remark:
-  The source starts on the next line.
+             :Name: Isaac Newton
+             :Long: Here we insert more text
+                in many lines.
+             :Remark:
+               Starts on the next line.
+      - :Name: Isaac Newton
+        :Long: Here we insert more text
+           in many lines.
+        :Remark:
+          Starts on the next line.
 
 See :restref:`field list reference
 <restructuredtext.html#field-lists>`.
@@ -332,54 +343,34 @@ Options list
 ------------
 E.g. for listing command line options.
 
--v           An option
--o file      Same with value
---delta      A long option
---delta=len  Same with value
+.. list-table::
+   :widths: 30, 40
+
+   *
+      - .. code-block:: ReST
+
+           -v         An option
+           -o file    Same with value
+           --delta    A long option
+           --delta=len  Same with value
+           --option-name-is-long
+              description on the next line.
+
+      - -v         An option
+        -o file    Same with value
+        --delta    A long option
+        --delta=len  Same with value
+        --option-name-is-long
+           description on the next line.
+
+
+It is nice to align option descriptions, but not mandatory, but at
+least two spaces must separate an option from the description.
 
 .. index::
    !block
    single: block; literal
    literal block
-
-.. sidebar:: Code for example
-
-   ::
-
-      Block one
-
-      ::
-
-         **No** interpretation of
-         |special| characters.
-
-      Block in condensed syntax::
-
-         -  Im not a list.
-
-      Another block! ::
-
-         In the text body,
-            indentation is
-         preserved
-
-   .. warning::
-
-      *Sphinx* use literal blocks to :ref:`highlight source code
-      <code_highlighting>`, so ``**No**`` is still written
-      with a  bold font by *Sphinx* while being not interpreted by
-      *rst2html*.
-
-      to disable *Pygment* decorations in *Sphinx* use a
-      :ref:`code block <code_block>` in ``text`` language.
-
-   ::
-
-      | Line block
-      | New line and we are still on
-        the same line
-      |   Yet a new line
-
 
 Blocks
 ======
@@ -402,28 +393,72 @@ The double ``::`` is removed from the output.
 To use a specific formatting, you can use the
 :ref:`code directive <rst-code>`
 
-Block one
+.. list-table::
+   :widths: 35, 35
 
-::
+   *
+      - .. code-block:: ReST
 
-   **No** interpretation of
-   |special| characters.
+
+           Block one
+
+           ::
+
+              **No** interpretation of
+              |special| characters.
+
+
+      - Block one
+
+        ::
+
+           **No** interpretation of
+           |special| characters.
 
 You can also put the ``::`` at the end of the paragraph preceding the
 block. When text immediately precedes the ``::`` the two colons are
 displayed as ":", if there is a space before the colons they are
 removed from the output.
 
-Block in condensed syntax::
 
-  -  Im not a list.
 
-Another block! ::
+.. list-table::
+   :widths: 35, 35
 
-   In the text body,
-      indentation is
-   preserved
+   *
+      - .. code-block:: ReST
 
+           Block in condensed syntax::
+
+             -  Im not a list.
+
+      - Block in condensed syntax::
+
+          -  Im not a list.
+
+   *   - .. code-block:: ReST
+
+            Another block! ::
+
+               In the text body,
+                  indentation is
+               preserved
+
+       - Another block! ::
+
+            In the text body,
+               indentation is
+            preserved
+
+.. warning::
+
+   *Sphinx* use literal blocks to :ref:`highlight source code
+   <code_highlighting>`, so ``**No**`` is still written
+   with a  bold font by *Sphinx* while being not interpreted by
+   *rst2html*.
+
+   To disable *Pygment* decorations in *Sphinx* use a
+   :ref:`code block <code_block>` in ``text`` language.
 
 .. index::
    single: block; line
@@ -435,10 +470,22 @@ Line blocks
 In a line block (:restref:`ref <restructuredtext.html#line-blocks>`)
 every line is preceded with ``|`` and at least one space.
 
-| Line block
-| New line and we are still on
-  the same line
-|   Yet a new line
+
+.. list-table::
+   :widths: 35, 35
+
+   *
+      - .. code-block:: ReST
+
+           | Line block
+           | New line and we are still on
+             the same line
+           |   Yet a new line
+
+      - | Line block
+        | New line and we are still on
+          the same line
+        |   Yet a new line
 
 .. index::
    pair: block; quotes
@@ -448,7 +495,7 @@ every line is preceded with ``|`` and at least one space.
 
 Block quote
 -----------
-.. sidebar:: Code for example
+.. comment
 
    ::
 
@@ -469,6 +516,17 @@ Block quote
 
             With these *highlights* ...
 
+
+::
+
+   surrounding paragraph.
+
+      Neither from itself nor from another,
+      Nor from both,
+      Nor without a cause,
+      Does anything whatever, anywhere arise.
+
+      --Nagarjuna - *Mulamadhyamakakarika*
 
 Block quotes (:restref:`ref <restructuredtext.html#block-quotes>`) are
 created by just indenting them more than the surrounding paragraphs.
@@ -495,6 +553,14 @@ Pull-quote
 Pull-quotes  (:restref:`ref <directives.html#pull-quote>`)
 are similar to blockquotes but are :ref:`directives <rest_directives>`
 
+
+
+.. code-block:: ReST
+
+   .. pull-quote::
+
+      Just as a solid ...
+
 .. pull-quote::
 
   Just as a solid rock is not shaken by the storm, even so
@@ -519,9 +585,15 @@ are aimed to put a quotation in a distinct font.
 *dont forget the final* **s** *of highlights, or you fall down on the*
 :ref:`Sphinx code highlighting directive <code_highlighting>`
 
+.. code-block:: ReST
+
+   .. highlights::
+
+      With these *highlights* ...
+
 .. highlights::
 
-   With these *highlights* we have completed the Rest blocks.
+   With these *highlights* we have completed the ReST blocks.
 
 These three directives are similar in
 html  rendering to :ref:`blockquote` but with a `class` of ``pull-quote``,
@@ -536,13 +608,11 @@ does not!*
 
 Container
 ---------
-.. sidebar:: Code for example
+.. code-block:: ReST
 
-   ::
+   .. container:: myclass
 
-      .. container:: myclass
-
-         There is also a general ...
+      There is also a general ...
 
 .. container:: myclass
 
@@ -563,13 +633,12 @@ Container
 
 Class
 -----
-.. sidebar:: Code for example
 
-   ::
+.. code-block:: ReST
 
-      .. class:: myclass
+   .. class:: myclass
 
-      The class directive ....
+   The class directive ....
 
 .. class:: myclass
 
@@ -946,23 +1015,20 @@ Hypertext links
 
 There exist two way to write hyperlink references
 (:restref:`ref<restructuredtext.html#hyperlink-references>`),
-either in a citation style or in an inline style.
+either in a `citation style`_ or in an `in-line style`_.
 
-.. sidebar:: Code for examples
+.. citation style:
 
-   ::
+Citation style
+^^^^^^^^^^^^^^
+
+.. code-block:: ReST
 
       A link to `Sphinx Home`_ in citation style.
 
       .. _Sphinx Home: http://sphinx.pocoo.org
 
-      In-line versions are
-      `Sphinx Home <http://sphinx.pocoo.org>`_
-      or `<http://sphinx.pocoo.org>`_
 
-
-Citation style
-^^^^^^^^^^^^^^
 
 A link to `Sphinx Home`_ in citation style ( :restref:`ref
 <restructuredtext.html#hyperlink-targets>`).
@@ -970,42 +1036,64 @@ A link to `Sphinx Home`_ in citation style ( :restref:`ref
 In printed documents the link will be listed similar as a citation, as
 opposed to HTML documents.
 
+When the target has no embedded spaces the backquotes are not
+necessary:
+
+.. code-block:: ReST
+
+      A link to Sphinx_ in citation style.
+
+
 .. _indirect reference:
 
 If for the same hyperlink target you want to use a you want to use a
 new link text you can use an *indirect reference*. With the following
-indirect references `pocoo`_, `Sphinx`_ and `The manual`_ refer to the
-same place.
+indirect references pocoo_, Sphinx_, `The manual`_ and  Documentation_
+refer to the same place.
 
-::
+Like above don't forget backquotes when there are embedded
+whitespaces.
+
+.. code-block:: ReST
 
    .. _pocoo:  http://sphinx.pocoo.org
    .. _Sphinx: pocoo_
    .. _The manual: pocoo_
+   .. _Documentation: `The manual`_
 
 .. _Sphinx Home: http://sphinx.pocoo.org
 .. _pocoo:  http://sphinx.pocoo.org
 .. _Sphinx: pocoo_
 .. _The manual: pocoo_
-
-Even if it does not seem stated in the ReST Manual, it seems that the
-right part of an indirect target should not have embedded whitespaces.
+.. _Documentation: `The manual`_
 
 Note that if you only want to have multiple link text with the same
-target you can also use::
+target you can also use:
 
-  .. _Sphinx:
-  .. _The manual:
-  .. _pocoo:  http://sphinx.pocoo.org
+.. code-block:: ReST
+
+   .. _Sphinx:
+   .. _The manual:
+   .. _pocoo:  http://sphinx.pocoo.org
 
 Multiple adjacent internal hyperlink targets
 will  all point to the same element.
 
+.. in-line style:
+
 In-line style
 ^^^^^^^^^^^^^
 
-In-line versions are `Sphinx Home <http://sphinx.pocoo.org>`_ or
-`<http://sphinx.pocoo.org>`_.
++--------------------------------------+--------------------------------------+
+|.. code-block:: ReST                  |In-line versions are `Sphinx Home     |
+|                                      |<http://sphinx.pocoo.org>`_ or        |
+|    In-line versions are              |`<http://sphinx.pocoo.org>`_.         |
+|    `Sphinx Home                      |                                      |
+|    <http://sphinx.pocoo.org>`_       |                                      |
+|    or `<http://sphinx.pocoo.org>`_   |                                      |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+
 
 .. index::
    hyperlink; standalone
@@ -1029,9 +1117,12 @@ project@sphinx.org are also recognized (:restref:`ref
 internal document reference
 ---------------------------
 To define ``label`` as label for any text location internal to a document,
-precede the text location with::
+precede the text location with:
+
+.. code-block:: ReST
 
    .. _label:
+   .. _other label:
 
 plus a blank line.
 
@@ -1044,16 +1135,17 @@ You can also use :restref:`inline internal targets
 
    which are a _`span of running text` in a paragraph.
 
-
 There are two ways of referencing a label.
 
 .. _rest_ref:
 
 The :restref:`reST way
 <restructuredtext.html#hyperlink-targets>`
-is::
+is:
 
-    `label`_
+.. code-block:: ReST
+
+   label_ or `other label`_
 
 The *preferred*
 :sphinx:`Sphinx way <markup/inline.html#cross-referencing-syntax>`
