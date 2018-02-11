@@ -317,7 +317,7 @@ See :restref:`definition list reference
 Field list
 ----------
 .. list-table::
-   :widths: 30, 40
+   :widths: 40, 60
 
    *
       - .. code-block:: ReST
@@ -344,7 +344,7 @@ Options list
 E.g. for listing command line options.
 
 .. list-table::
-   :widths: 30, 40
+   :widths: 40, 60
 
    *
       - .. code-block:: ReST
@@ -394,7 +394,7 @@ To use a specific formatting, you can use the
 :ref:`code directive <rst-code>`
 
 .. list-table::
-   :widths: 35, 35
+   :widths: 50, 50
 
    *
       - .. code-block:: ReST
@@ -423,7 +423,7 @@ removed from the output.
 
 
 .. list-table::
-   :widths: 35, 35
+   :widths: 50, 50
 
    *
       - .. code-block:: ReST
@@ -472,7 +472,7 @@ every line is preceded with ``|`` and at least one space.
 
 
 .. list-table::
-   :widths: 35, 35
+   :widths: 50, 50
 
    *
       - .. code-block:: ReST
@@ -495,31 +495,11 @@ every line is preceded with ``|`` and at least one space.
 
 Block quote
 -----------
-.. comment
-
-   ::
-
-      indenting them more than the surrounding paragraphs.
-
-         Neither from itself nor from another,
-         Nor from both,
-         Nor without a cause,
-         Does anything whatever, anywhere arise.
-
-         --Nagarjuna - *Mulamadhyamakakarika*
-
-         .. pull-quote::
-
-            Just as a solid rock ...
-
-         .. highlights::
-
-            With these *highlights* ...
 
 
 ::
 
-   surrounding paragraph.
+   created by ... surrounding paragraph.
 
       Neither from itself nor from another,
       Nor from both,
@@ -1015,7 +995,10 @@ Hypertext links
 
 There exist two way to write hyperlink references
 (:restref:`ref<restructuredtext.html#hyperlink-references>`),
-either in a `citation style`_ or in an `in-line style`_.
+either in a `citation style`_ or inline with `embedded-uri`_.
+
+.. index::
+   reference; citation style
 
 .. citation style:
 
@@ -1024,10 +1007,9 @@ Citation style
 
 .. code-block:: ReST
 
-      A link to `Sphinx Home`_ in citation style.
+   A link to `Sphinx Home`_ in citation style.
 
-      .. _Sphinx Home: http://sphinx.pocoo.org
-
+   .. _Sphinx Home: http://sphinx.pocoo.org
 
 
 A link to `Sphinx Home`_ in citation style ( :restref:`ref
@@ -1036,18 +1018,28 @@ A link to `Sphinx Home`_ in citation style ( :restref:`ref
 In printed documents the link will be listed similar as a citation, as
 opposed to HTML documents.
 
+.. _reference name:
+
+The reference is composed of words made of alphabetic and numeric
+characters and characters in the set ``[,:_+-]`` *without double
+hyphens*, separated by spaces. (:restref:`ref
+<restructuredtext.html#reference-names>`)
+
+The targets are equivalent when they differ only by case, number of
+spaces *space character, tabulation or new line*.
+
 When the target has no embedded spaces the backquotes are not
 necessary:
 
 .. code-block:: ReST
 
-      A link to Sphinx_ in citation style.
+   A link to Sphinx_ in citation style.
 
 
 .. _indirect reference:
 
-If for the same hyperlink target you want to use a you want to use a
-new link text you can use an *indirect reference*. With the following
+If for the same hyperlink target you want to use a you want to use
+many references you can use an *indirect reference*. With the following
 indirect references pocoo_, Sphinx_, `The manual`_ and  Documentation_
 refer to the same place.
 
@@ -1076,31 +1068,46 @@ target you can also use:
    .. _The manual:
    .. _pocoo:  http://sphinx.pocoo.org
 
-Multiple adjacent internal hyperlink targets
-will  all point to the same element.
-
-.. in-line style:
-
-In-line style
-^^^^^^^^^^^^^
-
-+--------------------------------------+--------------------------------------+
-|.. code-block:: ReST                  |In-line versions are `Sphinx Home     |
-|                                      |<http://sphinx.pocoo.org>`_ or        |
-|    In-line versions are              |`<http://sphinx.pocoo.org>`_.         |
-|    `Sphinx Home                      |                                      |
-|    <http://sphinx.pocoo.org>`_       |                                      |
-|    or `<http://sphinx.pocoo.org>`_   |                                      |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-
+Multiple adjacent hyperlink references
+will  all point to the same target.
 
 .. index::
    hyperlink; standalone
 
-Any URI like http://sphinx.pocoo.org or an email adress like
-project@sphinx.org are also recognized (:restref:`ref
-<restructuredtext.html#standalone-hyperlink>`).
+Standalone Hyperlink.
+^^^^^^^^^^^^^^^^^^^^^
+Reference: :restref:`ref
+<restructuredtext.html#standalone-hyperlink>`
+
++--------------------------------------+--------------------------------------+
+|.. code-block:: ReST                  |We may use URI like                   |
+|                                      |http://sphinx.pocoo.org or an email   |
+|   We may use URI like                |address like project@sphinx.org       |
+|   http://sphinx.pocoo.org or         |                                      |
+|   an email address like              |                                      |
+|   project@sphinx.org                 |                                      |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+
+.. _embedded-uri:
+
+.. index::
+   reference; embedded
+   reference; in-line
+   hyperlink; embedded
+
+Embedded URI.
+^^^^^^^^^^^^^
+
+Reference: :restref:`ref
+<restructuredtext.html#embedded-uris-and-aliases>`
+
++--------------------------------------+--------------------------------------+
+|.. code-block:: ReST                  |In-line versions are `Sphinx Home     |
+|                                      |<http://sphinx.pocoo.org>`_.          |
+|   In-line versions are `Sphinx Home  |                                      |
+|   <http://sphinx.pocoo.org>`_        |                                      |
++--------------------------------------+--------------------------------------+
 
 
 .. index::
@@ -1114,8 +1121,8 @@ project@sphinx.org are also recognized (:restref:`ref
 .. _internal:
 .. _ref:
 
-internal document reference
----------------------------
+Internal document reference.
+----------------------------
 To define ``label`` as label for any text location internal to a document,
 precede the text location with:
 
@@ -1139,22 +1146,42 @@ There are two ways of referencing a label.
 
 .. _rest_ref:
 
-The :restref:`reST way
-<restructuredtext.html#hyperlink-targets>`
-is:
+The ReST way of :restref:`hyperlink targets
+<restructuredtext.html#hyperlink-targets>` is:
 
 .. code-block:: ReST
 
    label_ or `other label`_
 
-The *preferred*
-:sphinx:`Sphinx way <markup/inline.html#cross-referencing-syntax>`
-allows linking across files, it  uses::
+Sphinx has its own *preferred*
+:sphinx:`syntax <markup/inline.html#cross-referencing-syntax>`
+that allow linking across files, it  uses::
 
    :ref:`displayed text <label>`
 
 it is specific to Sphinx and :ref:`you find it in the Sphinx section
 <sphinx_cross_references>`.
+
+These two syntax do not have the same rendering, the text of the
+reference is used by ReST, while Sphinx syntax either need a reference
+text or when the target is preceding a section the name of the section
+is used. In this document there is two reference targets before the
+section *Sidebar and Topic*, the next table show how they are
+rendered.
+
+.. list-table::
+
+   * - .. code-block:: ReST
+
+          `Sidebar`_ versus `Topic`_
+
+     -  `Sidebar`_ versus `Topic`_
+
+   * - .. code-block:: ReST
+
+          :ref:`Sidebar` versus :ref:`Topic`
+
+     - :ref:`Sidebar` versus :ref:`Topic`
 
 Section titles, footnotes, and citations automatically are link targets.
 ```Transition`_`` produces `Transition`_. But you cannot use them as
@@ -1183,72 +1210,86 @@ They all begin with two periods and a white space.
 
 Footnotes (:restref:`ref <restructuredtext.html#footnotes>`)
 ------------------------------------------------------------
-.. sidebar:: Code
-
-   ::
-
-      In the text [2]_.
-
-      .. [2] In the footnote.
-
-      First automatic [#]_.
-      Another automatic [#]_.
-
-      .. [#] The first automatic.
-      .. [#] The other automatic.
-
-      A labeled automatic [#one]_.
-      Another of these [#two]_.
-
-      .. [#one] footnote.
-      .. [#two] labeled footnotes.
-
-      An autosymbol [*]_.
-      More autosymbol [*]_.
-
-      .. rubric:: Footnotes
-
-      .. [*] Footnotes can be put in a *Footnotes*
-         ``rubric`` at end of document.
-      .. [*] other labeled footnote.
-
+To define a footnote numbered 2 you write it
 ``.. [2]`` precedes the definition of the footnote 2.  It is referenced by
 ``[2]_``. E.g.
 
-In the text [2]_.
 
-.. [2] In the footnote.
+.. list-table::
+   :widths: 40, 60
 
-First automatic [#]_.
-Another automatic [#]_.
+   *
+      - .. code-block:: ReST
 
-.. [#] The first automatic.
-.. [#] The other automatic.
+           In the text [2]_.
 
-A labeled automatic [#one]_.
-Another of these [#two]_.
+           .. [2] In the footnote.
 
-.. [#one] footnote.
-.. [#two] labeled footnotes.
+      - In the text [2]_.
 
-An autosymbol [*]_.
-More autosymbol [*]_.
+        .. [2] In the footnote.
 
-.. rubric:: Footnotes
+   *  - .. code-block:: ReST
 
-.. [*] Footnotes can be put in a *Footnotes*
-   ``rubric`` at end of document.
-.. [*] other labeled footnote.
+           First automatic [#]_.
+           Another automatic [#]_.
+
+           .. [#] The first automatic.
+           .. [#] The other automatic.
+
+      - First automatic [#]_.
+        Another automatic [#]_.
+
+        .. [#] The first automatic.
+        .. [#] The other automatic.
+
+   *  - .. code-block:: ReST
+
+           A labeled automatic [#one]_.
+           Another of these [#two]_.
+
+           .. [#one] footnote.
+           .. [#two] labeled footnotes.
+
+      - A labeled automatic [#one]_.
+        Another of these [#two]_.
+
+        .. [#one] footnote.
+        .. [#two] labeled footnotes.
+
+   *  - .. code-block:: ReST
+
+           An autosymbol [*]_.
+           More autosymbol [*]_.
+
+           .. rubric:: Footnotes
+
+           .. [*] Footnote in a *Footnotes*
+              ``rubric`` at end of document.
+           .. [*] other labeled footnote.
+
+      - An autosymbol [*]_.
+        More autosymbol [*]_.
+
+        .. rubric:: Footnotes
+
+        .. [*] Footnote in a *Footnotes*
+               ``rubric`` at end of document.
+        .. [*] other labeled footnote.
 
 
-*There is no labeled version of these autosymbol footnotes.*
+*Labeled footnotes are always numerics.*
 
 .. index::
    !citation
 
 Citations
 ---------
-.. sidebar:: Code for example
+ref: :restref:`citations <restructuredtext.html#citations>` and
+:restref:`citation references
+<restructuredtext.html#citation-references>`
+
+.. sidebar:: Code
 
    ::
 
@@ -1257,10 +1298,12 @@ Citations
 
       .. [REL09] Citation
 
-``.. [REL2009]`` is followed by the definition of the citation ``REL2009``.  It
-is referenced as ``[REL2009]_`` or ``REL2009_``.  Citation labels can contain
-underlines, hyphens and fullstops.  Case is not significant.  In Sphinx,
-definition and reference can reside in different files.
+``.. [REL2009]`` is followed by the definition of the citation
+``REL2009``.  It is referenced as ``[REL2009]_`` or ``REL2009_``.
+Citation labels are single word `reference name`_
+and can contain underlines, hyphens and fullstops.  Case
+is not significant. In Sphinx, definition and reference can reside in
+different files.
 
 We cite [REL09]_ or REL09_
 or even rel09_.
@@ -1336,28 +1379,6 @@ the section where it appears, otherwise it is for the whole file, the title may 
 image and figure
 ----------------
 
-.. sidebar:: Code for examples
-
-   ::
-
-      .. image:: _static/NeoHittiteSphinx.svg
-         :width: 120px
-         :alt: Sphinx Neo-Hittite
-         :target: https://it.wikipedia.org/wiki/Telepinu_(divinità)
-
-      .. figure:: _static/NeoHittiteSphinx.svg
-         :width: 120px
-         :alt: Sphinx Neo-Hittite
-
-         Sphinx Neo-Hittite
-
-         Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
-         deity.
-
-   `Other options <ReST image directive>`_ are:
-
-   -  ``:scale: <integer percentage>``,
-   -  ``:align: {top|middle|bottom|left|right}``
 
 **Images** (:restref:`ref <directives.html#images>`)
 are simple pictures, see also
@@ -1368,6 +1389,12 @@ are simple pictures, see also
    http://www.britishmuseum.org/system_pages/beta_collection_introduction/beta_collection_object_details.aspx?objectId=1650465&partId=1
 
 
+.. code-block:: ReST
+
+   .. image:: _static/NeoHittiteSphinx.svg
+      :width: 120px
+      :alt: Sphinx Neo-Hittite
+      :target: https://it.wikipedia.org/wiki/Telepinu_(divinità)
 
 .. only:: not latex
 
@@ -1392,6 +1419,18 @@ You can click on this image to go to the target `Wikipedia (it): Telepinu
 A **figure** (:restref:`ref <directives.html#figure>`) add to an image
 an optional caption and an optional legend.
 
+.. code-block:: ReST
+
+   .. figure:: _static/NeoHittiteSphinx.svg
+       :width: 120px
+       :alt: Sphinx Neo-Hittite
+
+       Sphinx Neo-Hittite
+
+       Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
+       deity.
+
+
 .. only:: not latex
 
    .. figure:: _static/NeoHittiteSphinx.svg
@@ -1414,6 +1453,10 @@ an optional caption and an optional legend.
       Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
       deity.
 
+`Other options <ReST image directive>`_ are:
+
+-  ``:scale: <integer percentage>``,
+-  ``:align: {top|middle|bottom|left|right}``
 
 .. index::
    image; latex
@@ -1440,7 +1483,8 @@ To get proper figure size in latex generated by Sphinx you may have either to
 
 Latex does not support svg and it has to be converted to eps or pdf,
 pdf being the only one to support transparency.
-The conversion can be done with  Inscape, it can be automated as `explained by Johan B. C. Engelen
+The conversion can be done with  Inscape, it can be automated as
+`explained by Johan B. C. Engelen
 <http://ctan.tug.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf>`_.
 You can also use the `ipe drawing editor
 <http://ipe7.sourceforge.net/>`_.
@@ -1453,7 +1497,7 @@ You can also use the `ipe drawing editor
 
 .. _rst-code:
 
-code blocks
+Code blocks
 -----------
 
 :restref:`ref: code directive <directives.html#code>`
@@ -1488,7 +1532,7 @@ to learn about the ways to specify it.
    single: reference; styled
    single: unicode; character code
 
-replacements
+Replacements
 ------------
 rest references: :restref:`substitution definitions (specification)
 <restructuredtext.html#substitution-definitions>`,
@@ -1506,39 +1550,55 @@ rest references: :restref:`substitution definitions (specification)
 See also: `docutil FAQ: How can I represent esoteric characters?
 <http://docutils.sourceforge.net/FAQ.html#how-can-i-represent-esoteric-characters-e-g-character-entities-in-a-document>`_.
 
-General replacements::
+General replacements:
 
-   .. |something| replace:: here we
-      define what something is.
+.. list-table::
+   :widths: 50, 50
 
-.. sidebar:: Code for example
+   *  - .. code-block:: ReST
 
-   ::
+           This example is |stupid|
 
-      .. |more-doc| replace::  *more in* **reST** *directives manual*
-      .. _more-doc: http://docutils.sourceforge.net/doc...
-      .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
+           .. |stupid| replace:: not so clever
 
-       Instead ...  use ``image`` |more-doc|_
-       ... include unicode characters like |copy|.
+      - This example is |stupid|
 
-Here ``|something|`` will be replaced by its definition.
+        .. |stupid| replace:: not so clever
 
-.. |more-doc| replace::  *more in* **reST** *directives manual*
-.. _more-doc: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
+One use of replacements is to create styled reference.
 
-Instead of  ``replace`` you can also use ``image`` |more-doc|_
+If we are not satisfied by a reference like:
+`more in ReST directives manual`_ that you get with
 
-It is the only way  for nesting inline markup to create styled references
-like we did  *above*.
+.. code-block:: ReST
 
-.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
+   .. _ more in ReST directives manual:
+   .. _more-doc: http://docutils.sourceforge.net/doc...
 
-We also use substitutions to include unicode characters like |copy|.
+but you want to get: |more-doc|.
 
-If you use sphinx there are also three :sphinx:`predefined substitutions
+You use ``|more-doc|`` with the replacement:
+
+.. code-block:: ReST
+
+   .. |more-doc| replace::  *more in* **reST** *directives manual*
+
+
+We also use substitutions to include unicode characters like |copy|
+with
+
+.. code-block:: ReST
+
+   .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
+
+If you use Sphinx there are also three :sphinx:`predefined substitutions
 <markup/inline.html#substitutions>`:
 ``|release|``, ``|version|``, ``|today|``.
+
+.. |more-doc| replace::  *more in* **reST** *directives manual*
+.. _more in ReST directives manual:
+.. _more-doc: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
+.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
 
 .. index::
    pair: include; directive
@@ -1575,7 +1635,9 @@ For including source code in Sphinx rather use the Sphinx directive
 
 .. _sidebar:
 
-sidebar, and topic
+.. _topic:
+
+Sidebar and Topic.
 ------------------
 
 A :restref:`sidebar <directives.html#sidebar>` or a :restref:`topic
@@ -1605,7 +1667,7 @@ A :restref:`sidebar <directives.html#sidebar>` or a :restref:`topic
 
 .. _rubric:
 
-rubric
+Rubric
 ------
 A :restref:`rubric
 <directives.html#rubric>`
@@ -1622,22 +1684,44 @@ is a title not appearing in the table of contents::
 Comment
 -------
 
-.. sidebar:: Code for example
+Everything starting like a directive with two periods and a space but
+not a valid construct is a comment. The comment consume all indented
+text following it. To avoid a confusion with an other constructs, you can
+let the first line of a block comment empty except the two periods.
 
-   ::
+When the two dots are not followed by any text, but a blank line, this
+is an empty comment, that will not consume a following indented block.
+Empty comments are used to terminate a preceding construct.
 
-      .. Comment
-         Even more comment
+.. code-block:: ReST
 
-      Not comment anymore
+   .. One line comment
 
-Everything starting like a directive with two periods and a space but is
-followed by normal text is a comment.  Mark the indentation in the example:
+   ..
+      A longer comment example
+      more comment
 
-.. Comment
-   Even more comment
+      Still in comment
 
-   Not comment anymore
+   ..
+
+      Here is a block-quote,
+      not a comment anymore
+
+
+.. One line comment
+
+..
+   A longer comment example
+   more comment
+
+   Still in comment
+
+..
+
+   Here is a block-quote,
+   not a comment anymore
+
 
 .. _common_options:
 
@@ -1653,26 +1737,25 @@ Common options
 The class options ``:class:`` and ``:name:``
 are supported by most of the directives.
 
-The following topic render in html as::
+In the following :ref:`topic <topic>` and `autre <#topic>`_ the ``:name:`` act as a reference
+target. Here we can refer to the following block as `say-no-more`_.
+
+.. code-block:: ReST
+
+   .. topic:: The end
+      :class: exceptional
+      :name: say-no-more
+
+      A final word.
+
+The ``class`` render in html as:
+
+.. code-block:: html
 
   <div class="exceptional topic" id="say-no-more">
   <p class="topic-title first">the end</p>
   <p>A final word.</p>
   </div>
-
-.. sidebar:: Code for example
-
-   ::
-
-      .. topic:: The end
-         :class: exceptional
-         :name: say-no-more
-
-         A final word.
-
-
-The ``:name:`` act as a reference target. Here we can refer to the
-following block as `say-no-more`_.
 
 .. topic:: the end
    :class: exceptional
