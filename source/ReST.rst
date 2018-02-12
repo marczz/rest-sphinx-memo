@@ -977,7 +977,7 @@ Sphinx rendering in latex is::
 If necessary we can adapt the relative length of columns.
 
 
-Cross references
+Cross reference.
 ================
 
 .. contents::
@@ -990,20 +990,42 @@ Cross references
    reference; cross
    reference; indirect
 
-Hypertext links
+Hypertext link.
 ---------------
 
-There exist two way to write hyperlink references
-(:restref:`ref<restructuredtext.html#hyperlink-references>`),
-either in a `citation style`_ or inline with `embedded-uri`_.
+Hypertext links are constituted of a reference and a target.
+
+
+And there are  three types of hyperlink targets:
+
+1. An external hyperlink target is an URI or an email addresses like
+   .. code-block:: ReST
+
+      _Docutils: http://docutils.sourceforge.net/
+      _John Lee: john.lee@gmail.com
+
+2. An `internal document reference` point to some location in the same
+   document.
+
+3. An `indirect hyperlink` has an other hyperlink reference as target.
+
+
+There exist three ways to write hyperlink references
+(:restref:`ref<restructuredtext.html#hyperlink-references>`)
+
+1. In  `Citation Style`_
+2. Inline with an `Embedded URI`_ which gives in the same construct
+   both the reference and the target.
+3. In a `standalone hyperlink` the text of the target URI is used as
+   reference.
 
 .. index::
    reference; citation style
 
-.. citation style:
+.. _citation style:
 
-Citation style
-^^^^^^^^^^^^^^
+Reference in citation style.
+----------------------------
 
 .. code-block:: ReST
 
@@ -1025,10 +1047,10 @@ characters and characters in the set ``[,:_+-]`` *without double
 hyphens*, separated by spaces. (:restref:`ref
 <restructuredtext.html#reference-names>`)
 
-The targets are equivalent when they differ only by case, number of
+The references are equivalents when they differ only by case, number of
 spaces *space character, tabulation or new line*.
 
-When the target has no embedded spaces the backquotes are not
+When the reference has no embedded spaces the backquotes are not
 necessary:
 
 .. code-block:: ReST
@@ -1036,12 +1058,15 @@ necessary:
    A link to Sphinx_ in citation style.
 
 
-.. _indirect reference:
+.. _indirect hyperlink:
+
+Indirect Hyperlink.
+-------------------
 
 If for the same hyperlink target you want to use a you want to use
-many references you can use an *indirect reference*. With the following
-indirect references pocoo_, Sphinx_, `The manual`_ and  Documentation_
-refer to the same place.
+many references you can use an *indirect hyperlink* or *indirect
+reference*. With the following indirect references pocoo_, Sphinx_,
+`The manual`_ and Documentation_ refer to the same place.
 
 Like above don't forget backquotes when there are embedded
 whitespaces.
@@ -1075,7 +1100,7 @@ will  all point to the same target.
    hyperlink; standalone
 
 Standalone Hyperlink.
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 Reference: :restref:`ref
 <restructuredtext.html#standalone-hyperlink>`
 
@@ -1089,7 +1114,7 @@ Reference: :restref:`ref
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 
-.. _embedded-uri:
+.. _embedded uri:
 
 .. index::
    reference; embedded
@@ -1118,8 +1143,9 @@ Reference: :restref:`ref
    pair: internal; reference
    pair: option; name
 
+
 .. _internal:
-.. _ref:
+
 
 Internal document reference.
 ----------------------------
@@ -1183,16 +1209,20 @@ rendered.
 
      - :ref:`Sidebar` versus :ref:`Topic`
 
+
+Automatic document label.
+-------------------------
+
 Section titles, footnotes, and citations automatically are link targets.
-```Transition`_`` produces `Transition`_. But you cannot use them as
-target of a link in  the
-:ref:`Sphinx ref syntax <sphinx_ref>`.
+```Transition`_`` produces `Transition`_. You can also use them as
+target of a link in  the :ref:`Sphinx ref syntax <sphinx_ref>`;
+``:ref:separate two parts <transition>``` gives
+:ref:`separate two parts <transition>` pointing to the same label.
 
-
-You can then also reference the `Transition`_ section
+Inpure ReST syntax you can reference the `Transition`_ section
 as `how to draw an horizontal line`_ with
 the hyperlink: ```how to draw an horizontal line`_`` and the
-`indirect reference`_::
+`indirect hyperlink`_::
 
   .. _how to draw an horizontal line: Transition_
 
