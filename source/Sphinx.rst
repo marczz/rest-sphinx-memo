@@ -58,23 +58,29 @@ To reference ``label`` defined in *any* document of the project.
 It allows linking across files, while the :ref:`rest way <rest_ref>`
 is limited to a location in the same file.
 
-If the ``label`` definition is followed by a section title then ``displayed
-text`` can be omitted and will be replaced by the title.
+If the ``label`` definition is followed by a section title then
+``displayed text`` can be omitted and will be replaced by the section
+title.
 
-E.g. the *rest reference* section is preceded
+E.g. the :doc:`ReST` *Internal document reference* section is preceded
 with ``.. _internal:``, so we have:
 
 ================================== ==============================
 ``:ref:`internal```                :ref:`internal`
-``:ref:`This section <internal>``` :ref:`This section <internal>`
+``:ref:`That section <internal>``` :ref:`That section <internal>`
 ``:ref:`ref to a name <mytopic>``` :ref:`ref to a name <mytopic>`
 ================================== ==============================
 
-.. index::
-   pair: document; cross-reference
+We can also use as reference target a `name option` like
 
-Cross-referencing documents
----------------------------
+=================================== ===============================
+``:ref:`see this topic <mytopic>``` :ref:`see this topic <mytopic>`
+=================================== ===============================
+
+
+
+Cross-referencing documents.
+----------------------------
 :sphinx:`sphinx ref: Cross-referencing documents
 <markup/inline.html#cross-referencing-documents>`
 
@@ -130,8 +136,8 @@ Extensions that define new hyperlinks targets
 .. _sphinx_role:
 
 
-Sphinx Roles
-------------
+Sphinx Roles.
+-------------
 
 The Sphinx roles  are described in :sphinx:`Sphinx: Inline markup
 <markup/inline.html>`
@@ -158,8 +164,8 @@ Some common markup are:
 
 .. _python_roles:
 
-python roles
-------------
+Python Roles.
+-------------
 
 .. tabularcolumns:: |p{0.15\linewidth}||p{0.25\linewidth}|
 
@@ -202,7 +208,7 @@ are not available in the docutils builders.
 
 .. We reference here
 
-   :ref:`toctree`, :ref:`index`, :ref`glossary`,
+   :ref:`toctree`, :ref:`index`, :ref:`glossary`,
    :ref:`note`, :ref:`warning`, :ref:`seealso`,
    :ref:`only`,  :ref:`role`, :ref:`only`, :ref:`ifconfig`
 
@@ -216,8 +222,8 @@ are not available in the docutils builders.
 
 .. _toctree:
 
-table of contents
------------------
+Table of contents.
+------------------
 ::
 
    .. toctree::
@@ -257,8 +263,8 @@ contents <reST-tableOfContents>`
 
 .. _index:
 
-Index
------
+Index.
+------
 
 Entries in the :sphinx:`index
 <markup/misc.html#index-generating-markup>`
@@ -286,8 +292,8 @@ bar`` or ``seealso: bar foo``.
 
 .. _glossary:
 
-glossary
---------
+Glossary.
+---------
 
 A :sphinx:`glossary <markup/para.html#directive-glossary>`
 is a :ref:`definition_list`::
@@ -308,8 +314,8 @@ is a :ref:`definition_list`::
 .. _warning:
 .. _seealso:
 
-note, warning, seealso
-----------------------
+Note, Warning, Seealso.
+-----------------------
 
 They are :sphinx:`paragraph-level markups <markup/para.html>`
 
@@ -352,8 +358,8 @@ They are :sphinx:`paragraph-level markups <markup/para.html>`
 
 .. _only:
 
-Selective inclusion
--------------------
+Selective inclusion.
+--------------------
 
 A block may be included depending of the presence of some tag
 (:sphinx:`Sphinx ref <markup/misc.html#including-content-based-on-tags>`)::
@@ -394,8 +400,8 @@ the third parameter should always be ``True``.
 
 .. _css_class:
 
-Defining a css class for some part
-==================================
+Defining a css class for some part.
+===================================
 
 .. index::
    pair: role; directive
@@ -511,8 +517,8 @@ You put it in a stylesheet, to give it's location:
 
    For more details refer to :sphinx:`Sphinx: Templating <templating.html>`.
 
-Sphinx Source Code
-==================
+Sphinx Source Code.
+===================
 
 .. contents::
    :local:
@@ -520,8 +526,8 @@ Sphinx Source Code
 .. _code-block:
 .. _code_highlighting:
 
-Code highlighting
------------------
+Code highlighting.
+------------------
 .. index::
    pair: highlight; directive
    single: block; literal
@@ -575,8 +581,8 @@ When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 .. _literalinclude directive:
 .. _source_code_include:
 
-Source code include
--------------------
+Source code include.
+--------------------
 
 Source code is included in Sphinx with the :sphinx:`directive
 literalinclude <markup/code.html#directive-literalinclude>`.
@@ -641,10 +647,10 @@ For including a ReST source file use the :ref:`rest directive include
    pair: python directive; classmethod
    pair: python directive; decorator
 
-.. _source-code-directives:
+.. _source_code_directives:
 
-Source code directives
-----------------------
+Source code directives.
+-----------------------
 
 There are very powerful directives in Sphinx
 for documenting source code, each programming langage
@@ -693,7 +699,7 @@ autodoc
 -------
 
 There is  an :sphinx:`autodoc  <ext/autodoc.html>`
-version of the :ref:`source code directives <source-code-directives>`
+version of the :ref:`source code directives <source_code_directives>`
 which include documentation from docstrings:
 
 -  ``automodule``, ``autoclass``, ``autoexception``.
@@ -822,14 +828,14 @@ before Sphinx parse the source code. You need to
 Look :sphinx:`here for a larger example
 <http://www.sphinx-doc.org/en/latest/ext/example_google.html>`.
 
-How napoleon transform my docstrings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How *napoleon* transform my docstrings.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We may be curious to know what exactly napoleon generates. It can
 allow us to fix error in the output by changing our docstring or
 adding Sphinx fields.
 
-We can call napoleon from python to learn what it generates:
+We can call *napoleon* from python to learn what it generates:
 
 .. code-block:: pycon
 
@@ -848,8 +854,8 @@ And we have the decorated result:
    :language: rest
 
 
-If you want to experiment with output of Napoleon you can look at the
-parameters of ``GoogleDocstring`` in the `source code
+If you want to experiment with output of *napoleon* you can look at
+the parameters of ``GoogleDocstring`` in the `source code
 <https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/napoleon/docstring.py>`_
 
 .. include:: include/commonref.rst
