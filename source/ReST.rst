@@ -76,8 +76,8 @@ overlines for chapters. The previously quoted
 advising to use stars uses internally equal character.
 
 `Docutils documentation <http://docutils.sourceforge.net/>`_ uses
-overlined ``=`` for parts, overlined ``-`` for chapters, ``=`` for sections,
-``-`` for subsections, back quotes (`) for subsubsections.
+overlined ``=`` for parts, overlined ``-`` for chapters, ``=`` for
+sections, ``-`` for subsections, back quotes (`) for subsubsections.
 
 Transition
 ----------
@@ -309,10 +309,9 @@ See :restref:`definition list reference
 <restructuredtext.html#definition-lists>`.
 
 .. index::
-   single: list; field
-   field list
+   pair: list; field
 
-.. _Field list:
+.. _field list:
 
 Field list
 ----------
@@ -653,7 +652,7 @@ Tables
    pair: table; simple
 
 
-.. _simple_tables:
+.. _simple_table:
 
 Simple tables
 -------------
@@ -745,7 +744,7 @@ e.g:
 .. index::
    pair: grid; table
 
-.. _grid_tables:
+.. _grid_table:
 
 Grid tables
 -----------
@@ -766,7 +765,10 @@ Grid tables
 Grid tables (:restref:`ref <restructuredtext.html#grid-tables>`)
 have a more difficult syntax but can express more complex tables.
 
-.. only:: html
+.. comment
+   .. only:: html
+
+..
 
           +--------+--------+-----------+
           | Header | Header with 2 cols |
@@ -791,6 +793,7 @@ have a more difficult syntax but can express more complex tables.
           |        |        |   of text |
           |  *hey* |  #. hi | | a break |
           +--------+--------+-----------+
+
 .. index::
    table; emacs
 
@@ -804,45 +807,24 @@ to :kbd:`C-c ~` in ``org-mode``, but not in ``orgtbl-mode``)
 .. index::
    triple: directive; table; csv
 
-.. _csv_tables:
+.. _csv_table:
 
-csv tables
+csv table.
 ----------
 .. sidebar:: Code
 
-   ::
+   .. code-block:: ReST
 
-    .. csv-table:: Balance Sheet
-       :header: Description,In,Out,Balance
-       :widths: 20, 10, 10, 10
-       :stub-columns: 1
+      .. csv-table:: Balance Sheet
+         :header: Description,In,Out,Balance
+         :widths: 20, 10, 10, 10
+         :stub-columns: 1
 
-       Travel,,230.00,-230.00
-       Fees,,400.00,-630.00
-       Grant,700.00,,70.00
-       Train Fare,,70.00,**0.00**
+         Travel,,230.00,-230.00
+         Fees,,400.00,-630.00
+         Grant,700.00,,70.00
+         Train Fare,,70.00,**0.00**
 
-    .. list-table:: Weather forecast
-       :header-rows: 1
-       :widths: 7 7 7 7 60
-       :stub-columns: 1
-
-       *  -  Day
-          -  Min Temp
-          -  Max Temp
-          -
-          -  Summary
-       *  -  Monday
-          -  11C
-          -  22C
-          -  .. image:: _static/sunny.svg
-                :width: 30
-
-          -  A clear day with lots of sunshine.
-             However, the strong breeze will bring
-             down the temperatures.
-       *  -  Tuesday
-       ........
 
 .. csv-table:: Balance Sheet
    :header: Description,In,Out,Balance
@@ -858,23 +840,47 @@ The options are explained in the reference: :restref:`rst directive: csv-table
 <directives.html#csv-table>`
 
 You can choose a delimiter with ``:delim:`` and source an external
-file with the option::
-
-   :file:/path/of/the/file
+file with the option ``:file:/path/of/the/file``.
 
 
 .. index::
    triple: directive;  table; list
 
-.. _list_tables:
+.. _list_table:
 
-List Tables
+List Table.
 -----------
 
 A list-table (:restref:`ref <directives.html#list-table>`) is a two
 level list, where the first level is a row and the second one a column
 list. The number of column must be uniform (*no column span*) but
 cell may contain structured markup.
+
+
+.. code-block:: ReST
+
+   .. list-table:: Weather forecast
+      :header-rows: 1
+      :widths: 7 7 7 7 60
+      :stub-columns: 1
+
+      *  -  Day
+         -  Min Temp
+         -  Max Temp
+         -
+         -  Summary
+      *  -  Monday
+         -  11C
+         -  22C
+         -  .. image:: _static/sunny.svg
+               :width: 30
+         -  A clear day with lots of sunshine.
+            However, the strong breeze will bring
+            down the temperatures.
+      *  -  Tuesday
+         -  9C
+         -  10C
+      ...
 
 
 .. list-table:: Weather forecast
@@ -924,14 +930,14 @@ cell may contain structured markup.
 .. index::
    pair: table; latex
 
-LaTeX table rendering
----------------------
+LaTeX table rendering.
+----------------------
 
 .. index::
    latex; tabulary
 
-Rendering with *tabulary*
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Rendering with *tabulary*.
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Sphinx use the latex package `tabulary
 <http://ctan.org/tex-archive/macros/latex/contrib/tabulary/tabulary.pdf>`_
 to render tables in laTeX.
@@ -945,37 +951,36 @@ like::
 
     .. tabularcolumns:: |L|C|C|R|
 
-As examples in this document the re:`source code directives table
-source_code_directives` which has a proper Sphinx automatic rendering
+As examples in this document the :ref:`source code directives table
+<source_code_directives>` which has a proper Sphinx automatic rendering
 in tabulary ``|L|L|``, which adapt the column size with a wider left one.
 
-The two first :ref:`simple tables <simple_tables>` the :ref:`csv table
-<csv_tables>` and the :ref:`list table <list_tables>` are also
+The two first :ref:`simple tables <simple_table>` the :ref:`csv table
+<csv_table>` and the :ref:`list table <list_table>` are also
 rendered in `tabulary` with a proper calculation of table width by
 latex.
 
 .. index::
    latex; tabular
 
-Rendering with *tabular*
-^^^^^^^^^^^^^^^^^^^^^^^^
+Rendering with *tabular*.
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Tables that contain any kind of lists, such as object descriptions,
 blockquotes, or literal blocks are set by default with the `tabular
-<http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment>`_
-environment with equal column size, you can taylor the rendering by
-giving `tabularcolumns` directive which uses the `p{width}` column
-type.
+<http://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment>`_.
+In sphinx prior version 1.6 the `:column:` option for list table is not
+used for latex, and all  columns are of the same size.
 
-An example is the following :ref:`source code include table
-<source_code_include>`
-which use both description and verbatim for wich the automatic
-Sphinx rendering in latex is::
+You can taylor the rendering by giving `tabularcolumns` directive
+which uses the `p{width}` column type.
 
-   \begin{tabular}{|p{0.475\linewidth}|p{0.475\linewidth}|}
+Like this for three uneven columns:
 
-If necessary we can adapt the relative length of columns.
+.. code-block:: ReST
 
+   .. tabularcolumns::
+         |p{0.10\linewidth}|p{0.10\linewidth}|p{0.30\linewidth}|
 
 Cross reference.
 ================
@@ -999,6 +1004,7 @@ Hypertext links are constituted of a reference and a target.
 And there are  three types of hyperlink targets:
 
 1. An external hyperlink target is an URI or an email addresses like
+
    .. code-block:: ReST
 
       _Docutils: http://docutils.sourceforge.net/
@@ -1057,6 +1063,11 @@ necessary:
 
    A link to Sphinx_ in citation style.
 
+If you want to use a |styledref|_ you have to use a
+Replacement.
+
+.. |styledref| replace:: *styled* reference
+.. _styledref: `styled reference`_
 
 .. _indirect hyperlink:
 
@@ -1179,13 +1190,14 @@ The ReST way of :restref:`hyperlink targets
 
    label_ or `other label`_
 
-Sphinx has its own *preferred*
-:sphinx:`syntax <markup/inline.html#cross-referencing-syntax>`
-that allow linking across files, it  uses::
+Sphinx has its own *preferred syntax* that allow linking across files,
+it uses:
+
+.. code-block:: ReST
 
    :ref:`displayed text <label>`
 
-it is specific to Sphinx and :ref:`you find it in the Sphinx section
+it is specific to Sphinx and you find it :ref:`in the Sphinx section
 <sphinx_cross_references>`.
 
 These two syntax do not have the same rendering, the text of the
@@ -1549,7 +1561,7 @@ ReST use the same :ref:`code highlighting <code_highlighting>` than
 Sphinx, look at  :ref:`Sphinx code highlighting <code_highlighting>`
 to learn about the ways to specify it.
 
-.. _replacements:
+.. _replacement:
 
 .. index::
    !replacement
@@ -1564,18 +1576,19 @@ to learn about the ways to specify it.
 
 Replacements
 ------------
-rest references: :restref:`substitution definitions (specification)
-<restructuredtext.html#substitution-definitions>`,
-:restref:`substitution definition (definition files)
-<definitions.html#substitution-definitions>`,
-:restref:`Character Entity Sets
-<definitions.html#character-entity-sets>`,
+ReST references:
 :restref:`replace directive
 <directives.html#replacement-text>`,
 :restref:`unicode directive
 <directives.html#unicode-character-codes>`,
 :restref:`date directive
-<directives.html#date>`.
+<directives.html#date>`,
+:restref:`substitution definitions (specification)
+<restructuredtext.html#substitution-definitions>`,
+:restref:`substitution definition (definition files)
+<definitions.html#substitution-definitions>`,
+:restref:`Character Entity Sets
+<definitions.html#character-entity-sets>`.
 
 See also: `docutil FAQ: How can I represent esoteric characters?
 <http://docutils.sourceforge.net/FAQ.html#how-can-i-represent-esoteric-characters-e-g-character-entities-in-a-document>`_.
@@ -1595,6 +1608,8 @@ General replacements:
 
         .. |stupid| replace:: not so clever
 
+.. _styled reference:
+
 One use of replacements is to create styled reference.
 
 If we are not satisfied by a reference like:
@@ -1603,19 +1618,21 @@ If we are not satisfied by a reference like:
 .. code-block:: ReST
 
    .. _ more in ReST directives manual:
-   .. _more-doc: http://docutils.sourceforge.net/doc...
+        http://docutils.sourceforge.net/doc...
 
-but you want to get: |more-doc|.
+but you want to get: |more-doc|_.
 
-You use ``|more-doc|`` with the replacement:
+You use the replacement:
 
 .. code-block:: ReST
 
-   .. |more-doc| replace::  *more in* **reST** *directives manual*
+   ... want to get: |more-doc|_.
 
+   .. |more-doc| replace::  *more in* **reST** *directives manual*
+   .. _more-doc: http://docutils.sourceforge.net/doc...
 
 We also use substitutions to include unicode characters like |copy|
-with
+with:
 
 .. code-block:: ReST
 
