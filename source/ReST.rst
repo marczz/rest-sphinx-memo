@@ -67,8 +67,6 @@ exact order of the decoration is not important, the one below is the
 
 Normal paragraphs are separated by a blank line.
 
-.. _Transition:
-
 A ``=`` with overlines is very often preferred to a ``*`` with
 overlines for chapters. The previously quoted
 `Python development guide
@@ -127,7 +125,7 @@ are seldom used because we prefer the shortcuts provided by previous
 :ref:`reST inline markup <rest_inline_markup>`.
 
 The :restref:`Custom Interpreted Text Roles <directives.html#role>`
-which is a reST directive ``role``, thet tailor the renderer to
+which is a reST directive ``role``, the tailor the renderer to
 apply some special formatting. We use it
 :ref:`in Sphinx section <css_class>`
 to use a special css class for some span of text.
@@ -429,11 +427,11 @@ removed from the output.
 
            Block in condensed syntax::
 
-             -  Im not a list.
+             -  I'm not a list.
 
       - Block in condensed syntax::
 
-          -  Im not a list.
+          -  I'm not a list.
 
    *   - .. code-block:: ReST
 
@@ -561,7 +559,7 @@ An `epigraph` directive (:restref:`ref <directives.html#epigraph>`) and an
 `highlights` directive (:restref:`ref <directives.html#highlights>`)
 are aimed to put a quotation in a distinct font.
 
-*dont forget the final* **s** *of highlights, or you fall down on the*
+*don't forget the final* **s** *of highlights, or you fall down on the*
 :ref:`Sphinx code highlighting directive <code_highlighting>`
 
 .. code-block:: ReST
@@ -765,40 +763,25 @@ Grid tables
 Grid tables (:restref:`ref <restructuredtext.html#grid-tables>`)
 have a more difficult syntax but can express more complex tables.
 
-.. comment
-   .. only:: html
-
-..
-
-          +--------+--------+-----------+
-          | Header | Header with 2 cols |
-          +========+========+===========+
-          | A      | Lists: | **C**     |
-          +--------+  - aha +-----------+
-          | B::    |  - yes | | a block |
-          |        |        |   of text |
-          |  *hey* |  #. hi | | a break |
-          +--------+--------+-----------+
-
 .. only:: latex
 
-          .. tabularcolumns:: |p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|
+   .. tabularcolumns:: |p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|
 
-          +--------+--------+-----------+
-          | Header | Header with 2 cols |
-          +========+========+===========+
-          | A      | Lists: | **C**     |
-          |        |  - aha |           |
-          | B::    |  - yes | | a block |
-          |        |        |   of text |
-          |  *hey* |  #. hi | | a break |
-          +--------+--------+-----------+
++--------+--------+-----------+
+| Header | Header with 2 cols |
++========+========+===========+
+| A      | Lists: | **C**     |
++--------+  - aha +-----------+
+| B::    |  - yes | | a block |
+|        |        |   of text |
+|  *hey* |  #. hi | | a break |
++--------+--------+-----------+
 
 .. index::
    table; emacs
 
 You can edit them under emacs with ``table.el``
-(but be carefull about conflicts with ``rst-mode``) or
+(but be careful about conflicts with ``rst-mode``) or
 use *org tables* with ``orgtbl-mode`` and export to table with
 ``org-table-convert`` or ``org-table-create-with-table.el`` ( bound
 to :kbd:`C-c ~` in ``org-mode``, but not in ``orgtbl-mode``)
@@ -972,7 +955,7 @@ blockquotes, or literal blocks are set by default with the `tabular
 In sphinx prior version 1.6 the `:column:` option for list table is not
 used for latex, and all  columns are of the same size.
 
-You can taylor the rendering by giving `tabularcolumns` directive
+You can tailor the rendering by giving `tabularcolumns` directive
 which uses the `p{width}` column type.
 
 Like this for three uneven columns:
@@ -1010,10 +993,10 @@ And there are  three types of hyperlink targets:
       _Docutils: http://docutils.sourceforge.net/
       _John Lee: john.lee@gmail.com
 
-2. An `internal document reference` point to some location in the same
+2. An :ref:`internal document reference <internal>` point to some location in the same
    document.
 
-3. An `indirect hyperlink` has an other hyperlink reference as target.
+3. An `indirect hyperlink`_ has an other hyperlink reference as target.
 
 
 There exist three ways to write hyperlink references
@@ -1053,8 +1036,9 @@ characters and characters in the set ``[,:_+-]`` *without double
 hyphens*, separated by spaces. (:restref:`ref
 <restructuredtext.html#reference-names>`)
 
-The references are equivalents when they differ only by case, number of
-spaces *space character, tabulation or new line*.
+The references are equivalents when they differ only by case or number of spaces. The
+space character class include spaces, horizontal or vertical tabs, newlines, carriage
+returns, or form feeds.
 
 When the reference has no embedded spaces the backquotes are not
 necessary:
@@ -1133,10 +1117,13 @@ Reference: :restref:`ref
    hyperlink; embedded
 
 Embedded URI.
-^^^^^^^^^^^^^
+-------------
 
 Reference: :restref:`ref
 <restructuredtext.html#embedded-uris-and-aliases>`
+
+You can directly embed an URI or a label in a reference enclosed in ``<``, ``>``
+in the reference.
 
 +--------------------------------------+--------------------------------------+
 |.. code-block:: ReST                  |In-line versions are `Sphinx Home     |
@@ -1160,8 +1147,12 @@ Reference: :restref:`ref
 
 Internal document reference.
 ----------------------------
-To define ``label`` as label for any text location internal to a document,
-precede the text location with:
+
+.. _explicit target:
+
+To define ``label`` as label also called :restref:`explicit hyperlink target
+<explicit-hyperlink-targets>`
+for any text location internal to a document, precede the text location with:
 
 .. code-block:: ReST
 
@@ -1190,7 +1181,66 @@ The ReST way of :restref:`hyperlink targets
 
    label_ or `other label`_
 
-Sphinx has its own *preferred syntax* that allow linking across files,
+.. index::
+   hyperlink; implicit target
+   implicit hyperlink
+
+Implicit Hyperlink Targets
+--------------------------
+
+Section titles, footnotes, and citations automatically are
+:restref:`implicit hyperlink targets  <implicit hyperlink targets>`.
+```Transition`_`` produces `Transition`_.
+
+.. _indirect reference to an implicit target:
+
+In pure ReST syntax you can reference the `Transition`_ section
+as `how to draw an horizontal line`_ with
+the hyperlink: ```how to draw an horizontal line`_`` and the
+`indirect hyperlink`_::
+
+  .. _how to draw an horizontal line: Transition_
+
+.. _how to draw an horizontal line: Transition_
+
+.. index::
+   pair: hyperlink; anonymous
+
+Anonymous Hyperlinks
+--------------------
+
+:restref:`Anonymous hyperlinks <anonymous-hyperlinks>` are hyperlinks where the target
+has no label text but begins with double leading underscores, the reference itself ends
+with two trailing underscores. The target are found by their sequential order in the
+document. The reference number n, reference the target number n.
+
+Example:
+
+.. code-block:: ReST
+
+   .. __: http://docutils.sourceforge.net/docs/ref/rst/
+
+   The `ReST reference manual`__
+
+.. __: http://docutils.sourceforge.net/docs/ref/rst/
+
+The `ReST reference manual`__
+
+The anonymous hyperlinks make the source text quite obscure, as the association between
+reference and targets can only be seen by enumerating both. They break easily. Moving a
+bloc of text with either a target or reference invalidate all anonymous hyperlinks of the
+document. So it is wise to avoid them.
+
+.. index:
+   Sphinx reference; vs ReST
+   ReST reference; vs Sphinx
+
+.. _sphinx vs rest references:
+
+Difference between ReST and Sphinx location reference
+-----------------------------------------------------
+
+Sphinx has its own *preferred syntax*,
 it uses:
 
 .. code-block:: ReST
@@ -1200,12 +1250,19 @@ it uses:
 it is specific to Sphinx and you find it :ref:`in the Sphinx section
 <sphinx_cross_references>`.
 
-These two syntax do not have the same rendering, the text of the
-reference is used by ReST, while Sphinx syntax either need a reference
-text or when the target is preceding a section the name of the section
-is used. In this document there is two reference targets before the
-section *Sidebar and Topic*, the next table show how they are
-rendered.
+While ReST internal hyperlinks reference a target in the same document, Sphinx
+allow linking across files of the same project.
+
+.. _sphinx vs rest ref rendering:
+
+These two syntax do not have the same rendering, the text of the target label is used by
+ReST as default displayed text, while Sphinx syntax either need a reference displayed
+text or when the target is preceding a section the name of the section is used as
+default displayed text, the text of the label is never used by Sphinx to display the
+link.
+
+In this document there is two reference targets before the section *Sidebar and Topic*,
+the next table show how they are rendered.
 
 .. list-table::
 
@@ -1222,24 +1279,19 @@ rendered.
      - :ref:`Sidebar` versus :ref:`Topic`
 
 
-Automatic document label.
--------------------------
+You cannot use the Sphinx ``:ref:`` syntax to reference
+:restref:`implicit hyperlink targets <implicit hyperlink targets>`.
+``:ref:`Transition``` is not accepted.
 
-Section titles, footnotes, and citations automatically are link targets.
-```Transition`_`` produces `Transition`_. You can also use them as
-target of a link in  the :ref:`Sphinx ref syntax <sphinx_ref>`;
-``:ref:separate two parts <transition>``` gives
-:ref:`separate two parts <transition>` pointing to the same label.
+Sphinx can use an `indirect hyperlink`_, so with the :ref:`alias above
+<indirect reference to an implicit target>` we can use
+``:ref:`how to draw an horizontal line```, but it gives
+:ref:`how to draw an horizontal line`. As :ref:`explained previously
+<sphinx vs rest ref rendering>` the ReST Label is not known by Sphinx.
 
-Inpure ReST syntax you can reference the `Transition`_ section
-as `how to draw an horizontal line`_ with
-the hyperlink: ```how to draw an horizontal line`_`` and the
-`indirect hyperlink`_::
-
-  .. _how to draw an horizontal line: Transition_
-
-.. _how to draw an horizontal line: Transition_
-
+When using the Sphinx syntax it is easier to always define an :ref:`explicit target
+<explicit target>`, which is also is more robust as a rewording of a section title will
+not invalidate the document.
 
 .. _explicit_markup:
 
@@ -1453,7 +1505,7 @@ are simple pictures, see also
         :target: https://it.wikipedia.org/wiki/Telipinu_(divinità)
 
 You can click on this image to go to the target `Wikipedia (it): Telepinu
-<http://it.wikipedia.org/wiki/Telipinu_(divinità)>`_
+<http://it.wikipedia.org/wiki/Telipinu_(divinità)>`_.
 
 .. _figure:
 
@@ -1475,16 +1527,22 @@ an optional caption and an optional legend.
 
 .. only:: not latex
 
-   .. figure:: _static/NeoHittiteSphinx.svg
-      :width: 120px
-      :alt: Sphinx Hittite
-
-      Sphinx Hittite
-
-      Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
-      deity.
+   .. figure::_static/NeoHittiteSphinx.svg
 
 .. only:: latex
+
+   .. figure::  _static/NeoHittiteSphinx.pdf
+
+   :width: 120px
+   :alt: Sphinx Hittite
+
+   Sphinx Hittite
+
+   Telepinu is an `Hitite <http://en.wikipedia.org/wiki/Hittites>`_
+   deity.
+
+.. comment
+   only:: latex
 
    .. figure:: _static/NeoHittiteSphinx.pdf
       :width: 120px
@@ -1525,7 +1583,7 @@ To get proper figure size in latex generated by Sphinx you may have either to
 
 Latex does not support svg and it has to be converted to eps or pdf,
 pdf being the only one to support transparency.
-The conversion can be done with  Inscape, it can be automated as
+The conversion can be done with  Inkscape, it can be automated as
 `explained by Johan B. C. Engelen
 <http://ctan.tug.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf>`_.
 You can also use the `ipe drawing editor
@@ -1655,7 +1713,7 @@ If you use Sphinx there are also three :sphinx:`predefined substitutions
 
 file includes
 -------------
-To include a reST file use::
+To include a ReST file use::
 
 .. include:: subdir/incl.rst
 
@@ -1780,12 +1838,14 @@ Empty comments are used to terminate a preceding construct.
 
 Common options
 --------------
+ref: `Directives Common Options
+<http://docutils.sourceforge.net/docs/ref/rst/directives.html#common-options>`_
 
 The class options ``:class:`` and ``:name:``
 are supported by most of the directives.
 
-In the following :ref:`topic <topic>` and `autre <#topic>`_ the ``:name:`` act as a reference
-target. Here we can refer to the following block as `say-no-more`_.
+In the following :ref:`topic <topic>` and `autre <#topic>`_ the ``:name:`` act as a
+reference target. Here we can refer to the following block as `say-no-more`_.
 
 .. code-block:: ReST
 
