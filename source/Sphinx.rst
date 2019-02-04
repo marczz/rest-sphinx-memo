@@ -68,15 +68,15 @@ with ``.. _internal:``, so we have:
 ================================== ==============================
 ``:ref:`internal```                :ref:`internal`
 ``:ref:`That section <internal>``` :ref:`That section <internal>`
-``:ref:`ref to a name <mytopic>``` :ref:`ref to a name <mytopic>`
 ================================== ==============================
 
-We can also use as reference target a `name option` like
+We can also use as reference target a :ref:`name option <name-option>` like
 
 =================================== ===============================
 ``:ref:`see this topic <mytopic>``` :ref:`see this topic <mytopic>`
 =================================== ===============================
 
+See also :ref:`sphinx vs rest references` in the :doc:`ReST`.
 
 
 Cross-referencing documents.
