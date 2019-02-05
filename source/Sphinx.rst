@@ -47,8 +47,9 @@ There are three types of roles:
 
 Location cross references
 -------------------------
-:sphinx:`sphinx ref:  Cross-referencing arbitrary locations
-<markup/inline.html#cross-referencing-arbitrary-locations>`
+sphinx ref: :sphinx:`Cross-referencing arbitrary locations
+<markup/inline.html#cross-referencing-arbitrary-locations>` and
+:sphinx:`sphinx role: ref <usage/restructuredtext/roles.html#role-ref>`.
 
 We use::
 
@@ -76,8 +77,70 @@ We can also use as reference target a :ref:`name option <name-option>` like
 ``:ref:`see this topic <mytopic>``` :ref:`see this topic <mytopic>`
 =================================== ===============================
 
-See also :ref:`sphinx vs rest references` in the :doc:`ReST`.
+See also :ref:`sphinx vs rest references` in the :doc:`ReST <ReST>` chapter.
 
+
+.. index::
+   sphinx; autosectionlabel
+   autosectionlabel; sphinx extension
+   extension;  autosectionlabel
+
+.. _autosectionlabel:
+
+Automatic labels for sections
+-----------------------------
+Sphinx as an extension :sphinx:`autosectionlabel
+<usage/extensions/autosectionlabel.html>` that allow to reference
+each section by its title. Its is similar to
+:ref:`implicit hyperlink`, but works across document.
+
+In the doc:`ReST chapter <ReST>` we have used an :ref:`implicit hyperlink`
+with:
+
+.. code-block:: ReST
+
+    `Transition`_
+    `how to draw an horizontal line <Transition>`_
+
+we cannot use in the present chapter this ReST way of referencing a target because ReST
+processor know only one document. but we can use it with the
+:sphinx:`autosectionlabel extension <usage/extensions/autosectionlabel.html>` with
+
+.. list-table::
+
+   * - .. code-block:: ReST
+
+          | The section :ref:`Transition` show
+          | :ref:`how to draw an horizontal line <Transition>`
+          | in your document.
+
+     - | The section :ref:`Rest:Transition` show
+       | :ref:`how to draw an horizontal line <Rest:Transition>`
+       | in your document.
+
+Once you use the :sphinx:`autosectionlabel extension
+<usage/extensions/autosectionlabel.html>` *new in version 1.4*
+Sphinx will detect duplicate labels, in contrast with :ref:`implicit hyperlink`
+*autolabel* define a new label for each section, so if you have manually put a label
+before a section title which is identical to the title, it will be detected as
+*duplicate*.
+
+These duplicate are harmless since they reference the same point. But some title in many
+document can be identical, you can have many *introduction* or *conclusion* in different
+parts. The duplicate may be problematic as any one can be matched by a reference. To
+disembiguate the labels there is an configuration option *beginning version 1.6*
+``autosectionlabel_prefix_document`` which prefix the automatic labels with with the
+name of the document it is in, followed by a colon.
+
+With this setting instead of ``:ref:`Transition``` you have to use
+``:ref:`ReST:Transition``` it avoid a potential ambiguity with a *Transition* paragraph
+in an other document, and has the additional benefit to avoid also all ambiguities with
+explicit labels in your documents.
+
+
+.. index::
+   pair:  sphinx; document cross-reference
+   pair:  sphinx; cross-reference document
 
 Cross-referencing documents.
 ----------------------------
