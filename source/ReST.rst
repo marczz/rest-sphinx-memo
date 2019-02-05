@@ -1281,13 +1281,8 @@ the next table show how they are rendered.
 
 You cannot use the Sphinx ``:ref:`` syntax to reference
 :restref:`implicit hyperlink targets <implicit hyperlink targets>`.
-``:ref:`Transition``` is not accepted.
-
-Sphinx can use an `indirect hyperlink`_, so with the :ref:`alias above
-<indirect reference to an implicit target>` we can use
-``:ref:`how to draw an horizontal line```, but it gives
-:ref:`how to draw an horizontal line`. As :ref:`explained previously
-<sphinx vs rest ref rendering>` the ReST Label is not known by Sphinx.
+but there is an :ref:`autosectionlabel extension <autosectionlabel>` which provides
+a label for each section across the whole project.
 
 When using the Sphinx syntax it is easier to always define an :ref:`explicit target
 <explicit target>`, which is also is more robust as a rewording of a section title will
