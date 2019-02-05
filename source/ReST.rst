@@ -1091,6 +1091,8 @@ target you can also use:
 Multiple adjacent hyperlink references
 will  all point to the same target.
 
+An indirect hyperlink can also be defined inline with  an `embedded alias`.
+
 .. index::
    hyperlink; standalone
 
@@ -1099,25 +1101,30 @@ Standalone Hyperlink.
 Reference: :restref:`ref
 <restructuredtext.html#standalone-hyperlink>`
 
-+--------------------------------------+--------------------------------------+
-|.. code-block:: ReST                  |We may use URI like                   |
-|                                      |http://sphinx.pocoo.org or an email   |
-|   We may use URI like                |address like project@sphinx.org       |
-|   http://sphinx.pocoo.org or         |                                      |
-|   an email address like              |                                      |
-|   project@sphinx.org                 |                                      |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
+.. list-table::
 
-.. _embedded uri:
+   * - .. code-block:: ReST
+
+          | We may use URI like
+            http://sphinx.pocoo.org or
+          | an email address like
+            project@sphinx.org
+
+     - | We may use URI like
+         http://sphinx.pocoo or
+       | an email address like
+         project@sphinx.org
 
 .. index::
    reference; embedded
    reference; in-line
    hyperlink; embedded
 
-Embedded URI.
--------------
+.. _embedded uri:
+.. _embedded alias:
+
+Embedded URI and Aliases
+------------------------
 
 Reference: :restref:`ref
 <restructuredtext.html#embedded-uris-and-aliases>`
@@ -1132,6 +1139,15 @@ in the reference.
 |   <http://sphinx.pocoo.org>`_        |                                      |
 +--------------------------------------+--------------------------------------+
 
+With the label ``internal`` which precede the following section we can use
+
+.. list-table::
+
+   * - .. code-block:: ReST
+
+          `Internal target <internal>`_
+
+     -  `Internal target <internal>`_
 
 .. index::
    reference
@@ -1170,11 +1186,9 @@ You can also use :restref:`inline internal targets
 
    which are a _`span of running text` in a paragraph.
 
-There are two ways of referencing a label.
-
 .. _rest_ref:
 
-The ReST way of :restref:`hyperlink targets
+The ReST way of referencing a label or :restref:`hyperlink targets
 <restructuredtext.html#hyperlink-targets>` is:
 
 .. code-block:: ReST
@@ -1184,6 +1198,8 @@ The ReST way of :restref:`hyperlink targets
 .. index::
    hyperlink; implicit target
    implicit hyperlink
+
+.. _implicit hyperlink:
 
 Implicit Hyperlink Targets
 --------------------------
@@ -1197,11 +1213,26 @@ Section titles, footnotes, and citations automatically are
 In pure ReST syntax you can reference the `Transition`_ section
 as `how to draw an horizontal line`_ with
 the hyperlink: ```how to draw an horizontal line`_`` and the
-`indirect hyperlink`_::
+`indirect hyperlink`_:
+
+.. code-block:: ReST
 
   .. _how to draw an horizontal line: Transition_
 
 .. _how to draw an horizontal line: Transition_
+
+You can also use them with an `embedded alias`_
+
+.. list-table::
+
+   * - .. code-block:: ReST
+
+          | The `Transition section <Transition>`_ shows
+          | `how to draw an horizontal line`_
+            in your document.
+
+     - | The `Transition section <Transition>`_ shows
+       | `how to draw an horizontal line`_ in your document.
 
 .. index::
    pair: hyperlink; anonymous
