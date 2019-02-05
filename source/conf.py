@@ -56,7 +56,8 @@ sys.path.insert(0, os.path.abspath('.'))
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx.ext.todo',
     'sphinx.ext.ifconfig', 'sphinx.ext.extlinks', 'sphinx.ext.imgmath',
-    'sphinx.ext.graphviz', 'sphinx.ext.autodoc']
+    'sphinx.ext.graphviz', 'sphinx.ext.autosectionlabel']
+
 #  'sphinx.ext.viewcode' output a separate html page for each .. class::, .. function:: etc.
 
 # Napoleon settings
@@ -71,6 +72,10 @@ napoleon_use_admonition_for_references = False
 napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
+
+# option for autosectionlabel
+
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
