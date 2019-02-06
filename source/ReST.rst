@@ -1129,25 +1129,51 @@ Embedded URI and Aliases
 Reference: :restref:`ref
 <restructuredtext.html#embedded-uris-and-aliases>`
 
-You can directly embed an URI or a label in a reference enclosed in ``<``, ``>``
+You can directly embed an URI, a link target or an internal label in a reference enclosed in ``<``, ``>``
 in the reference.
 
-+--------------------------------------+--------------------------------------+
-|.. code-block:: ReST                  |In-line versions are `Sphinx Home     |
-|                                      |<http://sphinx.pocoo.org>`_.          |
-|   In-line versions are `Sphinx Home  |                                      |
-|   <http://sphinx.pocoo.org>`_        |                                      |
-+--------------------------------------+--------------------------------------+
+In the same way than explicit :ref:`indirect hyperlink` when we use a target defined
+elsewhere we have use a trailing underscore.
 
-With the label ``internal`` which precede the following section we can use
+In the last example we use the label ``internal`` which is placed before the following
+section.
+
 
 .. list-table::
 
    * - .. code-block:: ReST
 
-          `Internal target <internal>`_
+          In-line versions is `Sphinx Home
+          <http://sphinx.pocoo.org>`_
 
-     -  `Internal target <internal>`_
+     - In-line versions is `Sphinx Home
+       <http://sphinx.pocoo.org>`_.
+
+   * - ..  code-block:: ReST
+
+           .. _devguide:
+              http://docs.python.org/devguide/
+
+           `Python development <devguide_>`_
+
+     - .. _devguide:
+          http://docs.python.org/devguide/
+
+       `Python development <devguide_>`_
+
+   * - .. code-block:: ReST
+
+          `Sphinx main page <Sphinx Home_>`_
+
+     - `Sphinx main page <Sphinx Home_>`_
+
+
+   * - .. code-block:: ReST
+
+          `Internal target <internal_>`_
+
+     -  `Internal target <internal_>`_
+
 
 .. index::
    reference
