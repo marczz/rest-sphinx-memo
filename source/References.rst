@@ -7,12 +7,14 @@
 Sphinx and Rest References
 ==========================
 
--  This doc began as a fork of a 2011 version of `Cristoph Reller reST Memo
+-  .. _history:
+
+   This doc began as a fork of a 2011 version of `Cristoph Reller reST Memo
    <http://aert-notes-dev.readthedocs.org/en/latest/content/rest/>`_
    which is now part of his `Programming Notes
    <http://aert-notes-dev.readthedocs.io/en/latest/>`_. I
    adapted it according to my needs, and they have largely diverged
-   now, but it still inherits from some content and layout.
+   now, but it may still inherits from few content and layout.
 -  :sphinx:`Sphinx documentation <contents.html>`
 -  :sphinx:`Sphinx reStructuredText Primer <rest.html>`
 -  `Documenting Your Project Using
