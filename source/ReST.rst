@@ -1372,8 +1372,10 @@ They all begin with two periods and a white space.
 .. index::
    !footnote
 
-Footnotes (:restref:`ref <restructuredtext.html#footnotes>`)
-------------------------------------------------------------
+Footnote
+--------
+ref: :restref:`footnotes <restructuredtext.html#footnotes>`
+
 To define a footnote numbered 2 you write it
 ``.. [2]`` precedes the definition of the footnote 2.  It is referenced by
 ``[2]_``. E.g.
@@ -1447,32 +1449,42 @@ To define a footnote numbered 2 you write it
 .. index::
    !citation
 
-Citations
----------
+Citation
+--------
 ref: :restref:`citations <restructuredtext.html#citations>` and
 :restref:`citation references
 <restructuredtext.html#citation-references>`
 
-.. sidebar:: Code
+Citations are identical to footnotes except that they use only non-numeric labels.
 
-   ::
+.. list-table::
 
-      We cite [REL09]_ or REL09_
-      or even rel09_.
+   * - .. code-block:: REST
 
-      .. [REL09] Citation
+          More details are given in [project]_.
 
-``.. [REL2009]`` is followed by the definition of the citation
-``REL2009``.  It is referenced as ``[REL2009]_`` or ``REL2009_``.
-Citation labels are single word `reference name`_
-and can contain underlines, hyphens and fullstops.  Case
-is not significant. In Sphinx, definition and reference can reside in
+          .. [project] This project began by ....
+
+     - More details are given in [project]_.
+
+       .. [project] This project began by ....
+
+   * - .. code-block:: REST
+
+          We can use also links like Project_
+
+     - | As citation define ordinary target reference
+       | We can use also links like Project_
+
+
+``.. [project]`` is followed by the definition of the citation
+It is referenced as ``[project]__``.
+
+Citation labels are **single word** `reference name`_.
+
+In Sphinx, definition and reference can reside in
 different files.
 
-We cite [REL09]_ or REL09_
-or even rel09_.
-
-.. [REL09] Citation
 
 .. index::
    !directive
@@ -1782,8 +1794,8 @@ If you use Sphinx there are also three :sphinx:`predefined substitutions
 
 .. _file_include:
 
-file includes
--------------
+File include
+------------
 To include a ReST file use::
 
 .. include:: subdir/incl.rst
@@ -1813,8 +1825,8 @@ For including source code in Sphinx rather use the Sphinx directive
 
 .. _topic:
 
-Sidebar and Topic.
-------------------
+Sidebar and Topic
+-----------------
 
 A :restref:`sidebar <directives.html#sidebar>` or a :restref:`topic
 <directives.html#topic>` are treated like documents on their own::
