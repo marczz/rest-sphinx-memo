@@ -21,6 +21,8 @@ Sphinx and Rest References
    Sphinx <http://packages.python.org/an_example_pypi_project/sphinx.html>`_
    from `an example pypi project’s
    <http://packages.python.org/an_example_pypi_project/>`_
+-  `Awesome Sphinx <https://github.com/yoloseem/awesome-sphinxdoc>`_
+   a curated list of awesome extra libraries, software and resources for Sphinx.
 -  Thomas Cokelaer `Openalea project: How to use sphinx ?
    <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/sphinx.html>`_
    and
