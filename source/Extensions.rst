@@ -3,10 +3,22 @@ Sphinx extensions
 *****************
 
 We have described in the previous section the extensions:
+:ref:`autosectionlabel <autosectionlabel>`,
 :ref:`intersphinx <intersphinx_extension>`,
 :ref:`extlinks <extlinks_extension>`,
 :ref:`ifconfig <ifconfig_extension>`,
 :ref:`napoleon <napoleon_extension>`.
+
+There are part of :sphinx:`Sphinx builtin extensions <usage/extensions/>`, a
+collection of third-party Sphinx extensions is in `sphinx-contrib repository
+<https://bitbucket.org/birkenfeld/sphinx-contrib>`_.
+
+`Awesome Sphinx <https://github.com/yoloseem/awesome-sphinxdoc>`_ has also a list of
+extensions, and sphinx documentation has :sphinx:`extension tutorials
+<tutorials/index.html>` and a :sphinx:`Developing extensions for Sphinx
+<extdev/>` chapter.
+
+
 
 .. index:
    pair: extension; todo
