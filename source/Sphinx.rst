@@ -17,26 +17,26 @@
 
 .. _sphinx_inline_markup:
 
-Sphinx inline markup
-====================
+Sphinx Roles
+============
 
 .. contents::
    :local:
-
-:sphinx:`sphinx reference: Inline markup <markup/inline.html>`
 
 .. _sphinx_roles:
 
 Sphinx inline markup is down through interpreted text roles;
 they are written ``:rolename:`content`.``.
 
-There are three types of roles:
+There are four types of roles:
 
-- The :ref:`ReStructuredText Text Roles <rest_roles>`.
--  The Sphinx roles that are described in the section
-   :ref:`sphinx_role` and the :ref:`Sphinx cross references
-   <sphinx_cross_references>`
--  The roles added by :sphinx:`Sphinx domains <domains.html>` like
+-  The :ref:`ReStructuredText Text Roles <rest_roles>`, which are valid both for
+   ReStructuredText and Sphinx.
+-  The :ref:`Sphinx cross references Roles<sphinx_cross_references>`
+   which extend and are preferred to
+   :ref:`ReStructuredText cross references<cross-reference>`
+-  The :sphrst:`markup roles<other-semantic-markup>`
+-  The roles added by :sphrst:`Sphinx domains <domains.html>` like
    the :ref:`Python roles <python_roles>` referenced below.
 
 .. _sphinx_ref:
@@ -47,9 +47,9 @@ There are three types of roles:
 
 Location cross references
 -------------------------
-sphinx ref: :sphinx:`Cross-referencing arbitrary locations
-<markup/inline.html#cross-referencing-arbitrary-locations>` and
-:sphinx:`sphinx role: ref <usage/restructuredtext/roles.html#role-ref>`.
+sphinx ref: :sphrst:`Cross-referencing arbitrary locations
+<roles.html#cross-referencing-arbitrary-locations>` which defines
+the sphinx role :sphrst:`ref <roles.html#role-ref>`.
 
 We use::
 
@@ -94,7 +94,7 @@ Sphinx as an extension :sphinx:`autosectionlabel
 each section by its title. Its is similar to
 :ref:`implicit hyperlink`, but works across document.
 
-In the doc:`ReST chapter <ReST>` we have used an :ref:`implicit hyperlink`
+In the :doc:`ReST chapter <ReST>` we have used an :ref:`implicit hyperlink`
 with:
 
 .. code-block:: ReST
@@ -119,7 +119,7 @@ processor know only one document. but we can use it with the
        | in your document.
 
 Once you use the :sphinx:`autosectionlabel extension
-<usage/extensions/autosectionlabel.html>` *new in version 1.4*
+<usage/extensions/autosectionlabel.html>`
 Sphinx will detect duplicate labels, in contrast with :ref:`implicit hyperlink`
 *autolabel* define a new label for each section, so if you have manually put a label
 before a section title which is identical to the title, it will be detected as
@@ -144,8 +144,8 @@ explicit labels in your documents.
 
 Cross-referencing documents.
 ----------------------------
-:sphinx:`sphinx ref: Cross-referencing documents
-<markup/inline.html#cross-referencing-documents>`
+:sphrst:`sphinx ref: Cross-referencing documents
+<roles.html#cross-referencing-documents>`
 
 In Sphinx it is possible to reference a document as follows
 
@@ -158,9 +158,9 @@ In Sphinx it is possible to reference a document as follows
 
 Extra cross-reference roles
 ---------------------------
-Many are described in the
-:sphinx:`sphinx ref:Cross-referencing other items of interest
-<markup/inline.html#cross-referencing-other-items-of-interest>`.
+Several  are described in the
+:sphrst:`sphinx ref: Cross-referencing other items of interest
+<roles.html#cross-referencing-other-items-of-interest>`.
 
 To reference  a Python Enhancement Proposal use ``:pep:``, for a
 Request for Comments ``:rfc:``
@@ -196,16 +196,15 @@ Extensions that define new hyperlinks targets
 .. index
    pair: sphinx; role
 
-.. _sphinx_role:
+.. _markup_roles:
 
 
-Sphinx Roles.
+Markup Roles.
 -------------
 
-The Sphinx roles  are described in :sphinx:`Sphinx: Inline markup
-<markup/inline.html>`
-and in the specific domains,  e.g.
-:sphinx:`python roles <domains.html#python-roles>`.
+Ref: :sphrst:`Semantic markup roles<other-semantic-markup>`.
+
+They don't generate a cross reference but only format the text in a different style.
 
 Some common markup are:
 
@@ -266,7 +265,7 @@ You may supply an explicit title and reference target: ``:role:`title
 Sphinx directives
 =================
 
-Sphinx includes its own :sphinx:`directives <markup/index.html>`, which
+Sphinx includes its own :sphrst:`directives <directives.html>`, which
 are not available in the docutils builders.
 
 .. We reference here
@@ -296,7 +295,7 @@ Table of contents.
       ‹file 1 without file name extension›
       ‹file 2 without file name extension›
 
-The :sphinx:`toctree directive <markup/toctree.html>` create a table of
+The  :sphrst:`toctree directive <directives.html#directive-toctree>` create a table of
 contents across files.
 
 A ``glob`` option enables to use wildcards in the filenames, e.g. ``/comp/*``
@@ -310,11 +309,11 @@ following :ref:`Field list` type element in the very first line of the file::
 
    :tocdepth: ‹depth›
 
-See :sphinx:`Sphinx: Toc tree <markup/toctree.html>` for other
+See :sphrst:`toctree directive <directives.html#directive-toctree>` for other
 options.
 
-To get a table of content *inside* a file, use the :ref:`reST table of
-contents <reST-tableOfContents>`
+To get a table of content *inside* a file, use the :ref:`reST table of contents
+<reST-tableOfContents>`
 
 .. index::
    pair: index; directive
@@ -329,11 +328,13 @@ contents <reST-tableOfContents>`
 Index.
 ------
 
-Entries in the :sphinx:`index
-<markup/misc.html#index-generating-markup>`
+Entries in the Index
 are created automatically from all information units
-like functions, classes or attributes but those with a ``:noindex:``
-option.  Explicit manual entries are made as::
+like  modules, classes, functions or attributes but those with a ``:noindex:``
+option.
+
+Explicit manual entries use the
+:sphrst:`index directive<directives.html#directive-index>`::
 
    .. index:: ‹entry 1›, ‹entry 2›, !<entry 3> ...
       single: ‹entry›; ‹sub-entry›
@@ -358,7 +359,7 @@ bar`` or ``seealso: bar foo``.
 Glossary.
 ---------
 
-A :sphinx:`glossary <markup/para.html#directive-glossary>`
+A :sphrst:`glossary <basics.html#directive-glossary>`
 is a :ref:`definition_list`::
 
    .. glossary::
@@ -380,7 +381,7 @@ is a :ref:`definition_list`::
 Note, Warning, Seealso.
 -----------------------
 
-They are :sphinx:`paragraph-level markups <markup/para.html>`
+They are :sphrst:`paragraph-level markups <directives.html#paragraph-level-markup>`.
 
 .. sidebar:: Code
 
@@ -425,7 +426,7 @@ Selective inclusion.
 --------------------
 
 A block may be included depending of the presence of some tag
-(:sphinx:`Sphinx ref <markup/misc.html#including-content-based-on-tags>`)::
+(:sphrst:`Sphinx ref <directives.html#including-content-based-on-tags>`)::
 
    ..only:: <expression>
 
@@ -447,8 +448,7 @@ In the configuration file you can use
 .. _ifconfig_extension:
 
 An alternative is the ``ifconfig`` directive
-(:sphinx:`Sphinx ref <ext/ifconfig.html>`)
-from the ``sphinx.ext.ifconfig`` extension::
+from the :sphinx:`ifconfig extension<usage/extensions/ifconfig.html>`::
 
    .. ifconfig:: <Python expression>
 
@@ -551,8 +551,8 @@ but directive fail with **Sphinx**. You have to replace it with
 
 Sphinx use ``rst-class`` to replace the ReSt
 :ref:`class <class_directive>` directive that is shadowed by Sphinx.
-This is *only* stated in a small `footnote of Sphinx reSt
-Primer <http://sphinx-doc.org/rest.html#id3>`_.
+This is *only* stated in a small
+:sphrst:`footnote of Sphinx reSt Primer <basics.html#id2>`.
 
 Using your new style
 --------------------
@@ -596,7 +596,7 @@ Code highlighting.
    single: block; literal
    literal block
 
-:sphinx:`Sphinx ref: showing code <http://sphinx-doc.org/markup/code.html>`
+:sphrst:`Ref: showing code Examples<irectives.html#showing-code-examples>`
 
 The code blocks are highlighted by sphinx, there is a default language
 of ``Python`` that can be changed in the configuration, by setting the
@@ -611,8 +611,7 @@ set for following snippets of code examples by::
 
 The option language may be any
 `language <http://pygments.org/languages/>`_
-supported by a `Pygment lexer
-<http://pygments.org/docs/lexers/>`_.
+supported by a `Pygment lexer <http://pygments.org/docs/lexers/>`_.
 
 The additional ``linenothreshold`` option switches on line numbering
 for blocks of size beyond ‹number› lines.
@@ -647,8 +646,8 @@ When using base ReST parser use instead :ref:`code keyword <rst-code>`.
 Source code include.
 --------------------
 
-Source code is included in Sphinx with the :sphinx:`directive
-literalinclude <markup/code.html#directive-literalinclude>`.
+Source code is included in Sphinx with the
+:sphrst:`directive literalinclude <directives.html#directive-literalinclude>`.
 
 To include the source file ``example.py`` as a literal block use::
 
@@ -715,13 +714,11 @@ For including a ReST source file use the :ref:`rest directive include
 Source code directives.
 -----------------------
 
-There are very powerful directives in Sphinx
-for documenting source code, each programming langage
-has a :sphinx:`specific domains <domains.html>` .
+There are very powerful directives in Sphinx for documenting source code, each
+programming langage has a :sphrst:`specific domains <domains.html>` .
 
 The following markups are related to
-:sphinx:`documenting python source code
-<domains.html#the-python-domain>`.
+:sphrst:`documenting python source code <domains.html#the-python-domain>`.
 
 +--------------------------------------+-----------------------------------------------------+
 |``.. module:: name``                  |Marks the beginning of the description of a module   |
@@ -761,7 +758,7 @@ The following markups are related to
 autodoc
 -------
 
-There is  an :sphinx:`autodoc  <ext/autodoc.html>`
+There is  an :sphinx:`autodoc  <usage/extensions/autodoc.html>`
 version of the :ref:`source code directives <source_code_directives>`
 which include documentation from docstrings:
 
@@ -875,11 +872,11 @@ Alternatively there is a `NumPy/SciPy style of documentation`_.
 But they produces docstrings that are not recognized by Sphinx, and
 not decorated in html output.
 
-The extension :sphinx:`napoleon <ext/napoleon.html>` preprocess NumPy
+The extension :sphinx:`napoleon <usage/extensions/napoleon.html>` preprocess NumPy
 and Google style docstrings and converts them to reStructuredText
 before Sphinx parse the source code. You need to
-`configure it in your conf.py file
-<http://www.sphinx-doc.org/en/latest/ext/napoleon.html#configuration>`_.
+:sphinx:`configure it in your conf.py file
+<usage/extensions/napoleon.html#configuration>`.
 
 .. literalinclude:: code/gstyle_docstring.py
    :language: python
@@ -918,7 +915,7 @@ And we have the decorated result:
 
 
 If you want to experiment with output of *napoleon* you can look at
-the parameters of ``GoogleDocstring`` in the `source code
+the parameters of ``GoogleDocstring`` in the `Napoleon source code
 <https://github.com/sphinx-doc/sphinx/blob/master/sphinx/ext/napoleon/docstring.py>`_
 
 .. include:: include/commonref.rst
