@@ -58,8 +58,8 @@ doing:
    pair: extension; pngmath
 
 
-Sphinx Math
-===========
+Math Extensions.
+================
 
 There are three  :sphinx:`mathematical typesetting Sphinx extensions
 <ext/math.html>` :ref:`imgmath <imgmath_extension>`,
@@ -84,33 +84,6 @@ To enable the extension, the following line has to appear in ``conf.py``:
    extensions = ['sphinx.ext.imgmath']
 
 
-You then can type standard LaTeX math expressions, either inline::
-
-   :math:`‹LaTeX math expression›`
-
-or in display mode::
-
-   .. math::
-
-      ‹LaTeX math expressions›
-
-The second version is also available for a one line expression::
-
-   .. math:: ‹1 Line LaTeX math expression›
-
-.. sidebar:: Code for example
-
-   ::
-
-      Pythagoras :math:`a^2+b^2=c^2`
-
-      .. math:: \sum_{n=0}^N x_n = y
-
-E.g:
-
-Pythagoras :math:`a^2+b^2=c^2`
-
-.. math:: \sum_{n=0}^N x_n = y
 
 :sphinx:`Mathjax <ext/math.html#module-sphinx.ext.mathjax>`
 and its predecessor :sphinx:`jsmath
@@ -118,83 +91,7 @@ and its predecessor :sphinx:`jsmath
 render math through javascript.
 
 
-Multiline Math
---------------
 
-.. sidebar:: Code for example
-
-   ::
-
-      .. math::
-
-         a+b = c
-
-         b = x_n
-
-         a &= y_n\\
-           &= c-b
-
-**Sphinx Built-in Mechanism**
-
-Several lines of math expressions can be entered by leaving a blank line between
-them.  In addition there is something like an ``align`` environment syntax if
-lines are not separated by a blank line.
-
-.. math::
-
-   a+b = c
-
-   b = x_n
-
-   a &= y_n\\
-     &= c-b
-
-
-**Explicit LaTeX with amsmath mechanism**
-
-If the option ``nowrap`` is specified then the full LaTeX code (including the
-math-environment) has to be given.  We can assume that the :index:`amsmath` package
-is loaded.  This is not limited to math typesetting, any LaTeX construct can be
-rendered in this way.
-
-+----------------------------------------+----------------------------------------+
-|::                                      |                                        |
-|                                        |.. math:: \[a = b\]                     |
-|    .. math:: \[a = b\]                 |   :nowrap:                             |
-|       :nowrap:                         |                                        |
-|                                        |or equivalenty                          |
-|    or equivalenty                      |                                        |
-|                                        |.. math::                               |
-|    .. math::                           |   :nowrap:                             |
-|       :nowrap:                         |                                        |
-|                                        |   \[a = b\]                            |
-|       \[a = b\]                        |                                        |
-|                                        |                                        |
-+----------------------------------------+----------------------------------------+
-
-
-Equation Numbers
-----------------
-
-Equations are labeled with the ``label`` option and referred to using::
-
-  :eq:`‹label›`
-
-.. sidebar:: Code for example
-
-   ::
-
-      .. math:: a^2 + b^2 = c^2
-         :label: pythag
-
-      See equation :eq:`pythag`.
-
-E.g:
-
-.. math:: a^2 + b^2 = c^2
-   :label: pythag
-
-See equation :eq:`pythag`.
 
 .. index::
    pair: extension; graphviz
