@@ -14,18 +14,16 @@ Introduction
       | is licensed under a `Creative Commons Attribution-NonCommercial 4.0 International License <http://creativecommons.org/licenses/by-nc/4.0/>`__.
       | Source `in GitHub <https://github.com/marczz/rest-sphinx-memo>`_
 
-This Memo was written (:ref:`history <history>`) to serve as quick reference for ReST
-and Sphinx syntax.
+This Memo aim to be a quick reference to ReST and Sphinx syntax, it tries to give a
+short reference to the most usual [*]_ constructs and gives cross-references to the
+manuals for details.
 
-Sphinx itself is very well documented, but is very large and cover
-many aspects, all of them  not for daily use. And the Documentation of
-Rest, while being very rigorous is not of an easy access, at least at
-my own taste. I use to spend a lot of time to clarify even a tiny aspect,
-as the documentation is often scattered in many locations.
+Sphinx  is very well documented, but is very large and cover
+many aspects, all of them  not for daily use.
 
-Moreover Sphinx seems first to be an extension of Rest, but it is not
-always true and there are some difference of aims, and
-incompatibilities, between Sphinx and Rest constructs.
+The ReST documentation is very rigorous and copious but not of easy access,
+as the documentation is scattered in many locations.
 
-This Memo give the constructs that I use the most often, and give
-cross-references to the manuals for details.
+Sphinx extend Rest, but introduces incompatibilities with pure ReST constructs.
+
+..  [*] *usual* ranking is done only from what I use!

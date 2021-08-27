@@ -2,7 +2,7 @@
 Sphinx/Rest Memo
 ****************
 
-.. module:: reST
+.. module:: ReST
    :synopsis: Documentation of reStructuredText and Sphinx
 .. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
 
