@@ -34,7 +34,7 @@ There are four types of roles:
    ReStructuredText and Sphinx.
 -  The :ref:`Sphinx cross references Roles<sphinx_cross_references>`
    which extend and are preferred to
-   :ref:`ReStructuredText cross references<cross-reference>`
+   :ref:`ReStructuredText cross references<cross_reference>`
 -  The :sphrst:`markup roles<other-semantic-markup>`
 -  The roles added by :sphrst:`Sphinx domains <domains.html>` like
    the :ref:`Python roles <python_roles>` referenced below.
@@ -63,13 +63,13 @@ If the ``label`` definition is followed by a section title then
 ``displayed text`` can be omitted and will be replaced by the section
 title.
 
-E.g. the :doc:`ReST` *Internal document reference* section is preceded
-with ``.. _internal:``, so we have:
+E.g. the :doc:`ReST` *Explicit hyperlink target* section is preceded
+with ``.. _explicit_target:``, so we have:
 
-================================== ==============================
-``:ref:`internal```                :ref:`internal`
-``:ref:`That section <internal>``` :ref:`That section <internal>`
-================================== ==============================
+========================================= =====================================
+``:ref:`explicit_target```                :ref:`explicit_target`
+``:ref:`That section <explicit_target>``` :ref:`That section <explicit_target>`
+========================================= =====================================
 
 We can also use as reference target a :ref:`name option <name-option>` like
 
@@ -785,7 +785,7 @@ There are more options::
 
 ``caption`` is the displayed title before the block, ``name`` is the
 :ref:`reST name option <name-option>` used as an
-:ref:`internal reference <internal>` target.
+:ref:`internal reference <explicit_target>` target.
 
 ``dedent`` strip left whitespaces, ``linenos`` add a line numbering
 alternatively ``lineno-start`` begin the numbering at the given number.

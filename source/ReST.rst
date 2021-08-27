@@ -174,7 +174,7 @@ Bullet list
 
 We can begin each item with ``*``, ``+``, ``-``, ``•``, ``‣``, or
 ``⁃`` followed by at least one space, you should keep the indentation
-of the text of the first line in subsequents lines.
+of the text of the first line in subsequent lines.
 
 See :restref:`bullet list reference<restructuredtext.html#bullet-lists>`
 
@@ -239,7 +239,7 @@ b) Point b
 We can use enumerate with numerals, alphabetic lower case or upper
 case, roman numerals lower case or upper case.
 
-We can write enumeration followed by a period, a right parenthese, or
+We can write enumeration followed by a period, a right parenthesis, or
 surrounded by a parentheses; but these punctuation are not kept in the
 rendering; *rst2html* render ``i.``, ``i)`` or ``(i)`` as "i." and
 Sphinx render them as "a.".
@@ -965,6 +965,8 @@ Like this for three uneven columns:
    .. tabularcolumns::
          |p{0.10\linewidth}|p{0.10\linewidth}|p{0.30\linewidth}|
 
+.. _cross_reference:
+
 Cross reference.
 ================
 
@@ -1000,8 +1002,8 @@ And there are four types of hyperlink targets:
    It is possible, but not recommended, to avoid the target reference by using an
    `anonymous hyperlink`_.
 
-2. An :ref:`internal document reference <internal>` point to some location in the same
-   document.
+2. An :ref:`explicit hyperlink target <explicit_target>` is an internal document
+   reference which point to some location in the same document.
 
 3. An `indirect hyperlink`_ has an other hyperlink reference as target.
 
@@ -1022,17 +1024,19 @@ There exist three ways to write hyperlink references
    pair: option; name
 
 
+
+.. _explicit_target:
+
+Explicit hyperlink target
+-------------------------
+
 .. _internal:
 
+An :restref:`explicit hyperlink target
+<restructuredtext.html#explicit-hyperlink-targets>` is an
+*internal document reference* for any text location.
 
-Internal document reference.
-----------------------------
-
-.. _explicit target:
-
-To define ``label`` as label also called :restref:`explicit hyperlink target
-<explicit-hyperlink-targets>`
-for any text location internal to a document, precede the text location with:
+You define it by preceding  the text location with:
 
 .. code-block:: ReST
 
@@ -1062,6 +1066,12 @@ The ReST way of referencing a label or :restref:`hyperlink targets
 .. index::
    pair: indirect; hyperlink
    pair: hyperlink; alias
+
+The explicit hyperlink targets need to be unique in the document, and if you use them
+with Sphinx to be unique in the set of project documents.
+
+They override any identical implicit target. Oneness of reference is easier to maintain
+with explicit rather implicit targets.
 
 .. _indirect hyperlink:
 
@@ -1110,27 +1120,29 @@ An indirect hyperlink can also be defined inline with  an `embedded alias`_.
 Anonymous Hyperlink
 -------------------
 
-:restref:`Anonymous hyperlinks <anonymous-hyperlinks>` are hyperlinks where the target
-has no label text but begins with double leading underscores, the reference itself ends
-with two trailing underscores. The target are found by their sequential order in the
-document. The reference number n, reference the target number n.
+:restref:`Anonymous hyperlinks <restructuredtext.html#anonymous-hyperlinks>`
+are hyperlinks where the target has no label text but begins with double leading
+underscores, the reference itself ends with two trailing underscores.
+
+The targets are found by their sequential order in the document. The reference number
+*n*, reference the target number *n*.
 
 Example:
 
 .. code-block:: ReST
 
-   .. __: http://docutils.sourceforge.net/docs/ref/rst/
+   .. __: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 
    The `ReST reference manual`__
 
-.. __: http://docutils.sourceforge.net/docs/ref/rst/
+.. __: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 
 The `ReST reference manual`__
 
 The anonymous hyperlinks make the source text quite obscure, as the association between
 reference and targets can only be seen by enumerating both. They break easily. Moving a
-bloc of text with either a target or reference invalidate all anonymous hyperlinks of the
-document. So it is wise to avoid them.
+bloc of text with either a target or reference invalidate all anonymous hyperlinks of
+the document. So it is wise to avoid them.
 
 
 .. index::
@@ -1144,14 +1156,17 @@ Implicit Hyperlink Targets
 --------------------------
 
 Section titles, footnotes, and citations automatically are
-:restref:`implicit hyperlink targets  <implicit hyperlink targets>`.
-```Transition`_`` produces `Transition`_.
+:restref:`implicit hyperlink targets
+<restructuredtext.html#implicit-hyperlink-targets>`.
+
+To give an example in the present document, under the section `Structural elements`_ you
+find a subsection named `Transition`_. This section does not have any explicit hyperlink
+target, but when you write in the text ```Transition`_`` it produces `Transition`_.
 
 .. _indirect reference to an implicit target:
 
-In pure ReST syntax you can reference the `Transition`_ section
-as `how to draw an horizontal line`_ with
-the hyperlink: ```how to draw an horizontal line`_`` and the
+In pure ReST syntax you can reference the `Transition`_ section as `how to draw an
+horizontal line`_ with the hyperlink: ```how to draw an horizontal line`_`` and the
 `indirect hyperlink`_:
 
 .. code-block:: ReST
@@ -1173,6 +1188,13 @@ You can also use them with an `embedded alias`_
      - | The `Transition section <Transition>`_ shows
        | `how to draw an horizontal line`_ in your document.
 
+Implicit targets are easily broken, rewording a section title, or evenfixing a typo,
+changing a punctuation, break all the references. And when modifying a title you don't
+always think it might be a link target somewhere in the document.
+
+You don't modify so often the explicit link targets, and when you do it, you know that
+you have also to fix all references. So you should put away implicit in favor of
+explicit.
 
 .. index::
    reference; citation style
@@ -1197,10 +1219,9 @@ opposed to HTML documents.
 
 .. _reference name:
 
-The reference target is composed of words made of alphabetic and numeric
-characters and characters in the set ``[,:_+-]`` *without double
-hyphens*, separated by spaces. (:restref:`ref
-<restructuredtext.html#reference-names>`)
+The reference target is composed of words made of alphabetic and numeric characters and
+characters in the set ``[,:_+-]`` *without double hyphens*, separated by spaces.
+(:restref:`ref <restructuredtext.html#reference-names>`).
 
 The references are equivalents when they differ only by case or number of spaces. The
 space character class include spaces, horizontal or vertical tabs, newlines, carriage
@@ -1240,8 +1261,8 @@ in the reference.
 In the same way than explicit :ref:`indirect hyperlink` when we use a target defined
 elsewhere we have use a trailing underscore.
 
-In the last example we use the label ``internal`` which is placed before the following
-section.
+In the last example we use the label ``explicit_target`` placed before a section at the
+beginning of this document.
 
 
 .. list-table::
@@ -1275,9 +1296,9 @@ section.
 
    * - .. code-block:: ReST
 
-          `Internal target <internal_>`_
+          `Internal target <explicit_target_>`_
 
-     -  `Internal target <internal_>`_
+     -  `Internal target <explicit_target_>`_
 
 .. index::
    pair: hyperlink; standalone
@@ -1360,7 +1381,7 @@ but there is an :ref:`autosectionlabel extension <autosectionlabel>` which provi
 a label for each section across the whole project.
 
 When using the Sphinx syntax it is easier to always define an :ref:`explicit target
-<explicit target>`, which is also is more robust as a rewording of a section title will
+<explicit_target>`, which is also is more robust as a rewording of a section title will
 not invalidate the document.
 
 .. _explicit_markup:
