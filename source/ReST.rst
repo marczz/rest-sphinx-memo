@@ -2,7 +2,7 @@
 :mod:`ReST` -- reStructuredText
 *******************************
 
-.. module:: reST
+.. module:: ReST
    :synopsis: reStructuredText Memo
 .. moduleauthor:: Marc Zonzon <marc.zonzon@gmail.com>
 
@@ -1393,6 +1393,8 @@ They all begin with two periods and a white space.
 .. index::
    !footnote
 
+.. _footnote:
+
 Footnote
 --------
 ref: :restref:`footnotes <restructuredtext.html#footnotes>`
@@ -1465,7 +1467,7 @@ To define a footnote numbered 2 you write it
         .. [*] other labeled footnote.
 
 
-*Labeled footnotes are always numerics.*
+*Labeled footnotes are always numeric.*
 
 .. index::
    !citation
@@ -1476,7 +1478,8 @@ ref: :restref:`citations <restructuredtext.html#citations>` and
 :restref:`citation references
 <restructuredtext.html#citation-references>`
 
-Citations are identical to footnotes except that they use only non-numeric labels.
+A citation are identical to a :ref:`footnote` except that it uses only non-numeric
+labels.
 
 .. list-table::
 
