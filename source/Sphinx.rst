@@ -766,15 +766,15 @@ Source code is included in Sphinx with the
 
 To include the source file ``example.py`` as a literal block use::
 
-   .. literalinclude:: code/example.py
+   .. literalinclude:: ../arithmetic/example.py
       :linenos:
 
-.. literalinclude:: code/example.py
+.. literalinclude:: ../arithmetic/example.py
    :linenos:
 
 There are more options::
 
-  .. literalinclude:: code/example.py
+  .. literalinclude:: ../arithmetic/example.py
      :caption: Example of code
      :name: example.py
      :language: python
@@ -806,7 +806,7 @@ If it is a Python module, instead of selecting by lines you can select
 a a class function or method to include by using the option
 ``pyobject``::
 
-  .. literalinclude:: code/example.py
+  .. literalinclude:: ../arithmetic/example.py
      :pyobject: MyClass.some_method
 
 For including a ReST source file use the :ref:`rest directive include
@@ -939,10 +939,10 @@ are recognized:
     :raises: :exc:`ZeroDivisionError`
 
 
-.. literalinclude:: code/divide.py
+.. literalinclude:: ../arithmetic/divide.py
    :language: python
 
-.. automodule:: code.divide
+.. automodule:: arithmetic.divide
    :noindex:
    :members:
 
@@ -955,10 +955,10 @@ or the alternate syntax that is `recommended by Openalea Project
 <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/sphinx_python_docstring.html>`_.
 :
 
-.. literalinclude:: code/docstring.py
+.. literalinclude:: ../arithmetic/docstring.py
    :language: python
 
-.. automodule:: code.docstring
+.. automodule:: arithmetic.docstring
    :noindex:
    :members:
 
@@ -993,10 +993,10 @@ before Sphinx parse the source code. You need to
 :sphinx:`configure it in your conf.py file
 <usage/extensions/napoleon.html#configuration>`.
 
-.. literalinclude:: code/gstyle_docstring.py
+.. literalinclude:: ../arithmetic/gstyle_docstring.py
    :language: python
 
-.. automodule:: code.gstyle_docstring
+.. automodule:: arithmetic.gstyle_docstring
    :noindex:
    :members:
 
@@ -1025,7 +1025,7 @@ We can call *napoleon* from python to learn what it generates:
 
 And we have the decorated result:
 
-.. literalinclude:: code/napoleon_output.rst
+.. literalinclude:: ../arithmetic/napoleon_output.rst
    :language: rest
 
 
