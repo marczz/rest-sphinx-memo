@@ -36,7 +36,7 @@ There are four types of roles:
    which extend and are preferred to
    :ref:`ReStructuredText cross references<cross_reference>`
 -  The :sphrst:`markup roles<other-semantic-markup>`
--  The roles added by :sphrst:`Sphinx domains <domains.html>` like
+-  The roles added by :sphinx:`Sphinx domains <usage/domains.html>` like
    the :ref:`Python roles <python_roles>` referenced below.
 
 .. _sphinx_ref:
@@ -102,9 +102,10 @@ with:
     `Transition`_
     `how to draw an horizontal line <Transition>`_
 
-we cannot use in the present chapter this ReST way of referencing a target because ReST
-processor know only one document. but we can use it with the
-:sphinx:`autosectionlabel extension <usage/extensions/autosectionlabel.html>` with
+we cannot use in the present chapter this ReST way of referencing a target
+because ReST processor know only one document. but we can use it with the
+:sphinx:`autosectionlabel extension <usage/extensions/autosectionlabel.html>`
+with
 
 .. list-table::
 
@@ -167,7 +168,7 @@ Request for Comments ``:rfc:``
 
 .. index::
    pair: extension; intersphinx
-   pair: extension; extlink
+   pair: extension; extlinks
    single: hyperlink; target
 
 Extensions that define new hyperlinks targets
@@ -186,12 +187,23 @@ Extensions that define new hyperlinks targets
           'python': ('http://docs.python.org/3', None)}
 
 -  The extension :sphinx:`extlinks <ext/extlinks.html>` help when you
-   have many links pointing to the same site. I use it for the
-   previous reference with the code
-   ``:sphinx:`extlinks <ext/extlinks.html>``` and the configuration::
+   have many links pointing to the same site. You use a configuration like::
 
-      extlinks = {'sphinx': ('http://sphinx.pocoo.org/en/latest/%s', 'Sphinx: ')}
+      extlinks = {'sphinx': ('http://www.sphinx-doc.org/en/master/%s', 'Sphinx: %s')}
 
+   Here `extlinks` is a dictionary, the second item of the tuple is the default
+   caption, it must contain exactly one `%s` which will be replaced by the
+   value substituted in the link. The second element can also be `None`, in
+   this case the full url is used.
+
+   with this setting when you  write::
+
+      See also :sphinx:`Using Sphinx <using.html>` or :sphinx:`faq.html`.
+
+   you get
+
+
+   See also :sphinx:`Using Sphinx <using.html>` or :sphinx:`faq.html`.
 
 .. index
    pair: sphinx; role
@@ -287,9 +299,9 @@ are not available in the docutils builders.
 Sphinx Math.
 ------------
 
-The math directive is yet present in docutils ReST, but the rendering in Sphinx, which
-is done through extensions, extend the original docutils math extension. We give here
-some examples of its use.
+The math directive is yet present in docutils ReST, but the rendering in
+Sphinx, which is done through extensions, extend the original docutils math
+extension. We give here some examples of its use.
 
 You then can type standard LaTeX math expressions, either inline::
 
@@ -354,9 +366,9 @@ lines are not separated by a blank line.
 **Explicit LaTeX with amsmath mechanism**
 
 If the option ``nowrap`` is specified then the full LaTeX code (including the
-math-environment) has to be given.  We can assume that the :index:`amsmath` package
-is loaded.  This is not limited to math typesetting, any LaTeX construct can be
-rendered in this way.
+math-environment) has to be given.  We can assume that the :index:`amsmath`
+package is loaded.  This is not limited to math typesetting, any LaTeX
+construct can be rendered in this way.
 
 +----------------------------------------+----------------------------------------+
 |::                                      |                                        |
@@ -410,8 +422,8 @@ Table of contents.
       ‹file 1 without file name extension›
       ‹file 2 without file name extension›
 
-The  :sphrst:`toctree directive <directives.html#directive-toctree>` create a table of
-contents across files.
+The :sphrst:`toctree directive <directives.html#directive-toctree>` create a
+table of contents across files.
 
 A ``glob`` option enables to use wildcards in the filenames, e.g. ``/comp/*``
 means all files under the directory ``comp``.
@@ -648,14 +660,14 @@ After applying `rst2html` you get:
 
 
 
-Here I have taken the `admonition` directive as example but any
-directive that allow the `:class:` option would do.
+Here I have taken the `admonition` directive as example but any directive that
+allow the `:class:` option would do.
 
-As it generates a `span` the `role` directive is the only one that
-allow to apply your style to a part of a paragraph.
+As it generates a `span` the `role` directive is the only one that allow to
+apply your style to a part of a paragraph.
 
-The ``class`` works as expected with ``rest2html``,
-but directive fail with **Sphinx**. You have to replace it with
+The ``class`` works as expected with ``rest2html``, but directive fail with
+**Sphinx**. You have to replace it with
 
 .. code-block:: rest
 
@@ -664,9 +676,8 @@ but directive fail with **Sphinx**. You have to replace it with
    This paragraph too is is red.
 
 
-Sphinx use ``rst-class`` to replace the ReSt
-:ref:`class <class_directive>` directive that is shadowed by Sphinx.
-This is *only* stated in a small
+Sphinx use ``rst-class`` to replace the ReSt :ref:`class <class_directive>`
+directive that is shadowed by Sphinx.  This is *only* stated in a small
 :sphrst:`footnote of Sphinx reSt Primer <basics.html#id2>`.
 
 Using your new style
@@ -682,9 +693,9 @@ To use your new class you need a css style like:
 
 You put it in a stylesheet, to give it's location:
 
--  With ``rst2html`` you must specify the stylesheet's location with
-   a ``--stylesheet`` (for a URL) or ``--stylesheet-path`` for a
-   local file.
+- With ``rst2html`` you must specify the stylesheet's location with a
+   ``--stylesheet`` (for a URL) or ``--stylesheet-path`` for a local file.
+
 -  With Sphinx a flexible solution is to add your own css file in the
    ``_static`` directory and give its location with a template that
    you put in the ``_template`` directory. You can use a file ``layout.html``
@@ -830,10 +841,10 @@ Source code directives.
 -----------------------
 
 There are very powerful directives in Sphinx for documenting source code, each
-programming langage has a :sphrst:`specific domains <domains.html>` .
+programming langage has a :sphinx:`specific domains <usage/domains/>` .
 
 The following markups are related to
-:sphrst:`documenting python source code <domains.html#the-python-domain>`.
+:sphinx:`documenting python source code <usage/domains/python.html>`.
 
 +--------------------------------------+-----------------------------------------------------+
 |``.. module:: name``                  |Marks the beginning of the description of a module   |
@@ -889,10 +900,10 @@ which include documentation from docstrings:
       .. autoclass:: Noodle
          :members: eat, slurp
 
-- ``autofunction``, ``autodata``, ``automethod``, ``autoattribute``
-   are used to document the respective type of object. ``autodata``
-   and ``autoattribute`` support an annotation option taht will show
-   not only the name but the representation of the object.
+- ``autofunction``, ``autodata``, ``automethod``, ``autoattribute`` are used to
+   document the respective type of object. ``autodata`` and ``autoattribute``
+   support an annotation option taht will show not only the name but the
+   representation of the object.
 
 .. index::
    info fields
@@ -919,11 +930,11 @@ Using info field lists in Docstrings.
           :raises: :exc:`ZeroDivisionError`
 
 Inside Python object description directives the
-:sphinx:`following fields <domains.html#info-field-lists>`
-are recognized:
+:sphinx:`following fields <usage/domains/python.html#info-field-lists>`
+are recognized::
 ``param``,  ``arg``,  ``key``, ``type``, ``raises``, ``raise``,
 ``except``, ``exception``, ``var``, ``ivar``, ``cvar``, ``returns``,
-``return``, ``rtype``.
+``return``, ``rtype``, ``meta``.
 
 ..  function:: divide( i, j)
     :noindex:
