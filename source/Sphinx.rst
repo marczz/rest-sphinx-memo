@@ -957,52 +957,57 @@ are recognized::
    :noindex:
    :members:
 
+.. index::
+   extension; napoleon
+   coding style; numpy
 
-Docstring alternate syntax.
----------------------------
+.. _napoleon_extension:
 
-For docstrings you can use the :ref:`previous fields <info-fields>`
-or the alternate syntax that is `recommended by Openalea Project
-<http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/sphinx_python_docstring.html>`_.
-:
+Numpy alternate syntax for docstrings.
+--------------------------------------
+
+The :ref:`previous fields <info-fields>` have a very good rendering in Sphinx, but
+they are quite cumbersome for the programmer and make the code cryptic. Two alternates
+syntaxes are popular the Numpy docstring syntax and the Google docstring syntax.
+
+These two styles are not recognized directly by the ``autocode`` extension but should
+preprocessed.
+
+The extension :sphinx:`napoleon <usage/extensions/napoleon.html>` preprocess NumPy and
+Google style docstrings and converts them to reStructuredText before Sphinx parse the
+source code. You need to :sphinx:`configure it in your conf.py file
+<usage/extensions/napoleon.html#configuration>`.
+
+We gives an example of `NumPy/SciPy style of documentation`_.
 
 .. literalinclude:: ../arithmetic/docstring.py
    :language: python
+
 
 .. automodule:: arithmetic.docstring
    :noindex:
    :members:
 
 .. index::
-   extension; napoleon
    coding style; google
-   coding style; numpy
 
-.. _napoleon_extension:
+`NumPy style guide`_ includes many small examples,
+the :sphinx:`Sphinx Manual <>` includes  :sphinx:`a larger Numpy style example
+<usage/extensions/example_google.html>`, and `Material for Sphinx
+<https://bashtage.github.io/sphinx-material/>`_ has a big `Polynomial Class (source)
+<https://bashtage.github.io/sphinx-material/_modules/numpy/polynomial/polynomial.html>`_
+and `generated result
+<https://bashtage.github.io/sphinx-material/generated/numpy.polynomial.Polynomial.html>`_.
+
 
 Google style docstrings.
 ------------------------
-Using Restructured texts in your python code, is quite cumbersome, it
-produces an easily readable documentation, but cryptic source code.
-
-
 If we want to follow the style of `PEP257
 <https://www.python.org/dev/peps/pep-0257/>`_ we  can use
 the `Google Python style guide`_ also recommended by the
 `Khan Academy Style Guide
 <https://github.com/Khan/style-guides/blob/master/style/python.md>`_.
 
-`NumPy style guide`_
-Alternatively there is a `NumPy/SciPy style of documentation`_.
-
-But they produces docstrings that are not recognized by Sphinx, and
-not decorated in html output.
-
-The extension :sphinx:`napoleon <usage/extensions/napoleon.html>` preprocess NumPy
-and Google style docstrings and converts them to reStructuredText
-before Sphinx parse the source code. You need to
-:sphinx:`configure it in your conf.py file
-<usage/extensions/napoleon.html#configuration>`.
 
 .. literalinclude:: ../arithmetic/gstyle_docstring.py
    :language: python
@@ -1011,8 +1016,8 @@ before Sphinx parse the source code. You need to
    :noindex:
    :members:
 
-Look :sphinx:`here for a larger example
-<http://www.sphinx-doc.org/en/latest/ext/example_google.html>`.
+The `Sphinx Manual <>` includes  :sphinx:`a larger Google style example
+<usage/extensions/example_google.html>`.
 
 How *napoleon* transform my docstrings.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
